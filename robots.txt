@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sotirios-bot.github.io/sotirios/sitemap.xml
