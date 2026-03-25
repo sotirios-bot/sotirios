@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Sotirios Seridis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Sotirios Seridis</a>
+      <nav class="nav__links">
+        <a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="nav__link">📞 Discovery Call</a>
+        <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="nav__link nav__link--whatsapp">💬 WhatsApp</a>
+        <a href="index.html#contact" class="nav__link nav__link--cta">Contact</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="https://calendly.com/sotirios/let-s-talk" target="_blank">📞 Discovery Call</a>
+      <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank">💬 WhatsApp</a>
+      <a href="index.html#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="policy">
+    <div class="container policy__inner">
+
+      <h1 class="policy__title">Privacy Policy</h1>
+      <p class="policy__updated">Last updated: March 2026</p>
+
+      <section class="policy__section">
+        <h2>Legal Disclaimer</h2>
+        <p>The information provided on this website is for general informational purposes only. All content on the site is provided in good faith; however, I make no representations or warranties of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
+
+        <h3>Links to Other Websites</h3>
+        <p>This site may contain links to third-party websites or services that are not owned or controlled by me. I have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party sites or services. It is recommended to review the privacy policies of any websites that you visit through external links.</p>
+
+        <h3>Limitation of Liability</h3>
+        <p>In no event will I be liable for any loss or damage, including without limitation, indirect or consequential loss or damage, arising from the use of this website.</p>
+      </section>
+
+      <section class="policy__section">
+        <h2>Privacy Policy</h2>
+
+        <h3>1. Information Collection</h3>
+        <p>I may collect the following types of personal information:</p>
+        <ul>
+          <li><strong>Contact Information:</strong> Name and email address when you subscribe to the newsletter or contact me through the website.</li>
+          <li><strong>Usage Data:</strong> I may collect information on how the site is accessed and used, such as browser type, IP address, pages visited, and time spent on pages.</li>
+        </ul>
+
+        <h3>2. Use of Information</h3>
+        <p>The information collected is used to:</p>
+        <ul>
+          <li>Provide and maintain the website</li>
+          <li>Respond to inquiries and requests</li>
+          <li>Send occasional newsletters or updates (only with your explicit consent)</li>
+          <li>Analyse traffic and improve the website's performance and content</li>
+        </ul>
+
+        <h3>3. Cookies</h3>
+        <p>This site may use cookies and similar tracking technologies to track activity on the website and store certain information. You can instruct your browser to refuse all cookies or indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of the site.</p>
+
+        <h3>4. Data Security</h3>
+        <p>The security of your data is important to me, but please note that no method of transmission over the internet or method of electronic storage is 100% secure. I strive to use commercially acceptable means to protect your personal data, but cannot guarantee its absolute security.</p>
+
+        <h3>5. Sharing of Personal Information</h3>
+        <p>I do not sell, trade, or otherwise transfer to outside parties your personally identifiable information. I may only share data in the following cases:</p>
+        <ul>
+          <li>If required to by law or court orders</li>
+          <li>To protect my legal rights or the rights of others</li>
+        </ul>
+      </section>
+
+      <section class="policy__section">
+        <h2>Additional Notes</h2>
+
+        <h3>Changes to This Privacy Policy</h3>
+        <p>I may update this privacy policy from time to time. Any changes will be posted on this page, and the "Last updated" date at the top will be modified accordingly. I encourage you to review this privacy policy periodically for any updates.</p>
+
+        <h3>Contact Information</h3>
+        <p>If you have any questions about this privacy policy, please feel free to contact me via email at <a href="mailto:sseridis@gmail.com">sseridis@gmail.com</a>.</p>
+      </section>
+
+      <a href="index.html" class="btn btn--primary">← Back to Home</a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__section">
+        <h3 class="footer__title">Let's Work Together</h3>
+        <h4 class="footer__subtitle">Contact</h4>
+        <ul class="footer__list">
+          <li>📧 <a href="mailto:sotirios@xyzlab.com">sotirios@xyzlab.com</a></li>
+          <li>📲 <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank">+65 9426 0742 (WhatsApp)</a></li>
+          <li>🌎 GMT+5</li>
+        </ul>
+        <h4 class="footer__subtitle">Socials</h4>
+        <ul class="footer__list">
+          <li>💻 <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a></li>
+          <li>🎥 <a href="https://www.youtube.com/@xyzl" target="_blank">Digital Marketing Tutorials</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 by Sotirios Seridis, Powered by <a href="https://www.xyzlab.com/" target="_blank" class="footer__link">XYZ Lab</a></p>
+        <a href="privacy.html" class="footer__privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('nav__mobile--open');
+    }
+  </script>
+
+</body>
+</html>
