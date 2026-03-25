@@ -531,9 +531,8 @@ a { color: inherit; text-decoration: none; }
 
 .footer__cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  max-width: 480px;
+  grid-template-columns: repeat(3, auto);
+  gap: 2rem 3rem;
 }
 
 .footer__subtitle {
