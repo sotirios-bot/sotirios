@@ -18,27 +18,34 @@
       <nav class="nav__links">
         <a href="#contact" class="nav__link">🚀 Consultation Call</a>
         <a href="#contact" class="nav__link">📞 Discovery Call</a>
-        <a href="#contact" class="nav__link nav__link--cta">💬 Contact</a>
+        <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="nav__link nav__link--whatsapp">💬 WhatsApp</a>
+        <a href="#contact" class="nav__link nav__link--cta">Contact</a>
       </nav>
       <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
     </div>
     <div class="nav__mobile" id="mobileMenu">
       <a href="#contact" onclick="toggleMenu()">🚀 Consultation Call</a>
       <a href="#contact" onclick="toggleMenu()">📞 Discovery Call</a>
-      <a href="#contact" onclick="toggleMenu()">💬 Contact</a>
+      <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank">💬 WhatsApp</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container hero__inner">
-      <p class="hero__eyebrow">Ex-Meta · WPP · HAVAS · London · Dubai · Singapore</p>
-      <h1 class="hero__name">Sotirios Seridis</h1>
-      <p class="hero__title">Veteran Performance Marketer &amp; Digital Marketing Trainer</p>
-      <p class="hero__sub">Real-world, hands-on digital marketing training,<br>designed for entrepreneurs and marketing professionals.</p>
-      <div class="hero__ctas">
-        <a href="#contact" class="btn btn--primary">Book Consultation 🚀</a>
-        <a href="#contact" class="btn btn--outline">Discovery Call 💬</a>
+      <div class="hero__text">
+        <p class="hero__eyebrow">Ex-Meta · WPP · HAVAS · London · Dubai · Singapore</p>
+        <h1 class="hero__name">Sotirios Seridis</h1>
+        <p class="hero__title">Veteran Performance Marketer &amp; Digital Marketing Trainer</p>
+        <p class="hero__sub">Real-world, hands-on digital marketing training,<br>designed for entrepreneurs and marketing professionals.</p>
+        <div class="hero__ctas">
+          <a href="#contact" class="btn btn--primary">Book Consultation 🚀</a>
+          <a href="#contact" class="btn btn--secondary">Discovery Call 📞</a>
+        </div>
+      </div>
+      <div class="hero__image">
+        <img src="Sotirios Seridis.avif" alt="Sotirios Seridis" onerror="this.style.display='none'" />
       </div>
     </div>
   </section>
@@ -100,6 +107,9 @@
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="container about__inner">
+      <div class="about__image">
+        <img src="sotirios seridis (1).avif" alt="Sotirios Seridis" onerror="this.style.display='none'" />
+      </div>
       <div class="about__text">
         <h2 class="section-title">Let's solve your digital marketing challenges together! ☕☀️</h2>
         <p>Hello, I'm <strong>Sotirios</strong> — I simplify digital marketing for busy business owners and marketing practitioners.</p>
@@ -109,29 +119,33 @@
         <p>I help corporate teams, fast-growing startups, and ambitious small businesses level up their digital marketing, performance strategies, and analytics capabilities. I thrive on creating campaigns that solve real problems and drive measurable growth.</p>
         <a href="#contact" class="btn btn--primary">Check My Work 🖥️</a>
       </div>
-      <div class="about__cards">
-        <div class="style-card">
-          <h3>👨‍💻 Working Style</h3>
-          <ul>
-            <li>⚡️ Speed</li>
-            <li>🛠️ Hands-on</li>
-            <li>🎯 Real Results</li>
-            <li>💡 Problem-solver</li>
-            <li>🔄 Adaptable</li>
-            <li>💪 Self-motivated</li>
-          </ul>
-        </div>
-        <div class="style-card">
-          <h3>⚖️ Non-Negotiables</h3>
-          <ul>
-            <li>🏛️ No politics</li>
-            <li>👨‍💻 Remote work</li>
-            <li>🎯 Straight-to-the-point</li>
-            <li>⏰ Flexible hours</li>
-            <li>⏳ Clear deadlines</li>
-            <li>🤝 Clear expectations</li>
-          </ul>
-        </div>
+    </div>
+  </section>
+
+  <!-- WORKING STYLE -->
+  <section class="style-section">
+    <div class="container style-section__inner">
+      <div class="style-card">
+        <h3>👨‍💻 Working Style</h3>
+        <ul>
+          <li>⚡️ Speed</li>
+          <li>🛠️ Hands-on</li>
+          <li>🎯 Real Results</li>
+          <li>💡 Problem-solver</li>
+          <li>🔄 Adaptable</li>
+          <li>💪 Self-motivated</li>
+        </ul>
+      </div>
+      <div class="style-card">
+        <h3>⚖️ Non-Negotiables</h3>
+        <ul>
+          <li>🏛️ No politics</li>
+          <li>👨‍💻 Remote work</li>
+          <li>🎯 Straight-to-the-point</li>
+          <li>⏰ Flexible hours</li>
+          <li>⏳ Clear deadlines</li>
+          <li>🤝 Clear expectations</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -155,7 +169,7 @@
         </div>
       </div>
       <div class="testimonials__linkedin">
-        <a href="https://linkedin.com" target="_blank" class="btn btn--outline">Connect with me on LinkedIn</a>
+        <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="btn btn--primary">Connect with me on LinkedIn</a>
       </div>
     </div>
   </section>
@@ -167,16 +181,15 @@
         <h2 class="section-title">Let's Work Together</h2>
         <ul class="contact__list">
           <li>📧 <a href="mailto:sotirios@xyzlab.com">sotirios@xyzlab.com</a></li>
-          <li>📲 <a href="https://wa.me/6594260742">+65 9426 0742 (WhatsApp)</a></li>
+          <li>📲 <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank">+65 9426 0742 (WhatsApp)</a></li>
           <li>🌎 GMT+5</li>
         </ul>
       </div>
       <div>
         <h3 class="contact__social-title">Socials</h3>
         <ul class="contact__list">
-          <li>💻 <a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-          <li>🎥 <a href="https://youtube.com" target="_blank">Personal YouTube</a></li>
-          <li>🎥 <a href="https://youtube.com" target="_blank">Digital Marketing Tutorials</a></li>
+          <li>💻 <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a></li>
+          <li>🎥 <a href="https://www.youtube.com/@xyzl" target="_blank">Digital Marketing Tutorials</a></li>
         </ul>
       </div>
     </div>
