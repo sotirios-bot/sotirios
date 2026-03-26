@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sotirios-bot.github.io/sotirios/sitemap.xml
+Sitemap: https://www.sotirios-seridis.com/sitemap.xml
