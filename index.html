@@ -62,7 +62,6 @@
     <div class="nav__mobile" id="mobileMenu">
       <a href="https://calendly.com/sotirios/let-s-talk" target="_blank">📞 Discovery Call</a>
       <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank">💬 WhatsApp</a>
-      <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
   </header>
 
@@ -72,10 +71,28 @@
       <p class="hero__eyebrow">Ex-Meta · WPP · HAVAS · Digital Marketing Trainer</p>
       <h1 class="hero__name">Sotirios Seridis</h1>
       <p class="hero__title">Veteran Performance Marketer &amp; Digital Marketing Trainer</p>
-      <p class="hero__sub">Real-world, hands-on digital marketing training, designed for entrepreneurs and marketing professionals.</p>
+      <textarea class="hero__textarea" id="heroPrompt" rows="3" placeholder="Tell me what you need — training, consulting, a project, or just a question..."></textarea>
       <div class="hero__ctas">
-        <a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="btn btn--primary">Discovery Call 📞</a>
-        <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="btn btn--secondary">WhatsApp 🚀</a>
+        <a href="#" class="btn btn--primary" onclick="heroToWhatsApp(); return false;">💬 WhatsApp</a>
+        <a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="btn btn--secondary">📞 Discovery Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="stats">
+    <div class="container stats__inner">
+      <div class="stat">
+        <div class="stat__number">15+</div>
+        <div class="stat__label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">1,000+</div>
+        <div class="stat__label">Marketers Trained</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">3</div>
+        <div class="stat__label">Global Agency Networks</div>
       </div>
     </div>
   </section>
@@ -88,26 +105,11 @@
     </div>
   </section>
 
-  <!-- CONTACT PROMPT -->
-  <section class="contact-prompt" id="contact">
-    <div class="container">
-      <h2 class="section-title">Tell Me What You Need</h2>
-      <p class="section-sub">Describe your goals, challenges, or what you're looking to learn — and I'll get back to you within 24 hours.</p>
-      <div class="prompt-box">
-        <textarea class="prompt-textarea" id="userPrompt" rows="5" placeholder="E.g. I run an e-commerce store and want to understand how to set up Google Ads properly. I have a team of 3 marketers who need upskilling on Meta Ads and GA4..."></textarea>
-        <div class="prompt-actions">
-          <a href="#" class="btn btn--primary" onclick="sendToWhatsApp(); return false;">Send via WhatsApp 💬</a>
-          <a href="#" class="btn btn--outline" onclick="sendToEmail(); return false;">Send via Email 📧</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SERVICES -->
   <section class="services" id="services">
     <div class="container">
       <h2 class="section-title">Real-World Digital Marketing Training &amp; Consulting.</h2>
-      <p class="section-sub section-sub--wide">Hands-on, practical sessions. Real campaign walkthroughs. Skills and frameworks you can apply immediately.</p>
+      <p class="section-sub">Hands-on, practical sessions. Real campaign walkthroughs. Skills and frameworks you can apply immediately.</p>
       <div class="services__grid">
         <div class="service-card">
           <span class="service-card__icon">🎯</span>
@@ -172,6 +174,30 @@
             <p>Automate repetitive marketing tasks and workflows using AI — save time, scale output, stay ahead.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="tools" id="tools">
+    <div class="container">
+      <h2 class="section-title">Tools I Work With</h2>
+      <p class="section-sub">Hands-on experience across every major platform and tool in the digital marketing stack.</p>
+      <div class="tools__grid">
+        <div class="tool-pill"><span class="tool-pill__icon">🎯</span> Google Ads</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🔷</span> Bing Ads</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🤖</span> ChatGPT</div>
+        <div class="tool-pill"><span class="tool-pill__icon">📘</span> Meta Ads</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🎵</span> TikTok Ads</div>
+        <div class="tool-pill"><span class="tool-pill__icon">💼</span> LinkedIn Ads</div>
+        <div class="tool-pill"><span class="tool-pill__icon">👽</span> Reddit Ads</div>
+        <div class="tool-pill"><span class="tool-pill__icon">📊</span> Google Analytics 4</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🏷️</span> Google Tag Manager</div>
+        <div class="tool-pill"><span class="tool-pill__icon">📈</span> Looker Studio</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🔍</span> Google Search Console</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🌐</span> Bing Webmaster Tools</div>
+        <div class="tool-pill"><span class="tool-pill__icon">🟠</span> Claude &amp; Claude Code</div>
+        <div class="tool-pill"><span class="tool-pill__icon">⚡</span> Zapier</div>
       </div>
     </div>
   </section>
@@ -243,6 +269,21 @@
       <div class="testimonials__linkedin">
         <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="btn btn--primary">Connect with me on LinkedIn</a>
       </div>
+    </div>
+  </section>
+
+  <!-- MY STORY -->
+  <section class="story" id="story">
+    <div class="container story__inner">
+      <h2 class="section-title">My Story</h2>
+      <p class="story__quote">"I didn't get into marketing to run campaigns. I got into it to solve problems — and I've never stopped."</p>
+      <p>I started my career inside some of the world's largest agency networks — <strong>HAVAS, Omnicom, and WPP</strong> — managing global accounts, building performance teams from scratch, and running paid media across every major platform. I worked with brands across retail, finance, tech, and FMCG. I saw how the big players did it. And more importantly, I saw what they got wrong.</p>
+      <p>The problem was always the same: too much process, too little accountability, and a massive gap between strategy decks and actual results. I got tired of watching companies spend fortunes on campaigns with no real foundation underneath them.</p>
+      <p>So I started doing things differently. I moved away from agency life and started working directly with businesses — not as an account manager, but as someone with skin in the game. I trained marketing teams to think for themselves. I consulted founders who were smart enough to know they didn't know what they didn't know. I built systems that worked after I left.</p>
+      <p>Over 1,000 marketers trained later — from Singapore to Europe, from scrappy startups to corporate teams — the pattern is always the same: <strong>when people understand how their marketing actually works, everything changes.</strong></p>
+      <p>Today, I split my time between training, consulting, and building my own companies — <strong>XYZ Lab</strong> and <strong>Mytheon Technologies</strong>. I'm based in Asia, work remotely across time zones, and I'm still just as hands-on as day one.</p>
+      <p>If you want straight talk and real results — this is the right place.</p>
+      <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="btn btn--primary">Connect on LinkedIn</a>
     </div>
   </section>
 
@@ -363,6 +404,13 @@
     </div>
   </footer>
 
+  <!-- FLOATING BUTTONS -->
+  <div class="floating-btns">
+    <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="floating-btn floating-btn--whatsapp" aria-label="WhatsApp">💬</a>
+    <a href="https://www.youtube.com/@xyzl" target="_blank" class="floating-btn floating-btn--youtube" aria-label="YouTube">▶</a>
+    <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="floating-btn floating-btn--linkedin" aria-label="LinkedIn">in</a>
+  </div>
+
   <script>
     function toggleMenu() {
       const m = document.getElementById('mobileMenu');
@@ -374,15 +422,12 @@
       document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('faq__item--open'));
       if (!isOpen) item.classList.add('faq__item--open');
     }
-    function sendToWhatsApp() {
-      const msg = document.getElementById('userPrompt').value.trim();
-      if (!msg) { alert('Please describe what you need first.'); return; }
-      window.open('https://api.whatsapp.com/send/?phone=6594260742&text=' + encodeURIComponent(msg), '_blank');
-    }
-    function sendToEmail() {
-      const msg = document.getElementById('userPrompt').value.trim();
-      if (!msg) { alert('Please describe what you need first.'); return; }
-      window.location.href = 'mailto:sotirios@xyzlab.com?subject=Enquiry from sotirios-seridis.com&body=' + encodeURIComponent(msg);
+    function heroToWhatsApp() {
+      const msg = document.getElementById('heroPrompt').value.trim();
+      const url = msg
+        ? 'https://api.whatsapp.com/send/?phone=6594260742&text=' + encodeURIComponent(msg)
+        : 'https://api.whatsapp.com/send/?phone=6594260742';
+      window.open(url, '_blank');
     }
   </script>
 
