@@ -88,23 +88,18 @@
     </div>
   </section>
 
-  <!-- CALENDLY -->
-  <section class="calendly-section" id="book">
+  <!-- CONTACT PROMPT -->
+  <section class="contact-prompt" id="contact">
     <div class="container">
-      <h2 class="section-title">Book a Free Discovery Call</h2>
-      <p class="section-sub">Pick a time that works for you — no commitment, just a straight-talking conversation about your marketing goals.</p>
-      <!-- Calendly inline widget begin -->
-      <div class="calendly-inline-widget" data-url="https://calendly.com/sotirios/let-s-talk" style="min-width:320px;height:700px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      <!-- Calendly inline widget end -->
-    </div>
-  </section>
-
-  <!-- VALUE PROP STRIP 2 -->
-  <section class="strip">
-    <div class="container">
-      <p class="strip__text">Practical digital marketing training, designed for <strong>Marketing Practitioners &amp; Business Leaders</strong>.</p>
-      <p class="strip__sub">Book your free discovery call and walk away with a clear roadmap to level-up your digital marketing strategy and know-how.</p>
+      <h2 class="section-title">Tell Me What You Need</h2>
+      <p class="section-sub">Describe your goals, challenges, or what you're looking to learn — and I'll get back to you within 24 hours.</p>
+      <div class="prompt-box">
+        <textarea class="prompt-textarea" id="userPrompt" rows="5" placeholder="E.g. I run an e-commerce store and want to understand how to set up Google Ads properly. I have a team of 3 marketers who need upskilling on Meta Ads and GA4..."></textarea>
+        <div class="prompt-actions">
+          <a href="#" class="btn btn--primary" onclick="sendToWhatsApp(); return false;">Send via WhatsApp 💬</a>
+          <a href="#" class="btn btn--outline" onclick="sendToEmail(); return false;">Send via Email 📧</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -279,21 +274,21 @@
 
         <div class="faq__item">
           <button class="faq__question" onclick="toggleFaq(this)">
-            Who is this training for?
+            Do you offer corporate or team training?
             <span class="faq__icon">+</span>
           </button>
           <div class="faq__answer">
-            <p>My training is designed for marketing professionals who want to sharpen their skills, business owners who want to understand and take control of their own marketing, and corporate teams looking for practical, hands-on upskilling. If you're tired of theory and want to get things done, you're in the right place.</p>
+            <p>Yes. I work with corporate teams and fast-growing companies to run bespoke workshops and training programmes — tailored to your tools, goals, and skill gaps. Whether it's a one-day intensive or an ongoing upskilling programme, I'll design it around your team's actual needs. Get in touch via WhatsApp or email to discuss.</p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question" onclick="toggleFaq(this)">
-            Do I need prior digital marketing experience?
+            Do you offer 1-on-1 training?
             <span class="faq__icon">+</span>
           </button>
           <div class="faq__answer">
-            <p>No. Sessions are tailored to your level — whether you're just getting started or you're an experienced marketer looking to level up on a specific platform or channel. We'll figure out where you are and build from there.</p>
+            <p>Yes. Most of my work is 1-on-1. Sessions are fully tailored to your level, your platforms, and your goals — whether you're a business owner who wants to take control of your own marketing or a marketing professional looking to sharpen specific skills. No generic curricula, no wasted time.</p>
           </div>
         </div>
 
@@ -303,7 +298,7 @@
             <span class="faq__icon">+</span>
           </button>
           <div class="faq__answer">
-            <p>Sessions are run remotely via video call. We work through real campaign setups, live account audits, or strategic frameworks — depending on what you need. No slides for the sake of slides. Everything is hands-on and directly applicable to your business.</p>
+            <p>Sessions run remotely via video call. We work through real campaign setups, live account audits, or strategic frameworks — depending on what you need. No slides for the sake of slides. Everything is hands-on and directly applicable to your business from day one.</p>
           </div>
         </div>
 
@@ -313,27 +308,17 @@
             <span class="faq__icon">+</span>
           </button>
           <div class="faq__answer">
-            <p>Google Ads, Meta Ads, TikTok Ads, Google Analytics 4, Looker Studio, Google Tag Manager, Shopify, and AI tools for marketing workflows. If there's a specific platform you're working with, let me know — I'm happy to tailor the session around your stack.</p>
+            <p>Google Ads, Meta Ads, TikTok Ads, Google Analytics 4, Looker Studio, Google Tag Manager, Shopify, and AI tools for marketing automation. If there's a specific platform you're working with, let me know — I'll tailor the session around your exact stack.</p>
           </div>
         </div>
 
         <div class="faq__item">
           <button class="faq__question" onclick="toggleFaq(this)">
-            Do you offer corporate or team training?
+            Can you take on marketing projects?
             <span class="faq__icon">+</span>
           </button>
           <div class="faq__answer">
-            <p>Yes. I work with corporate teams and fast-growing companies to run workshops and training programmes tailored to their tools, goals, and skill gaps. Get in touch via WhatsApp or email to discuss your team's needs.</p>
-          </div>
-        </div>
-
-        <div class="faq__item">
-          <button class="faq__question" onclick="toggleFaq(this)">
-            How do I get started?
-            <span class="faq__icon">+</span>
-          </button>
-          <div class="faq__answer">
-            <p>Book a free discovery call using the calendar above. We'll spend 30 minutes understanding your goals and figuring out the best way to work together. No pressure, no sales pitch — just a straight-talking conversation.</p>
+            <p>Yes — beyond training, I also consult and execute. If you need someone to build out your paid media strategy, audit your accounts, or manage a campaign end-to-end, I can help. Drop me a message with what you're working on and we'll figure out the best way to move forward.</p>
           </div>
         </div>
 
@@ -388,6 +373,16 @@
       const isOpen = item.classList.contains('faq__item--open');
       document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('faq__item--open'));
       if (!isOpen) item.classList.add('faq__item--open');
+    }
+    function sendToWhatsApp() {
+      const msg = document.getElementById('userPrompt').value.trim();
+      if (!msg) { alert('Please describe what you need first.'); return; }
+      window.open('https://api.whatsapp.com/send/?phone=6594260742&text=' + encodeURIComponent(msg), '_blank');
+    }
+    function sendToEmail() {
+      const msg = document.getElementById('userPrompt').value.trim();
+      if (!msg) { alert('Please describe what you need first.'); return; }
+      window.location.href = 'mailto:sotirios@xyzlab.com?subject=Enquiry from sotirios-seridis.com&body=' + encodeURIComponent(msg);
     }
   </script>
 
