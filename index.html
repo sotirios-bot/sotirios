@@ -41,6 +41,10 @@
     "knowsAbout": ["Google Ads", "Meta Ads", "TikTok Ads", "Google Analytics", "Digital Marketing", "Performance Marketing", "E-Commerce", "SaaS Marketing", "Lead Generation"]
   }
   </script>
+  <link rel="alternate" hreflang="en" href="https://www.sotirios-seridis.com/" />
+  <link rel="alternate" hreflang="ru" href="https://www.sotirios-seridis.com/ru.html" />
+  <link rel="alternate" hreflang="el" href="https://www.sotirios-seridis.com/el.html" />
+  <link rel="alternate" hreflang="x-default" href="https://www.sotirios-seridis.com/" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -57,6 +61,11 @@
         <a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="nav__link">📞 Discovery Call</a>
         <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="nav__link nav__link--whatsapp">💬 WhatsApp</a>
       </nav>
+      <div class="lang-switcher">
+        <a href="index.html" class="lang-btn lang-btn--active">EN</a>
+        <a href="ru.html" class="lang-btn">RU</a>
+        <a href="el.html" class="lang-btn">ΕΛ</a>
+      </div>
       <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
     </div>
     <div class="nav__mobile" id="mobileMenu">
@@ -97,14 +106,6 @@
         <div class="stat__number">3</div>
         <div class="stat__label">Global Agency Networks</div>
       </div>
-    </div>
-  </section>
-
-  <!-- VALUE PROP STRIP -->
-  <section class="strip">
-    <div class="container">
-      <p class="strip__text">Practical digital marketing training, designed for <strong>Marketing Practitioners &amp; Business Leaders</strong>.</p>
-      <p class="strip__sub">Book your free discovery call and walk away with a clear roadmap to level-up your digital marketing strategy and know-how.</p>
     </div>
   </section>
 
@@ -407,6 +408,13 @@
     </div>
   </footer>
 
+  <!-- EASTER EGG -->
+  <div id="fireworksOverlay" onclick="this.style.display='none'">
+    <div class="fireworks-message">Жаным ты лучшая ❤️‍🔥😍</div>
+    <div class="fireworks-hint">tap anywhere to close</div>
+    <div id="fwContainer"></div>
+  </div>
+
   <!-- FLOATING BUTTONS -->
   <div class="floating-btns">
     <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="floating-btn floating-btn--whatsapp" aria-label="WhatsApp">💬</a>
@@ -425,6 +433,36 @@
       document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('faq__item--open'));
       if (!isOpen) item.classList.add('faq__item--open');
     }
+    const eggWords = ['di','dii','dee','dilnara','ди','дии','дильнара'];
+    document.getElementById('heroPrompt').addEventListener('input', function() {
+      if (eggWords.includes(this.value.trim().toLowerCase())) showFireworks();
+    });
+    function showFireworks() {
+      const overlay = document.getElementById('fireworksOverlay');
+      const container = document.getElementById('fwContainer');
+      overlay.style.display = 'flex'; container.innerHTML = '';
+      const colors = ['#ff6b6b','#ffd93d','#6bcb77','#4d96ff','#ff6bdb','#ff9a3c','#09bfae','#fff'];
+      const emojis = ['❤️','💖','✨','🎆','😍','🔥','💕','🌹'];
+      for (let b = 0; b < 10; b++) {
+        const cx = 10 + Math.random() * 80, cy = 10 + Math.random() * 80;
+        for (let i = 0; i < 18; i++) {
+          const p = document.createElement('div');
+          const angle = (i / 18) * Math.PI * 2;
+          const dist = 60 + Math.random() * 120;
+          p.className = 'fw-particle';
+          p.style.cssText = `left:${cx}%;top:${cy}%;width:${4+Math.random()*6}px;height:${4+Math.random()*6}px;background:${colors[Math.floor(Math.random()*colors.length)]};--tx:${Math.cos(angle)*dist}px;--ty:${Math.sin(angle)*dist}px;--delay:${b*0.18}s;--dur:${1+Math.random()*0.8}s`;
+          container.appendChild(p);
+        }
+      }
+      emojis.forEach((em, i) => {
+        const e = document.createElement('div');
+        e.className = 'fw-particle';
+        e.style.cssText = `left:${10+Math.random()*80}%;top:${10+Math.random()*80}%;font-size:2rem;background:none;--tx:${(Math.random()-0.5)*160}px;--ty:${(Math.random()-0.5)*160}px;--delay:${i*0.1}s;--dur:2s`;
+        e.textContent = em; container.appendChild(e);
+      });
+      setTimeout(() => { overlay.style.display = 'none'; }, 6000);
+    }
+
     function heroToWhatsApp() {
       const msg = document.getElementById('heroPrompt').value.trim();
       const url = msg
@@ -433,42 +471,45 @@
       window.open(url, '_blank');
     }
 
+    const WA = '<a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="response-link">WhatsApp</a>';
+    const CAL = '<a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="response-link">book a free discovery call</a>';
+
     const kb = [
       {
         keys: ['corporate','team','group','staff','company','employees','organisation','organization'],
-        answer: "Yes — I design bespoke corporate training programmes tailored to your team's tools, goals, and skill gaps. Whether it's a one-day intensive or an ongoing upskilling plan, I build it around what your team actually needs.\n\nBest move: send me a WhatsApp with your team size and what you're working on."
+        answer: () => `Yes — I design bespoke corporate training programmes tailored to your team's tools, goals, and skill gaps. Whether it's a one-day intensive or an ongoing upskilling plan, I build it around what your team actually needs.<br><br>Best move: send me a ${WA} with your team size and what you're working on.`
       },
       {
         keys: ['1-on-1','1 on 1','one on one','individual','personal','private','solo'],
-        answer: "Most of my work is 1-on-1. Sessions are fully tailored to your level and goals — no generic curricula, no wasted time. We work through your actual accounts, your actual challenges.\n\nBook a free discovery call and we'll figure out exactly what you need."
+        answer: () => `Most of my work is 1-on-1. Sessions are fully tailored to your level and goals — no generic curricula, no wasted time. We work through your actual accounts, your actual challenges.<br><br>${CAL} and we'll figure out exactly what you need.`
       },
       {
         keys: ['google ads','search ads','pmax','performance max','shopping ads','gads','google ad'],
-        answer: "Google Ads is one of my core specialities — search, shopping, Performance Max, and advanced bidding strategies. I've run large-scale accounts and trained hundreds of marketers on the platform.\n\nBook a discovery call or drop me a WhatsApp to discuss."
+        answer: () => `Google Ads is one of my core specialities — search, shopping, Performance Max, and advanced bidding strategies. I've run large-scale accounts and trained hundreds of marketers on the platform.<br><br>${CAL} or drop me a ${WA} to discuss.`
       },
       {
         keys: ['meta','facebook','instagram','fb ads','meta ads'],
-        answer: "Meta Ads is another strong area — campaign structure, audience strategy, creative testing, and scaling. Whether you're starting from scratch or optimising an existing account, I can help.\n\nGet in touch via WhatsApp or book a call."
+        answer: () => `Meta Ads is another strong area — campaign structure, audience strategy, creative testing, and scaling. Whether you're starting from scratch or optimising an existing account, I can help.<br><br>Get in touch via ${WA} or ${CAL}.`
       },
       {
         keys: ['tiktok','tik tok'],
-        answer: "TikTok Ads is a fast-moving platform and one I cover in depth — from campaign structure to creative strategy. I help brands and marketers build campaigns that actually convert.\n\nDrop me a WhatsApp to talk through what you need."
+        answer: () => `TikTok Ads is a fast-moving platform and one I cover in depth — from campaign structure to creative strategy. I help brands and marketers build campaigns that actually convert.<br><br>Drop me a ${WA} to talk through what you need.`
       },
       {
         keys: ['analytics','ga4','google analytics','looker','dashboard','data','reporting','tracking','tag manager','gtm'],
-        answer: "GA4, GTM, and Looker Studio are all part of my toolkit. I help teams set up proper tracking, build dashboards that tell a real story, and make confident data-driven decisions — no guessing.\n\nSend me a WhatsApp with your current setup and what's not working."
+        answer: () => `GA4, GTM, and Looker Studio are all part of my toolkit. I help teams set up proper tracking, build dashboards that tell a real story, and make confident data-driven decisions.<br><br>Send me a ${WA} with your current setup and what's not working.`
       },
       {
         keys: ['consult','audit','strategy','project','campaign','manage','run','execute','hire'],
-        answer: "Beyond training, I also take on consulting and execution work — paid media strategy, full account audits, and campaign management. I've managed significant budgets across Google, Meta, TikTok and more.\n\nWhatsApp me with what you're working on and I'll tell you straight whether I can help."
+        answer: () => `Beyond training, I also take on consulting and execution work — paid media strategy, full account audits, and campaign management. I've managed significant budgets across Google, Meta, TikTok and more.<br><br>${WA} me with what you're working on and I'll tell you straight whether I can help.`
       },
       {
         keys: ['price','cost','rate','charge','fee','how much','pricing','package'],
-        answer: "Pricing varies depending on what you need — 1-on-1 sessions, corporate workshops, and consulting projects are all structured differently.\n\nThe fastest way to get a real number is a free discovery call. No commitment, no pitch — just 30 minutes to understand your situation."
+        answer: () => `Pricing varies depending on what you need — 1-on-1 sessions, corporate workshops, and consulting projects are all structured differently.<br><br>The fastest way to get a real number is a ${CAL}. No commitment, no pitch — just 30 minutes to understand your situation.`
       },
       {
         keys: ['train','learn','course','class','workshop','session','teach','upskill','skill','start','begin'],
-        answer: "I offer both 1-on-1 and corporate training sessions, fully remote. Sessions are hands-on — we work through real campaigns, live accounts, and actual platforms. I cover Google Ads, Meta Ads, TikTok Ads, GA4, GTM, Looker Studio, and more.\n\nBook a free discovery call to talk through what makes sense for you."
+        answer: () => `I offer both 1-on-1 and corporate training sessions, fully remote. Sessions are hands-on — we work through real campaigns, live accounts, and actual platforms. I cover Google Ads, Meta Ads, TikTok Ads, GA4, GTM, Looker Studio, and more.<br><br>${CAL} to talk through what makes sense for you.`
       }
     ];
 
@@ -479,12 +520,12 @@
       const lower = input.toLowerCase();
       let answer = null;
       for (const entry of kb) {
-        if (entry.keys.some(k => lower.includes(k))) { answer = entry.answer; break; }
+        if (entry.keys.some(k => lower.includes(k))) { answer = entry.answer(); break; }
       }
       if (!answer) {
-        answer = "Great question. The honest answer depends on your specific situation — which is exactly why a free discovery call exists.\n\nBook 30 minutes with me and we'll work through it together. No sales pitch, no fluff — just a straight conversation about what you need and whether I can help.";
+        answer = `Great question. The honest answer depends on your specific situation — which is exactly why a free discovery call exists.<br><br>${CAL} and we'll work through it together. No sales pitch, no fluff — just a straight conversation about what you need and whether I can help.`;
       }
-      box.textContent = answer;
+      box.innerHTML = answer;
       box.style.display = 'block';
     }
   </script>
