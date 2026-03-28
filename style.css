@@ -184,6 +184,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.75;
 }
 .hero__ctas { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.hero__ctas .btn { flex: 1 1 0; min-width: 160px; max-width: 240px; text-align: center; }
 
 /* ── STATS BAR ── */
 .stats {
@@ -427,6 +428,10 @@ a { color: inherit; text-decoration: none; }
   .services .section-sub { white-space: normal; }
   .founder__grid { grid-template-columns: 1fr; }
   .floating-btn { width: 44px; height: 44px; font-size: 1.2rem; }
+  .hero__ctas { flex-direction: column; align-items: center; }
+  .hero__ctas .btn { max-width: 100%; width: 100%; }
+  .tools__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  .tool-pill { justify-content: flex-start; font-size: 0.82rem; padding: 0.55rem 0.85rem; }
 }
 
 /* ── FIREWORKS EASTER EGG ── */
