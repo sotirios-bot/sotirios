@@ -251,7 +251,9 @@ a { color: inherit; text-decoration: none; }
 }
 .service-card__icon { font-size: 1.4rem; margin-top: 0.1rem; flex-shrink: 0; }
 .service-card strong { display: block; font-size: 0.97rem; color: #fff; margin-bottom: 0.3rem; }
-.service-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+.service-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.6rem; }
+.service-card__cta { font-size: 0.82rem; font-weight: 700; color: var(--primary); text-decoration: none; transition: opacity 0.2s; }
+.service-card__cta:hover { opacity: 0.75; }
 
 /* ── TOOLS ── */
 .tools { padding: 5rem 0; background: var(--bg); text-align: center; }
@@ -272,6 +274,22 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 4px 16px rgba(9,191,174,0.15);
 }
 .tool-pill__icon { font-size: 1rem; }
+
+/* ── HOW I WORK WITH YOU ── */
+.process { padding: 5rem 0; background: var(--dark); text-align: center; }
+.process .section-sub { margin-left: auto; margin-right: auto; }
+.process__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; text-align: left; }
+.process__step {
+  background: var(--dark-2); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem;
+  border-top: 3px solid var(--primary);
+}
+.process__number {
+  font-size: 2.5rem; font-weight: 800; color: var(--primary);
+  opacity: 0.35; line-height: 1; margin-bottom: 1rem; letter-spacing: -1px;
+}
+.process__title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; }
+.process__desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; }
 
 /* ── ABOUT ── */
 .about { padding: 5rem 0; background: var(--card-bg); }
@@ -427,6 +445,7 @@ a { color: inherit; text-decoration: none; }
   .services__grid { grid-template-columns: 1fr; }
   .services .section-sub { white-space: normal; }
   .founder__grid { grid-template-columns: 1fr; }
+  .process__grid { grid-template-columns: 1fr; }
   .floating-btn { width: 44px; height: 44px; font-size: 1.2rem; }
   .hero__ctas { flex-direction: column; align-items: center; }
   .hero__ctas .btn { max-width: 100%; width: 100%; }
