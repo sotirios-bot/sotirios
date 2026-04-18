@@ -279,7 +279,7 @@ a { color: inherit; text-decoration: none; }
   width: 100%; height: 520px; object-fit: cover;
   border-radius: 16px; border: 3px solid var(--secondary);
 }
-.about__text .section-title { color: #fff; }
+.about__text .section-title { color: #000; }
 .about__text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.97rem; }
 .about__list { list-style: none; margin: 0.5rem 0 1rem; display: flex; flex-direction: column; gap: 0.5rem; }
 .about__list li { padding-left: 1.25rem; position: relative; color: var(--text-muted); font-size: 0.97rem; }
@@ -288,7 +288,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── TESTIMONIALS ── */
 .testimonials { padding: 5rem 0; background: var(--card-bg); text-align: center; }
-.testimonials .section-title { color: #fff; }
+.testimonials .section-title { color: #000; }
 .testimonials .section-sub { margin-left: auto; margin-right: auto; }
 .testimonials__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin: 2.5rem 0 0; text-align: left; }
 .t-card {
@@ -323,8 +323,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ── FOUNDER ── */
 .founder { padding: 5rem 0; background: var(--dark); text-align: center; }
-.founder .section-title { color: #fff; }
-.founder .section-sub { color: rgba(255,255,255,0.6); margin-left: auto; margin-right: auto; }
+.founder .section-title { color: #000; }
+.founder .section-sub { color: var(--text-muted); margin-left: auto; margin-right: auto; }
 .founder__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; text-align: left; }
 .founder-card {
   display: flex; flex-direction: column; background: #fff;
