@@ -323,6 +323,8 @@ a { color: inherit; text-decoration: none; }
 .story p strong { color: var(--text); }
 .story a { color: var(--primary); }
 .story a:hover { text-decoration: underline; }
+.story .btn--linkedin { color: #fff; }
+.story .btn--linkedin:hover { text-decoration: none; }
 .story .btn--primary { margin-top: 1rem; color: #fff; }
 
 /* ── FOUNDER ── */
