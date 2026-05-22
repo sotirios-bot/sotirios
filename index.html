@@ -135,12 +135,8 @@
       <p class="hero__eyebrow">Ex-Meta · WPP · HAVAS · Digital Marketing Trainer</p>
       <h1 class="hero__name">Sotirios Seridis</h1>
       <p class="hero__title">Simplifying Digital Marketing for Business Owners, Startup Founders and Marketing Teams.</p>
-      <label class="hero__prompt-label" for="heroPrompt">What are you looking for?</label>
-      <textarea class="hero__textarea" id="heroPrompt" rows="3" placeholder="E.g. I need 1-on-1 Google Ads training, my team needs a Meta Ads workshop, or I want someone to audit my campaigns..."></textarea>
-      <button class="hero__submit" onclick="submitPrompt()">Get an Answer →</button>
-      <div class="hero__response" id="heroResponse"></div>
       <div class="hero__ctas">
-        <a href="#" class="btn btn--primary" onclick="heroToWhatsApp(); return false;">💬 WhatsApp</a>
+        <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="btn btn--primary">💬 WhatsApp</a>
         <a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="btn btn--primary">📞 Discovery Call</a>
       </div>
     </div>
@@ -607,10 +603,6 @@
       document.querySelectorAll('.faq__item').forEach(i => i.classList.remove('faq__item--open'));
       if (!isOpen) item.classList.add('faq__item--open');
     }
-    const eggWords = ['di','dii','dee','dilnara','ди','дии','дильнара'];
-    document.getElementById('heroPrompt').addEventListener('input', function() {
-      if (eggWords.includes(this.value.trim().toLowerCase())) showFireworks();
-    });
     function showFireworks() {
       const overlay = document.getElementById('fireworksOverlay');
       const container = document.getElementById('fwContainer');
@@ -637,75 +629,9 @@
       setTimeout(() => { overlay.style.display = 'none'; }, 6000);
     }
 
-    function heroToWhatsApp() {
-      const msg = document.getElementById('heroPrompt').value.trim();
-      const url = msg
-        ? 'https://api.whatsapp.com/send/?phone=6594260742&text=' + encodeURIComponent(msg)
-        : 'https://api.whatsapp.com/send/?phone=6594260742';
-      window.open(url, '_blank');
-    }
-
-    const WA = '<a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="response-link">WhatsApp</a>';
-    const CAL = '<a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="response-link">book a free discovery call</a>';
-
-    const kb = [
-      {
-        keys: ['corporate','team','group','staff','company','employees','organisation','organization'],
-        answer: () => `Yes — I design bespoke corporate training programmes tailored to your team's tools, goals, and skill gaps. Whether it's a one-day intensive or an ongoing upskilling plan, I build it around what your team actually needs.<br><br>Best move: send me a ${WA} with your team size and what you're working on.`
-      },
-      {
-        keys: ['1-on-1','1 on 1','one on one','individual','personal','private','solo'],
-        answer: () => `Most of my work is 1-on-1. Sessions are fully tailored to your level and goals — no generic curricula, no wasted time. We work through your actual accounts, your actual challenges.<br><br>${CAL} and we'll figure out exactly what you need.`
-      },
-      {
-        keys: ['google ads','search ads','pmax','performance max','shopping ads','gads','google ad'],
-        answer: () => `Google Ads is one of my core specialities — search, shopping, Performance Max, and advanced bidding strategies. I've run large-scale accounts and trained hundreds of marketers on the platform.<br><br>${CAL} or drop me a ${WA} to discuss.`
-      },
-      {
-        keys: ['meta','facebook','instagram','fb ads','meta ads'],
-        answer: () => `Meta Ads is another strong area — campaign structure, audience strategy, creative testing, and scaling. Whether you're starting from scratch or optimising an existing account, I can help.<br><br>Get in touch via ${WA} or ${CAL}.`
-      },
-      {
-        keys: ['tiktok','tik tok'],
-        answer: () => `TikTok Ads is a fast-moving platform and one I cover in depth — from campaign structure to creative strategy. I help brands and marketers build campaigns that actually convert.<br><br>Drop me a ${WA} to talk through what you need.`
-      },
-      {
-        keys: ['analytics','ga4','google analytics','looker','dashboard','data','reporting','tracking','tag manager','gtm'],
-        answer: () => `GA4, GTM, and Looker Studio are all part of my toolkit. I help teams set up proper tracking, build dashboards that tell a real story, and make confident data-driven decisions.<br><br>Send me a ${WA} with your current setup and what's not working.`
-      },
-      {
-        keys: ['consult','audit','strategy','project','campaign','manage','run','execute','hire'],
-        answer: () => `Beyond training, I also take on consulting and execution work — paid media strategy, full account audits, and campaign management. I've managed significant budgets across Google, Meta, TikTok and more.<br><br>${WA} me with what you're working on and I'll tell you straight whether I can help.`
-      },
-      {
-        keys: ['price','cost','rate','charge','fee','how much','pricing','package'],
-        answer: () => `Pricing varies depending on what you need — 1-on-1 sessions, corporate workshops, and consulting projects are all structured differently.<br><br>The fastest way to get a real number is a ${CAL}. No commitment, no pitch — just 30 minutes to understand your situation.`
-      },
-      {
-        keys: ['train','learn','course','class','workshop','session','teach','upskill','skill','start','begin'],
-        answer: () => `I offer both 1-on-1 and corporate training sessions, fully remote. Sessions are hands-on — we work through real campaigns, live accounts, and actual platforms. I cover Google Ads, Meta Ads, TikTok Ads, GA4, GTM, Looker Studio, and more.<br><br>${CAL} to talk through what makes sense for you.`
-      }
-    ];
-
     document.querySelectorAll('a[target="_blank"]').forEach(a => {
       a.rel = 'noopener noreferrer';
     });
-
-    function submitPrompt() {
-      const input = document.getElementById('heroPrompt').value.trim();
-      const box = document.getElementById('heroResponse');
-      if (!input) { box.style.display='none'; return; }
-      const lower = input.toLowerCase();
-      let answer = null;
-      for (const entry of kb) {
-        if (entry.keys.some(k => lower.includes(k))) { answer = entry.answer(); break; }
-      }
-      if (!answer) {
-        answer = `Great question. The honest answer depends on your specific situation — which is exactly why a free discovery call exists.<br><br>${CAL} and we'll work through it together. No sales pitch, no fluff — just a straight conversation about what you need and whether I can help.`;
-      }
-      box.innerHTML = answer;
-      box.style.display = 'block';
-    }
   </script>
 
 </body>
