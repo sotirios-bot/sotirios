@@ -90,6 +90,9 @@
     ]
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
@@ -138,7 +141,7 @@
       <p class="hero__sub">15 years. HAVAS, Omnicom, WPP. 2,000+ marketers trained across Asia and Europe.</p>
       <div class="hero__ctas">
         <a href="https://calendly.com/sotirios/let-s-talk" target="_blank" class="btn btn--primary btn--large">📞 Book a Free Discovery Call</a>
-        <a href="https://api.whatsapp.com/send/?phone=6594260742" target="_blank" class="btn btn--outline">💬 WhatsApp</a>
+        <a href="https://api.whatsapp.com/send/?phone=6594260742&text=Hi%20Sotirios%2C%20I%27d%20like%20to%20discuss%20digital%20marketing%20training." target="_blank" class="btn btn--outline">💬 WhatsApp</a>
       </div>
     </div>
   </section>
@@ -388,12 +391,8 @@
     <div class="container story__inner">
       <h2 class="section-title">My Story</h2>
       <p class="story__quote">"I didn't get into marketing to run campaigns. I got into it to solve problems — and I've never stopped."</p>
-      <p>I started my career inside some of the world's largest agency networks — <strong>HAVAS, Omnicom, and WPP</strong> — managing global accounts, building performance teams from scratch, and running paid media across every major platform. I worked with brands across retail, finance, tech, and FMCG. I saw how the big players did it. And more importantly, I saw what they got wrong.</p>
-      <p>The problem was always the same: too much process, too little accountability, and a massive gap between strategy decks and actual results. I got tired of watching companies spend fortunes on campaigns with no real foundation underneath them.</p>
-      <p>So I started doing things differently. I moved away from agency life and started working directly with businesses — not as an account manager, but as someone with skin in the game. I trained marketing teams to think for themselves. I consulted founders who were smart enough to know they didn't know what they didn't know. I built systems that worked after I left.</p>
-      <p>Over 1,000 marketers trained later — from Singapore to Europe, from scrappy startups to corporate teams — the pattern is always the same: <strong>when people understand how their marketing actually works, everything changes.</strong></p>
-      <p>Today, I split my time between training, consulting, and building my own companies — <a href="https://www.xyzlab.com/" target="_blank"><strong>XYZ Lab</strong></a> and <a href="https://www.mytheon.co/" target="_blank"><strong>Mytheon Technologies</strong></a>. I'm based in Asia, work remotely across time zones, and I'm still just as hands-on as day one.</p>
-      <p>If you want straight talk and real results — this is the right place.</p>
+      <p>I spent years inside the world's largest agency networks — <strong>HAVAS, Omnicom, and WPP</strong> — managing global accounts, building performance teams, and running paid media for brands across retail, finance, tech, and FMCG. I saw how the big players operated. And more importantly, I saw what they kept getting wrong: too much process, too little accountability, and a massive gap between strategy decks and actual results.</p>
+      <p>So I started doing things differently. Today I work directly with business owners, startups, and corporate teams across Asia and Europe — training marketers to think for themselves and consulting companies that want real results, not vanity metrics. <strong>Over 2,000 marketers trained. Systems that work after I leave.</strong> If you want straight talk — this is the right place.</p>
       <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="btn btn--linkedin">Connect on LinkedIn</a>
     </div>
   </section>
@@ -641,6 +640,45 @@
     document.querySelectorAll('a[target="_blank"]').forEach(a => {
       a.rel = 'noopener noreferrer';
     });
+
+    // Stats count-up animation
+    (function() {
+      const els = document.querySelectorAll('.stat__number');
+      const targets = Array.from(els).map(el => {
+        const raw = el.textContent.trim();
+        return {
+          el,
+          end: parseInt(raw.replace(/[^0-9]/g, '')),
+          suffix: raw.includes('+') ? '+' : '',
+          original: raw
+        };
+      });
+      // Reset to 0 so animation is visible
+      targets.forEach(t => { t.el.textContent = '0' + t.suffix; });
+
+      function runAnimation() {
+        const duration = 1800;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          targets.forEach(t => {
+            const val = Math.round(t.end * eased);
+            t.el.textContent = (val >= 1000 ? val.toLocaleString() : val) + t.suffix;
+          });
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          runAnimation();
+          observer.disconnect();
+        }
+      }, { threshold: 0.6 });
+      observer.observe(document.querySelector('.stats'));
+    })();
   </script>
 
 </body>
