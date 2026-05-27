@@ -344,6 +344,22 @@ a { color: inherit; text-decoration: none; }
 .yt-card__cta { font-size: 0.88rem; font-weight: 700; color: #ff0000; transition: opacity 0.2s; align-self: flex-start; }
 .yt-card:hover .yt-card__cta { opacity: 0.75; }
 
+/* ── COACHING FORM ── */
+.coaching { padding: 5rem 0; background: var(--dark); text-align: center; }
+.coaching .section-sub { margin-left: auto; margin-right: auto; }
+.coaching__form {
+  margin-top: 2.5rem;
+  background: #fff;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  text-align: left;
+}
+.coaching__form iframe { display: block; }
+@media (max-width: 768px) {
+  .coaching__form { padding: 1rem 0.5rem; }
+}
+
 /* ── FAQ ── */
 .faq { padding: 5rem 0; background: var(--card-bg); text-align: center; }
 .faq__container { max-width: 760px; margin: 0 auto; }
