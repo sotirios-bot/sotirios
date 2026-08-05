@@ -10,17 +10,17 @@
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Reset Call | Sotirios Seridis</title>
-  <meta name="description" content="Professionals over 40 are being priced out and pushed out. I help people rebuild income, relocate smart, and live off cashflow. Book a Reset Call." />
+  <title>The Clarity Call | Sotirios Seridis</title>
+  <meta name="description" content="Professionals over 40 are being priced out and pushed out. I help people rebuild income, relocate smart, and live off cashflow. Book a Clarity Call." />
   <link rel="canonical" href="https://www.sotirios-seridis.com/" />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sotirios-seridis.com/" />
-  <meta property="og:title" content="The Reset Call | Sotirios Seridis" />
+  <meta property="og:title" content="The Clarity Call | Sotirios Seridis" />
   <meta property="og:description" content="Professionals over 40 are being priced out and pushed out. I help people rebuild income, relocate smart, and live off cashflow." />
   <meta property="og:image" content="https://www.sotirios-seridis.com/Sotirios%20Seridis.avif" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="The Reset Call | Sotirios Seridis" />
+  <meta name="twitter:title" content="The Clarity Call | Sotirios Seridis" />
   <meta name="twitter:description" content="Professionals over 40 are being priced out and pushed out. I help people rebuild income, relocate smart, and live off cashflow." />
   <meta name="twitter:image" content="https://www.sotirios-seridis.com/Sotirios%20Seridis.avif" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,12 +43,12 @@
       <nav class="nav__links">
         <a href="#newsletter" class="nav__link">Newsletter</a>
         <a href="#about" class="nav__link">About</a>
-        <a href="#coaching" class="btn btn--primary btn--sm">Book the Reset Call</a>
+        <a href="#coaching" class="btn btn--primary btn--sm">Book the Clarity Call</a>
       </nav>
       <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
     </div>
     <div class="nav__mobile" id="mobileMenu">
-      <a href="#coaching" onclick="toggleMenu()">Book the Reset Call</a>
+      <a href="#coaching" onclick="toggleMenu()">Book the Clarity Call</a>
       <a href="#newsletter" onclick="toggleMenu()">Newsletter</a>
       <a href="#about" onclick="toggleMenu()">About</a>
       <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a>
@@ -71,11 +71,11 @@
           <span class="route-strip__sep">·</span>
           <span>Freedom</span>
         </div>
-        <h1 class="hero__h1">The way out isn&rsquo;t another job. It&rsquo;s a different location, career and a cashflow plan.</h1>
-        <p class="hero__sub">For professionals 40+ with a career the market repriced and no intention of starting over. I help you rebuild income, move where the maths work, and get paid monthly.</p>
+        <h1 class="hero__h1"><span style="color:var(--accent);">The way out isn't another job.</span> It's a different career and cashflow plan.</h1>
+        <p class="hero__sub">For professionals 40+ with a career the market repriced and <strong>no intention of starting over</strong>. I help you <strong>rebuild income, move where the maths work, and get paid monthly</strong>.</p>
         <div class="hero__ctas">
-          <a href="#coaching" class="btn btn--primary">Book the Reset Call</a>
-          <a href="#newsletter" class="btn btn--ghost">Get the Sunday email</a>
+          <a href="#coaching" class="btn btn--primary">Book the Clarity Call</a>
+          <a href="#newsletter" class="btn btn--ghost">Join My Newsletter</a>
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@
       <div class="stats-bar__inner">
         <div class="stat-item">
           <div class="stat-item__number">[X]+</div>
-          <div class="stat-item__label">Reset Calls completed</div>
+          <div class="stat-item__label">Clarity Calls completed</div>
         </div>
         <div class="stat-item">
           <div class="stat-item__number">[X]</div>
@@ -101,11 +101,29 @@
     </div>
   </section>
 
+  <!-- BOOKING FORM -->
+  <section class="coaching" id="coaching">
+    <div class="container">
+      <p class="eyebrow" style="text-align:center;">Book your session</p>
+      <h2 class="section-title" style="text-align:center;">The Clarity Call</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">60 minutes. Written follow-up included. Payment taken upfront at booking.</p>
+      <div class="coaching__form">
+        <div id="cal-booking"></div>
+        <script type="text/javascript">
+          (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];typeof namespace==="string"?(cal.ns[namespace]=api)&&p(api,ar):p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
+          Cal("init",{origin:"https://cal.com"});
+          Cal("inline",{elementOrSelector:"#cal-booking",calLink:"sotirios-seridis-fxuocj/reset-call",config:{layout:"month_view",theme:"light"}});
+          Cal("ui",{"styles":{"branding":{"brandColor":"#1346C8"}},"hideEventTypeDetails":false,"layout":"month_view"});
+        </script>
+      </div>
+    </div>
+  </section>
+
   <!-- PROBLEM -->
   <section class="problem">
     <div class="container">
       <div class="problem__header">
-        <h2 class="section-title section-title--light section-title--xl">THE MARKET REALITY</h2>
+        <h2 class="section-title section-title--light section-title--xl">The Market Reality</h2>
         <p class="section-sub section-sub--light">Fewer jobs, more candidates, outsourcing. Uncertainty is here to stay.</p>
       </div>
       <div class="problem__grid">
@@ -132,12 +150,12 @@
         <div class="path-card">
           <div class="path-card__icon">💼</div>
           <h3 class="path-card__title">Re-invent your career</h3>
-          <p class="path-card__desc">The version of your work that AI doesn&rsquo;t do and clients still pay for. Consulting, productised services, remote roles &mdash; priced honestly, not hopefully.</p>
+          <p class="path-card__desc">The version of your work that AI doesn't do and clients still pay for. Consulting, productised services, remote roles — priced honestly, not hopefully.</p>
         </div>
         <div class="path-card">
           <div class="path-card__icon">🌍</div>
           <h3 class="path-card__title">Move where the maths works</h3>
-          <p class="path-card__desc">Visas, residency, and real cost of living. Not the obvious list &mdash; the one that survives contact with a bank and a landlord.</p>
+          <p class="path-card__desc">Visas, residency, and real cost of living. Not the obvious list — the one that survives contact with a bank and a landlord.</p>
         </div>
         <div class="path-card">
           <div class="path-card__icon">💰</div>
@@ -152,29 +170,29 @@
   <section class="proof">
     <div class="container">
       <p class="eyebrow">My story</p>
-      <h2 class="section-title section-title--xl">MY JOURNEY TO FINANCIAL FREEDOM</h2>
+      <h2 class="section-title section-title--xl">My Journey to Financial Freedom</h2>
       <p class="section-sub">Not a theory. A route I actually walked.</p>
       <div class="proof__timeline" aria-label="Journey timeline">
         <div class="proof__stop">
           <span class="proof__city">London</span>
           <span class="proof__note">Where my career started, and where the maths didn&rsquo;t work</span>
         </div>
-        <span class="proof__arrow" aria-hidden="true">&rarr;</span>
+        <span class="proof__arrow" aria-hidden="true">→</span>
         <div class="proof__stop">
           <span class="proof__city">Dubai</span>
           <span class="proof__note">Amazing on paper, financially draining in reality</span>
         </div>
-        <span class="proof__arrow" aria-hidden="true">&rarr;</span>
+        <span class="proof__arrow" aria-hidden="true">→</span>
         <div class="proof__stop">
           <span class="proof__city">Singapore</span>
           <span class="proof__note">Maths worked, life was good, but visas got tighter</span>
         </div>
-        <span class="proof__arrow" aria-hidden="true">&rarr;</span>
+        <span class="proof__arrow" aria-hidden="true">→</span>
         <div class="proof__stop">
           <span class="proof__city">35+ Countries</span>
           <span class="proof__note">Five years nomading &mdash; experiencing what &lsquo;freedom&rsquo; actually means</span>
         </div>
-        <span class="proof__arrow" aria-hidden="true">&rarr;</span>
+        <span class="proof__arrow" aria-hidden="true">→</span>
         <div class="proof__stop">
           <span class="proof__city">Almaty</span>
           <span class="proof__note">My personal choice</span>
@@ -192,29 +210,29 @@
     </div>
   </section>
 
-  <!-- OFFER — THE RESET CALL -->
+  <!-- OFFER -->
   <section class="offer" id="offer">
     <div class="container">
       <div class="offer__inner">
         <div class="offer__left">
-          <p class="eyebrow">The offer</p>
-          <h2>The Reset Call</h2>
-          <p class="offer__duration">75 minutes · written follow-up included</p>
+          <p class="eyebrow eyebrow--light">The offer</p>
+          <h2>The Clarity Call</h2>
+          <p class="offer__duration">60 minutes · written follow-up included</p>
           <ul class="offer__list">
-            <li>Position audit — what&rsquo;s actually at risk and what the window looks like</li>
+            <li>Position audit — what's actually at risk and what the window looks like</li>
             <li>Three relocation shortlists with real costs, not blog-post estimates</li>
-            <li>Cashflow gap math — what you need, what&rsquo;s realistic, what timeline</li>
+            <li>Cashflow gap math — what you need, what's realistic, what timeline</li>
             <li>A 90-day plan you can act on the same week</li>
           </ul>
           <p class="offer__price">$49</p>
           <p class="offer__price-note">Payment taken upfront at booking. One session, one deliverable.</p>
-          <a href="#coaching" class="btn btn--primary">Book the Reset Call</a>
+          <a href="#coaching" class="btn btn--primary">Book the Clarity Call</a>
           <div class="offer__not-for">
-            <h4>This isn&rsquo;t for you if</h4>
+            <h4>This isn't for you if</h4>
             <ul>
-              <li>You&rsquo;re looking for someone to find you a job</li>
+              <li>You're looking for someone to find you a job</li>
               <li>You want a formula that works for everyone</li>
-              <li>You&rsquo;re not willing to consider leaving your current country</li>
+              <li>You're not willing to consider leaving your current country</li>
               <li>You need results in the next 30 days</li>
             </ul>
           </div>
@@ -224,97 +242,11 @@
           <ul class="offer__what-next">
             <li>Pick a time — calendar link sent by email immediately</li>
             <li>Short intake form so I understand your situation before we speak</li>
-            <li>75-minute video call — recorded, so you can refer back</li>
+            <li>60-minute video call — recorded, so you can refer back</li>
             <li>Written follow-up within 24 hours: your plan, your shortlists, your numbers</li>
           </ul>
-          <a href="#coaching" class="btn btn--primary" style="display:block;text-align:center;margin-top:2rem;">Book the Reset Call &mdash; $49</a>
+          <a href="#coaching" class="btn btn--primary" style="display:block;text-align:center;margin-top:2rem;">Book the Clarity Call — $49</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="container">
-      <h2 class="section-title">What People Say</h2>
-      <p class="section-sub">Recommendations from clients and colleagues across the world.</p>
-      <div class="testimonials__grid">
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;We&rsquo;ve been working with Sotiri for over 2 years and he&rsquo;s been a great asset. An instrumental support to the team, communicates very well, works independently and is very reliable. I highly recommend him.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Emmanuel Crouy</span>
-            <span class="t-card__role">CEO &amp; Co-Founder, JobCopilot &amp; GrabJobs</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;He played a significant role in building search strategy for entire Unilever brands across APAC, raised the bar of paid search performance, and led initiatives that won prestigious awards in the industry.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Kim Phan</span>
-            <span class="t-card__role">EMEA Web Marketing Manager, Media.Monks &times; LinkedIn</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;Sotirios is without a doubt one of the best directors I&rsquo;ve ever worked with. His extensive knowledge helped our team deliver a greater level of performance. A valuable asset for any company.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Olivia Satyaputra</span>
-            <span class="t-card__role">Sr Manager APAC Performance Marketing, LEGO Group</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;His in-depth knowledge and analytical skills, combined with impeccable storytelling, helped drive tangible results. His openness to share knowledge in a digestible format is truly amazing.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Gulnara Vafina</span>
-            <span class="t-card__role">Marketing Director, Hug Digital</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;He communicates complex concepts and processes in a simple and useful way. Our teams find his workshops dynamic, enjoyable and directly relevant for their work.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Hernan Sanchez Neira</span>
-            <span class="t-card__role">Business Transformation Executive &amp; AI Expert</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;He took the fear and mystery out of digital marketing with his calm, patient approach. I would recommend any startup team to kick off their digital marketing journey with Sotirios!&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Jingjin Liu</span>
-            <span class="t-card__role">Founder &amp; CEO, TEDx Speaker</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;What I like most is that it is very straight to the point, easy to understand and practical, which is something we have always found lacking in the field.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Amy Chen</span>
-            <span class="t-card__role">Global Marketing, H&auml;agen-Dazs / General Mills</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;It&rsquo;s not every day that you come across an instructor who is also an excellent coach. Any learner would be fortunate to have a coach and mentor like Sotirios.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Geetha Boyani</span>
-            <span class="t-card__role">Strategic Performance Marketing, ACLP Certified Trainer</span>
-          </div>
-        </div>
-
-        <div class="t-card">
-          <p class="t-card__quote">&ldquo;In Sotirios, you can see that passion. He is a dedicated instructor who answers every single question &mdash; no question is too silly to ask.&rdquo;</p>
-          <div class="t-card__author">
-            <span class="t-card__name">Chee Lip Soh</span>
-            <span class="t-card__role">Operational Risk, OCBC Singapore</span>
-          </div>
-        </div>
-
-      </div>
-      <div class="testimonials__linkedin">
-        <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="btn btn--ghost">Read all recommendations on LinkedIn</a>
       </div>
     </div>
   </section>
@@ -322,11 +254,11 @@
   <!-- NEWSLETTER -->
   <section class="newsletter" id="newsletter">
     <div class="container">
-      <p class="eyebrow" style="text-align:center;">Every Sunday</p>
+      <p class="eyebrow eyebrow--light" style="text-align:center;">Every Sunday</p>
       <h2 class="section-title section-title--light">The Freedom Plan</h2>
       <p class="section-sub section-sub--light" style="margin-left:auto;margin-right:auto;text-align:center;">What I learned, what moved, and what I would do differently. One email. No filler.</p>
       <div class="newsletter__cta">
-        <a href="https://sotirios.beehiiv.com/subscribe" target="_blank" class="btn btn--primary btn--lg">Subscribe &mdash; it&rsquo;s free</a>
+        <a href="https://sotirios.beehiiv.com/subscribe" target="_blank" class="btn btn--primary btn--lg">Subscribe — it's free</a>
         <p class="newsletter__footnote">No spam. Unsubscribe any time.</p>
       </div>
     </div>
@@ -346,8 +278,8 @@
           </div>
           <h3 class="yt-card__name">Digital Marketing Tutorials</h3>
           <p class="yt-card__handle">@xyzl</p>
-          <p class="yt-card__desc">Step-by-step tutorials on Google Ads, Meta Ads, GA4, Google Tag Manager, and AI marketing tools &mdash; built for business owners and marketers who want to learn by doing, not by watching slides.</p>
-          <span class="yt-card__cta">Watch on YouTube &rarr;</span>
+          <p class="yt-card__desc">Step-by-step tutorials on Google Ads, Meta Ads, GA4, Google Tag Manager, and AI marketing tools — built for business owners and marketers who want to learn by doing, not by watching slides.</p>
+          <span class="yt-card__cta">Watch on YouTube →</span>
         </a>
 
         <a href="https://www.youtube.com/@GreekInAlmaty" target="_blank" class="yt-card">
@@ -357,8 +289,8 @@
           </div>
           <h3 class="yt-card__name">Greek in Almaty</h3>
           <p class="yt-card__handle">@GreekInAlmaty</p>
-          <p class="yt-card__desc">A Greek living in Almaty, Kazakhstan &mdash; exploring Central Asia, navigating expat life, discovering local culture, and documenting the unexpected moments that make living abroad genuinely interesting.</p>
-          <span class="yt-card__cta">Watch on YouTube &rarr;</span>
+          <p class="yt-card__desc">A Greek living in Almaty, Kazakhstan — exploring Central Asia, navigating expat life, discovering local culture, and documenting the unexpected moments that make living abroad genuinely interesting.</p>
+          <span class="yt-card__cta">Watch on YouTube →</span>
         </a>
 
       </div>
@@ -370,30 +302,98 @@
     <div class="container">
       <div class="about-section__inner">
         <p class="eyebrow">About</p>
-        <h2 class="section-title">Why I left &mdash; and what I found.</h2>
+        <h2 class="section-title">Why I left — and what I found.</h2>
         <!-- DRAFT — flagged for approval -->
-        <p>I spent fifteen years inside global agency networks &mdash; the kind of career that looked right from the outside. Then I looked at the people ahead of me. They were working harder than ever for less than they had planned.</p>
+        <p>I spent fifteen years inside global agency networks — the kind of career that looked right from the outside. Then I looked at the people ahead of me. They were working harder than ever for less than they had planned.</p>
         <p>I left. First Dubai, then Singapore, then I stopped having a fixed base altogether. Thirty-five countries across five years. I learned what moves cost, what they pay, and what the options actually look like when you are willing to look past the obvious ones.</p>
-        <p>I am based in Almaty now &mdash; not because it was the plan, but because it made sense financially, logistically, and in every other way that matters.</p>
+        <p>I am based in Almaty now — not because it was the plan, but because it made sense financially, logistically, and in every other way that matters.</p>
         <p><strong>I help people in the same position I was in make that shift. With a real plan. Not a leap of faith.</strong></p>
       </div>
     </div>
   </section>
 
-  <!-- BOOKING FORM -->
-  <section class="coaching" id="coaching">
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
     <div class="container">
-      <p class="eyebrow" style="text-align:center;">Book your session</p>
-      <h2 class="section-title" style="text-align:center;">The Reset Call</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">75 minutes. Written follow-up included. Payment taken upfront at booking.</p>
-      <div class="coaching__form">
-        <div id="cal-booking"></div>
-        <script type="text/javascript">
-          (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];typeof namespace==="string"?(cal.ns[namespace]=api)&&p(api,ar):p(cal,ar);return}p(cal,ar)};})(window,"https://app.cal.com/embed/embed.js","init");
-          Cal("init",{origin:"https://cal.com"});
-          Cal("inline",{elementOrSelector:"#cal-booking",calLink:"sotirios-seridis-fxuocj/reset-call",config:{layout:"month_view",theme:"light"}});
-          Cal("ui",{"styles":{"branding":{"brandColor":"#1346C8"}},"hideEventTypeDetails":false,"layout":"month_view"});
-        </script>
+      <h2 class="section-title">My Testimonials</h2>
+      <p class="section-sub">Recommendations from clients and colleagues across the world.</p>
+      <div class="testimonials__grid">
+
+        <div class="t-card">
+          <p class="t-card__quote">"We've been working with Sotiri for over 2 years and he's been a great asset. An instrumental support to the team, communicates very well, works independently and is very reliable. I highly recommend him."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Emmanuel Crouy</span>
+            <span class="t-card__role">CEO &amp; Co-Founder, JobCopilot &amp; GrabJobs</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"He played a significant role in building search strategy for entire Unilever brands across APAC, raised the bar of paid search performance, and led initiatives that won prestigious awards in the industry."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Kim Phan</span>
+            <span class="t-card__role">EMEA Web Marketing Manager, Media.Monks × LinkedIn</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"Sotirios is without a doubt one of the best directors I've ever worked with. His extensive knowledge helped our team deliver a greater level of performance. A valuable asset for any company."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Olivia Satyaputra</span>
+            <span class="t-card__role">Sr Manager APAC Performance Marketing, LEGO Group</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"His in-depth knowledge and analytical skills, combined with impeccable storytelling, helped drive tangible results. His openness to share knowledge in a digestible format is truly amazing."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Gulnara Vafina</span>
+            <span class="t-card__role">Marketing Director, Hug Digital</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"He communicates complex concepts and processes in a simple and useful way. Our teams find his workshops dynamic, enjoyable and directly relevant for their work."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Hernan Sanchez Neira</span>
+            <span class="t-card__role">Business Transformation Executive &amp; AI Expert</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"He took the fear and mystery out of digital marketing with his calm, patient approach. I would recommend any startup team to kick off their digital marketing journey with Sotirios!"</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Jingjin Liu</span>
+            <span class="t-card__role">Founder &amp; CEO, TEDx Speaker</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"What I like most is that it is very straight to the point, easy to understand and practical, which is something we have always found lacking in the field."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Amy Chen</span>
+            <span class="t-card__role">Global Marketing, Häagen-Dazs / General Mills</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"It's not every day that you come across an instructor who is also an excellent coach. Any learner would be fortunate to have a coach and mentor like Sotirios."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Geetha Boyani</span>
+            <span class="t-card__role">Strategic Performance Marketing, ACLP Certified Trainer</span>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p class="t-card__quote">"In Sotirios, you can see that passion. He is a dedicated instructor who answers every single question — no question is too silly to ask."</p>
+          <div class="t-card__author">
+            <span class="t-card__name">Chee Lip Soh</span>
+            <span class="t-card__role">Operational Risk, OCBC Singapore</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="testimonials__linkedin">
+        <a href="https://www.linkedin.com/in/seridis/" target="_blank" class="btn btn--ghost">Read all recommendations on LinkedIn</a>
       </div>
     </div>
   </section>
@@ -401,7 +401,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer__inner">
-      <h3 class="footer__title">Let&rsquo;s Talk</h3>
+      <h3 class="footer__title">Let's Talk</h3>
       <div class="footer__cols">
         <div>
           <h4 class="footer__subtitle">Contact</h4>
@@ -430,7 +430,7 @@
     </div>
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p>&copy; 2026 Sotirios Seridis</p>
+        <p>© 2026 Sotirios Seridis</p>
         <a href="privacy.html" class="footer__privacy">Privacy Policy</a>
       </div>
     </div>
@@ -438,8 +438,8 @@
 
   <!-- FLOATING BUTTONS -->
   <div class="floating-btns">
-    <a href="#coaching" class="floating-btn floating-btn--booking" aria-label="Book a Call">
-      <span class="floating-btn__label">Book a Call</span>
+    <a href="#coaching" class="floating-btn floating-btn--booking" aria-label="Book Clarity Call">
+      <span class="floating-btn__label">Book Clarity Call</span>
       <svg class="floating-btn__icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1zm-1 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
     </a>
     <a href="https://sotirios.beehiiv.com/subscribe" target="_blank" class="floating-btn floating-btn--beehiiv" aria-label="Newsletter">
