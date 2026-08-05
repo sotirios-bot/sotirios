@@ -5,16 +5,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:         #F8F7F3;
-  --ink:        #1A1C22;
-  --accent:     #1B7A78;
-  --accent-dk:  #166664;
-  --muted:      #8C8983;
-  --surface:    #EFEFEB;
-  --surface-2:  #E5E4DF;
-  --dark:       #111318;
-  --dark-2:     #1C2028;
-  --border:     rgba(26,28,34,0.11);
+  --bg:         #FFFFFF;
+  --ink:        #0A1628;
+  --accent:     #1346C8;
+  --accent-dk:  #0D3BAA;
+  --muted:      #4A5A7A;
+  --surface:    #EBF0FF;
+  --surface-2:  #D6E1FF;
+  --dark:       #0A1628;
+  --dark-2:     #142040;
+  --gold:       #F0A500;
+  --border:     rgba(19,70,200,0.12);
   --radius:     10px;
   --max-w:      1060px;
 }
@@ -22,7 +23,7 @@
 html { scroll-behavior: smooth; font-size: 17px; }
 
 body {
-  font-family: 'Inter', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
   background: var(--bg);
   line-height: 1.75;
@@ -57,7 +58,6 @@ a { color: inherit; text-decoration: none; }
 .btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.35); }
 .btn--ghost-light:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
 .btn--sm { padding: 0.55rem 1.2rem; font-size: 0.85rem; }
-.btn--lg { padding: 1rem 2.5rem; font-size: 1rem; }
 
 /* ── SECTION HELPERS ── */
 .eyebrow {
@@ -93,7 +93,7 @@ a { color: inherit; text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248,247,243,0.94);
+  background: rgba(255,255,255,0.94);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -206,7 +206,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border);
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.path-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,122,120,0.1); }
+.path-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(19,70,200,0.1); }
 .path-card__icon { font-size: 1.4rem; margin-bottom: 1rem; }
 .path-card__title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
 .path-card__desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
@@ -298,7 +298,7 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.55;
 }
 .offer__list li::before {
-  content: '→';
+  content: '\2192';
   color: var(--accent);
   flex-shrink: 0;
   font-weight: 700;
@@ -333,11 +333,11 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   line-height: 1.5;
 }
-.offer__not-for ul li::before { content: '×'; position: absolute; left: 0; color: rgba(255,255,255,0.25); }
+.offer__not-for ul li::before { content: '\00D7'; position: absolute; left: 0; color: rgba(255,255,255,0.25); }
 
 .offer__what-next { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
 .offer__what-next li { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.55; padding-left: 1.5rem; position: relative; }
-.offer__what-next li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.offer__what-next li::before { content: '\2713'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
 .offer__form-wrap {
   background: rgba(255,255,255,0.04);
@@ -398,7 +398,7 @@ a { color: inherit; text-decoration: none; }
   padding: 1.5rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.t-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(27,122,120,0.1); }
+.t-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(19,70,200,0.1); }
 .t-card__quote { font-size: 0.92rem; color: var(--ink); line-height: 1.75; font-style: italic; margin-bottom: 1.25rem; flex-grow: 1; }
 .t-card__author { border-top: 1px solid var(--border); padding-top: 0.9rem; }
 .t-card__name { display: block; font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
@@ -409,6 +409,7 @@ a { color: inherit; text-decoration: none; }
 .newsletter { background: var(--dark); padding: 5rem 0; text-align: center; }
 .newsletter .section-sub { margin: 0 auto 2rem; }
 .newsletter__cta { margin-top: 0.5rem; }
+.btn--lg { padding: 1rem 2.5rem; font-size: 1rem; }
 .newsletter__footnote { margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.28); }
 
 /* ── YOUTUBE ── */
