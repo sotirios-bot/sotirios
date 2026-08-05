@@ -407,17 +407,9 @@ a { color: inherit; text-decoration: none; }
 /* ── NEWSLETTER ── */
 .newsletter { background: var(--dark); padding: 5rem 0; text-align: center; }
 .newsletter .section-sub { margin: 0 auto 2rem; }
-.newsletter__embed {
-  max-width: 500px;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.05);
-  border: 1px dashed rgba(255,255,255,0.15);
-  border-radius: var(--radius);
-  padding: 2.5rem;
-  color: rgba(255,255,255,0.28);
-  font-size: 0.85rem;
-  font-style: italic;
-}
+.newsletter__cta { margin-top: 0.5rem; }
+.btn--lg { padding: 1rem 2.5rem; font-size: 1rem; }
+.newsletter__footnote { margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.28); }
 
 /* ── YOUTUBE ── */
 .yt-section { padding: 5rem 0; background: var(--surface); text-align: center; }
@@ -504,9 +496,9 @@ a { color: inherit; text-decoration: none; }
 .floating-btn__label { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.2px; }
 .floating-btn__icon { width: 20px; height: 20px; flex-shrink: 0; }
 .floating-btn--whatsapp { background: #25d366; }
+.floating-btn--beehiiv   { background: #946DFF; }
 .floating-btn--youtube   { background: #ff0000; }
 .floating-btn--linkedin  { background: #0077b5; }
-.floating-btn--substack  { background: #ff6719; }
 
 /* ── PRIVACY PAGE ── */
 .policy { padding: 5rem 0 4rem; background: var(--bg); }
