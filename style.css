@@ -163,6 +163,7 @@ a { color: inherit; text-decoration: none; }
 .problem {
   background: var(--dark);
   padding: 5rem 0;
+  color: #fff;
 }
 .problem__header { margin-bottom: 3rem; }
 .problem__grid {
@@ -284,6 +285,7 @@ a { color: inherit; text-decoration: none; }
 .offer {
   background: var(--dark);
   padding: 5rem 0;
+  color: #fff;
 }
 .offer__inner {
   display: grid;
@@ -429,7 +431,7 @@ a { color: inherit; text-decoration: none; }
 .testimonials__linkedin { margin-top: 2.5rem; }
 
 /* ── NEWSLETTER ── */
-.newsletter { background: var(--dark); padding: 5rem 0; text-align: center; }
+.newsletter { background: var(--dark, #0A1628); padding: 5rem 0; text-align: center; color: #fff; }
 .newsletter .section-sub { margin: 0 auto 2rem; }
 .newsletter__cta { margin-top: 0.5rem; }
 .btn--lg { padding: 1rem 2.5rem; font-size: 1rem; }
@@ -462,7 +464,7 @@ a { color: inherit; text-decoration: none; }
 .yt-card:hover .yt-card__cta { opacity: 0.75; }
 
 /* ── ABOUT ── */
-.about-section { background: var(--bg); padding: 5rem 0; border-top: 1px solid var(--border); }
+.about-section { background: var(--surface); padding: 5rem 0; border-top: 1px solid var(--border); }
 .about-section__inner { max-width: 640px; }
 .about-section p { color: var(--muted); font-size: 1rem; line-height: 1.85; margin-bottom: 1.25rem; }
 .about-section p:last-of-type { margin-bottom: 0; }
