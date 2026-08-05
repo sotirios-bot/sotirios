@@ -188,6 +188,18 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.7;
   font-weight: 500;
 }
+.problem-block--cta {
+  border-top-color: var(--gold);
+  display: flex;
+  align-items: center;
+}
+.problem-block--cta p {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5;
+}
+.problem-block--cta strong { color: var(--gold); }
 
 /* ── PATH ── */
 .path {
