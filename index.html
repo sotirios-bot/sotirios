@@ -42,15 +42,15 @@
       <a href="#" class="nav__logo">Sotirios Seridis</a>
       <nav class="nav__links">
         <a href="#newsletter" class="nav__link">Newsletter</a>
-        <a href="#about" class="nav__link">About</a>
-        <a href="#coaching" class="btn btn--primary btn--sm">Book the Clarity Call</a>
+        <a href="#offer" class="nav__link">FIRE Programme</a>
+        <a href="#coaching" class="btn btn--primary btn--sm">Free Clarity Call</a>
       </nav>
       <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
     </div>
     <div class="nav__mobile" id="mobileMenu">
-      <a href="#coaching" onclick="toggleMenu()">Book the Clarity Call</a>
+      <a href="#coaching" onclick="toggleMenu()">Free Clarity Call</a>
       <a href="#newsletter" onclick="toggleMenu()">Newsletter</a>
-      <a href="#about" onclick="toggleMenu()">About</a>
+      <a href="#offer" onclick="toggleMenu()">FIRE Programme</a>
       <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a>
       <a href="https://www.youtube.com/@GreekInAlmaty" target="_blank">YouTube</a>
     </div>
@@ -71,10 +71,10 @@
           <span class="route-strip__sep">›</span>
           <span>Freedom</span>
         </div>
-        <h1 class="hero__h1"><span style="color:var(--accent);">The way out isn't another job.</span> It's a structured plan to financial independence — on your terms.</h1>
+        <h1 class="hero__h1"><span style="color:var(--accent);">The way out isn't another job.</span> It's a structured plan to financial independence <span style="color:var(--gold);">— on your terms.</span></h1>
         <p class="hero__sub">For professionals 40+ ready to build a real exit. I help you <strong>map your situation, find the right location, and build the income plan</strong> that makes financial independence possible.</p>
         <div class="hero__ctas">
-          <a href="#coaching" class="btn btn--primary">Book the Clarity Call</a>
+          <a href="#coaching" class="btn btn--primary">Free Clarity Call</a>
           <a href="#newsletter" class="btn btn--ghost">Join My Newsletter</a>
         </div>
       </div>
@@ -103,9 +103,9 @@
   <!-- BOOKING FORM -->
   <section class="coaching" id="coaching">
     <div class="container">
-      <p class="eyebrow" style="text-align:center;">Start here</p>
+      <p class="eyebrow" style="text-align:center;color:var(--accent);">Start here</p>
       <h2 class="section-title" style="text-align:center;">Book a Free Clarity Call</h2>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">60 minutes to map your current situation, define your goals, and understand what it will realistically take to reach financial independence. No pitch. Just clarity.</p>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">20 minutes to map your current situation, define your goals, and understand what it will realistically take to reach financial independence. No pitch. Just clarity.</p>
       <div class="coaching__form">
         <div id="cal-booking"></div>
         <script type="text/javascript">
@@ -115,7 +115,7 @@
           Cal("ui",{"styles":{"branding":{"brandColor":"#1346C8"}},"hideEventTypeDetails":false,"layout":"month_view"});
         </script>
         <div class="programme-preview">
-          <p class="programme-preview__intro">After the call, if we decide to work together:</p>
+          <p class="programme-preview__intro" style="color:var(--accent);">After the call, if we decide to work together:</p>
           <div class="programme-preview__steps">
             <div class="programme-preview__step">
               <div class="programme-preview__num">01</div>
@@ -133,7 +133,10 @@
               <p>Passive income model, asset allocation, and your projected date of financial independence.</p>
             </div>
           </div>
-          <p class="programme-preview__details">5 sessions · $500 total · 2 instalments of $250 — or pay upfront at $400 and get 1 session free + Passive Income Playbook</p>
+          <div class="programme-preview__details">
+            <div class="programme-preview__price">5 sessions · $500 total · 2 instalments of $250</div>
+            <div class="programme-preview__offer">⭐ Pay upfront at $400 — 1 session free + Passive Income Playbook</div>
+          </div>
         </div>
       </div>
     </div>
@@ -252,7 +255,7 @@
           <div class="offer__guarantee">
             <strong>Guarantee:</strong> If your goals aren&rsquo;t met within a 12-month implementation window — 3 additional months of support, free.
           </div>
-          <a href="#coaching" class="btn btn--primary">Book your Clarity Call first</a>
+          <a href="#coaching" class="btn btn--primary">Book your Free Clarity Call</a>
           <div class="offer__not-for">
             <h4>This isn't for you if</h4>
             <ul>
@@ -273,24 +276,8 @@
             <li>Monthly contribution plan and bank structure recommendations</li>
             <li>Passive Income Playbook — included when you pay upfront</li>
           </ul>
-          <a href="#coaching" class="btn btn--primary" style="display:block;text-align:center;margin-top:2rem;">Book your Clarity Call first</a>
+          <a href="#coaching" class="btn btn--primary" style="display:block;text-align:center;margin-top:2rem;">Book your Free Clarity Call</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about-section" id="about">
-    <div class="container">
-      <div class="about-section__inner">
-        <p class="eyebrow">About</p>
-        <h2 class="section-title">My Journey to Financial Freedom</h2>
-        <p>I spent fifteen years inside global agency networks.<br>The kind of career that looked right from the outside.<br>First London, then Dubai, later Singapore.<br>High salary, impressive job titles. WPP, Omnicom, Facebook.</p>
-        <p>Then the pandemic came.<br>I decided to make the switch. Start working for myself.<br>Visited 35 countries in five years.</p>
-        <p>I learned what moves cost, what they pay, and what the options actually look like when you are willing to look past the obvious ones.</p>
-        <p>I am based in Almaty now — not because it was the plan, but because it made sense financially, logistically, and in every other way that matters.</p>
-        <p>I help people in the same position I was in make that shift.<br>With a real plan.<br>Not a leap of faith.</p>
-        <p><strong>Understand the options.<br>Understand the trade-offs.<br>Build your freedom plan.</strong></p>
       </div>
     </div>
   </section>
@@ -466,8 +453,8 @@
 
   <!-- FLOATING BUTTONS -->
   <div class="floating-btns">
-    <a href="#coaching" class="floating-btn floating-btn--booking" aria-label="Book Clarity Call">
-      <span class="floating-btn__label">Book Clarity Call</span>
+    <a href="#coaching" class="floating-btn floating-btn--booking" aria-label="Free Clarity Call">
+      <span class="floating-btn__label">Free Clarity Call</span>
       <svg class="floating-btn__icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20 3H4a1 1 0 00-1 1v16a1 1 0 001 1h16a1 1 0 001-1V4a1 1 0 00-1-1zm-1 16H5V5h14v14zM7 7h10v2H7V7zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
     </a>
     <a href="https://sotirios.beehiiv.com/subscribe" target="_blank" class="floating-btn floating-btn--beehiiv" aria-label="Newsletter">
