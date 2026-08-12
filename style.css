@@ -42,7 +42,7 @@ a { color: inherit; text-decoration: none; }
 .btn {
   display: inline-block;
   padding: 0.8rem 1.75rem;
-  border-radius: 6px;
+  border-radius: 50px;
   font-weight: 600;
   font-size: 0.92rem;
   cursor: pointer;
@@ -65,12 +65,12 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   margin-bottom: 1rem;
   font-family: 'Courier New', monospace;
 }
 .eyebrow--muted { color: var(--muted); }
-.eyebrow--light { color: #fff; }
+.eyebrow--light { color: var(--gold); }
 .section-title {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 800;
@@ -218,6 +218,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius);
   padding: 2rem;
   border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 .path-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(19,70,200,0.1); }
@@ -375,6 +376,115 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   margin-bottom: 1.5rem;
   letter-spacing: 0.2px;
+}
+.offer__pricing {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.offer__price-main {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.offer__price-main span { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.6); }
+.offer__price-terms {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+.offer__bonus {
+  font-size: 0.88rem;
+  color: var(--gold);
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  background: rgba(240,165,0,0.12);
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+}
+.offer__guarantee {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255,255,255,0.04);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--gold);
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.55;
+}
+.offer__guarantee strong { color: var(--gold); }
+
+/* ── PROGRAMME PREVIEW (after cal embed) ── */
+.programme-preview {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.programme-preview__intro {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-family: 'Courier New', monospace;
+}
+.programme-preview__steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.programme-preview__step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+  border-top: 3px solid var(--gold);
+}
+.programme-preview__num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.programme-preview__step strong {
+  font-size: 0.92rem;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.programme-preview__step p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+.programme-preview__details {
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.3px;
+  padding: 0.75rem;
+  background: rgba(240,165,0,0.07);
+  border-radius: var(--radius);
+  border: 1px solid rgba(240,165,0,0.2);
+}
+@media (max-width: 768px) {
+  .programme-preview__steps { grid-template-columns: 1fr; }
 }
 
 /* ── STATS ── */
