@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIRE Calculator — Sotirios Seridis</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#ffffff;
+  --surface:#f2f5ff;
+  --surface2:#e4eaff;
+  --ink:#0a1628;
+  --muted:#4a5a7a;
+  --border:rgba(19,70,200,0.14);
+  --blue:#1346c8;
+  --blue-dk:#0d35a0;
+  --gold:#f0a500;
+  --gold-bg:rgba(240,165,0,0.1);
+  --navy:#0a1628;
+  --radius:10px;
+  --sh:0 1px 3px rgba(10,22,40,0.07),0 4px 16px rgba(10,22,40,0.06);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1828;--surface:#152238;--surface2:#1c2d48;
+    --ink:#dce8f8;--muted:#7a90b8;--border:rgba(100,148,255,0.18);
+    --sh:0 1px 3px rgba(0,0,0,0.35),0 4px 16px rgba(0,0,0,0.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1828;--surface:#152238;--surface2:#1c2d48;
+  --ink:#dce8f8;--muted:#7a90b8;--border:rgba(100,148,255,0.18);
+  --sh:0 1px 3px rgba(0,0,0,0.35),0 4px 16px rgba(0,0,0,0.25);
+}
+
+body{
+  font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);
+  line-height:1.6;font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:640px;margin:0 auto;padding:1.5rem 1rem 3rem}
+
+/* ── HEADER ── */
+.hdr{display:flex;align-items:center;justify-content:space-between;
+  padding-bottom:1rem;margin-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.hdr__brand{font-size:0.78rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.hdr__brand strong{color:var(--blue)}
+
+/* ── INTRO ── */
+.intro{margin-bottom:1.5rem}
+.intro h1{font-size:1.75rem;font-weight:800;letter-spacing:-.035em;
+  line-height:1.12;color:var(--ink);margin-bottom:.3rem;text-wrap:balance}
+.intro p{font-size:.9rem;color:var(--muted)}
+
+/* ── INPUT CARD ── */
+.card{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.25rem;margin-bottom:.75rem}
+.card__title{font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+
+/* ── FIELD ── */
+.field{margin-bottom:.875rem}
+.field:last-child{margin-bottom:0}
+.field__label{display:block;font-size:.8rem;font-weight:600;
+  color:var(--ink);margin-bottom:.3rem}
+.field__input,.field__select{
+  width:100%;padding:.6rem .85rem;
+  border:1.5px solid var(--border);border-radius:8px;
+  background:var(--bg);color:var(--ink);
+  font-size:.95rem;font-family:inherit;
+  transition:border-color .15s,box-shadow .15s;
+  -webkit-appearance:none;appearance:none;
+}
+.field__input:focus,.field__select:focus{
+  outline:none;border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(19,70,200,.1);
+}
+.field__select{
+  padding-right:2rem;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 5l4 4 4-4' stroke='%234a5a7a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .65rem center;
+}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.875rem}
+.field-row .field{margin-bottom:0}
+
+/* ── CUSTOM SEARCHABLE DROPDOWN ── */
+.sd{position:relative}
+.sd__btn{
+  width:100%;padding:.6rem .85rem;
+  border:1.5px solid var(--border);border-radius:8px;
+  background:var(--bg);color:var(--ink);
+  font-size:.95rem;font-family:inherit;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  text-align:left;transition:border-color .15s,box-shadow .15s;
+}
+.sd__btn:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(19,70,200,.1)}
+.sd__btn.is-open{border-color:var(--blue);border-bottom-left-radius:0;border-bottom-right-radius:0}
+.sd__btn svg{flex-shrink:0;color:var(--muted);transition:transform .2s}
+.sd__btn.is-open svg{transform:rotate(180deg)}
+.sd__label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:.5rem}
+.sd__panel{
+  position:absolute;left:0;right:0;top:100%;z-index:200;
+  background:var(--bg);border:1.5px solid var(--blue);
+  border-top:none;border-bottom-left-radius:8px;border-bottom-right-radius:8px;
+  box-shadow:var(--sh);overflow:hidden;
+}
+.sd__search{
+  width:100%;padding:.55rem .85rem;border:none;
+  border-bottom:1px solid var(--border);
+  background:var(--surface);color:var(--ink);
+  font-size:.88rem;font-family:inherit;
+}
+.sd__search:focus{outline:none}
+.sd__list{list-style:none;max-height:200px;overflow-y:auto;padding:.25rem 0}
+.sd__opt{
+  padding:.45rem .85rem;cursor:pointer;
+  font-size:.9rem;color:var(--ink);transition:background .1s;
+}
+.sd__opt:hover,.sd__opt:focus{background:var(--surface);outline:none}
+.sd__opt.is-sel{color:var(--blue);font-weight:600}
+.sd__opt.is-pin{
+  color:var(--blue);font-weight:600;
+  border-bottom:1px solid var(--border);
+  padding-bottom:.55rem;margin-bottom:.15rem;
+}
+
+/* ── SLIDER ── */
+.slider-row{display:flex;align-items:center;gap:.75rem}
+.slider{
+  flex:1;-webkit-appearance:none;appearance:none;
+  height:5px;border-radius:5px;outline:none;cursor:pointer;
+  --pct:58.33%;
+  background:linear-gradient(to right,var(--blue) var(--pct),var(--surface2) var(--pct));
+}
+.slider::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;
+  border-radius:50%;background:var(--blue);cursor:pointer;
+  box-shadow:0 1px 4px rgba(19,70,200,.4);transition:transform .1s;
+}
+.slider::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.slider::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:var(--blue);
+  cursor:pointer;border:none;box-shadow:0 1px 4px rgba(19,70,200,.4);
+}
+.slider__val{
+  font-size:.95rem;font-weight:700;color:var(--blue);
+  min-width:3.2rem;text-align:right;font-variant-numeric:tabular-nums;
+}
+
+/* ── RESULTS ── */
+.results{margin-top:.25rem}
+
+/* target card */
+.target-card{
+  background:var(--surface);border:1.5px solid var(--blue);
+  border-left:4px solid var(--blue);border-radius:var(--radius);
+  padding:1.25rem;margin-bottom:.6rem;
+}
+.target-card__eyebrow{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.45rem;
+}
+.target-card__num{
+  font-size:2.5rem;font-weight:800;color:var(--gold);
+  letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;
+}
+.target-card__sub{font-size:.8rem;color:var(--muted);margin-top:.35rem}
+
+/* relocation notice */
+.reloc{
+  background:var(--gold-bg);border-left:3px solid var(--gold);
+  border-radius:6px;padding:.6rem .9rem;margin-bottom:.6rem;
+  font-size:.82rem;color:var(--ink);line-height:1.5;
+}
+.reloc strong{color:var(--gold)}
+
+/* stat tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.5rem}
+.tile{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:.85rem .7rem;text-align:center;
+}
+.tile__val{
+  font-size:1.45rem;font-weight:800;color:var(--ink);
+  letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums;
+  margin-bottom:.25rem;
+}
+.tile__lbl{
+  font-size:.65rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--muted);
+}
+
+/* progress */
+.prog-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:.9rem;margin-bottom:.5rem;
+}
+.prog-hdr{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:.72rem;font-weight:600;color:var(--muted);margin-bottom:.5rem;
+}
+.prog-hdr span{color:var(--gold);font-weight:700}
+.prog-track{height:8px;background:var(--surface2);border-radius:8px;overflow:hidden}
+.prog-fill{
+  height:100%;background:var(--gold);border-radius:8px;
+  transition:width .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* micro-copy */
+.micro{
+  font-size:.73rem;color:var(--muted);
+  text-align:center;margin-bottom:.9rem;line-height:1.5;
+}
+
+/* alerts */
+.alert{
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.25rem;text-align:center;margin-bottom:.6rem;
+}
+.alert--win{border-color:var(--gold);background:var(--gold-bg)}
+.alert--hint{border-color:var(--border);background:var(--surface)}
+.alert__icon{font-size:1.75rem;margin-bottom:.4rem}
+.alert__title{font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.2rem}
+.alert__sub{font-size:.83rem;color:var(--muted)}
+
+/* CTA */
+.cta{
+  background:var(--navy);border-radius:var(--radius);
+  padding:1.5rem;text-align:center;
+}
+.cta__title{font-size:.93rem;font-weight:700;color:#fff;line-height:1.5;margin-bottom:1rem}
+.cta__btn{
+  display:inline-block;background:var(--gold);color:var(--navy);
+  font-weight:800;font-size:.9rem;padding:.75rem 1.5rem;
+  border-radius:50px;text-decoration:none;letter-spacing:-.01em;
+  transition:transform .15s,box-shadow .15s;margin-bottom:.7rem;
+}
+.cta__btn:hover{transform:translateY(-2px);box-shadow:0 4px 18px rgba(240,165,0,.45)}
+.cta__link{
+  display:block;font-size:.78rem;color:rgba(255,255,255,.5);
+  text-decoration:none;transition:color .15s;
+}
+.cta__link:hover{color:rgba(255,255,255,.9)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:380px){
+  .field-row{grid-template-columns:1fr}
+  .tiles{grid-template-columns:1fr 1fr}
+  .tile:last-child{grid-column:1/-1}
+  .target-card__num{font-size:2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .prog-fill,.cta__btn{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hdr">
+    <div class="hdr__brand"><strong>Sotirios Seridis</strong> · FIRE Calculator</div>
+  </header>
+
+  <div class="intro">
+    <h1>Your FIRE Number</h1>
+    <p>Enter your numbers — your Financial Independence target updates live.</p>
+  </div>
+
+  <!-- ── INPUTS ── -->
+  <div class="card">
+    <div class="card__title">Location &amp; Currency</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field__label" for="currency">Currency</label>
+        <select class="field__select" id="currency">
+          <option value="USD">USD $</option>
+          <option value="EUR">EUR €</option>
+          <option value="GBP">GBP £</option>
+          <option value="SGD">SGD S$</option>
+          <option value="AUD">AUD A$</option>
+          <option value="CAD">CAD C$</option>
+          <option value="CHF">CHF</option>
+          <option value="JPY">JPY ¥</option>
+          <option value="AED">AED</option>
+          <option value="THB">THB ฿</option>
+          <option value="MYR">MYR RM</option>
+          <option value="MXN">MXN $</option>
+          <option value="BRL">BRL R$</option>
+          <option value="INR">INR ₹</option>
+          <option value="ZAR">ZAR R</option>
+          <option value="KZT">KZT ₸</option>
+        </select>
+      </div>
+      <div class="field"><!-- spacer --></div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" id="lbl-home">Your country (where you live now)</label>
+      <div class="sd" id="sd-home" role="combobox" aria-labelledby="lbl-home"></div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" id="lbl-dest">Retirement destination</label>
+      <div class="sd" id="sd-dest" role="combobox" aria-labelledby="lbl-dest"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__title">Your Profile</div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field__label" for="age">Current age</label>
+        <input class="field__input" type="number" id="age" value="38" min="18" max="70" inputmode="numeric">
+      </div>
+      <div class="field"><!-- spacer --></div>
+    </div>
+
+    <div class="field">
+      <label class="field__label" for="spending">Annual spending today</label>
+      <input class="field__input" type="text" id="spending" value="60,000" inputmode="numeric" autocomplete="off">
+    </div>
+    <div class="field">
+      <label class="field__label" for="assets">Current invested assets</label>
+      <input class="field__input" type="text" id="assets" value="150,000" inputmode="numeric" autocomplete="off">
+    </div>
+    <div class="field">
+      <label class="field__label" for="monthly">Monthly investment</label>
+      <input class="field__input" type="text" id="monthly" value="2,000" inputmode="numeric" autocomplete="off">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__title">Expected Returns</div>
+    <div class="field">
+      <label class="field__label" for="ret">Expected annual return</label>
+      <div class="slider-row">
+        <input type="range" class="slider" id="ret" min="0" max="12" step="0.5" value="7">
+        <span class="slider__val" id="ret-lbl">7%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RESULTS (rendered by JS) ── -->
+  <div class="results" id="results"></div>
+
+</div><!-- /wrap -->
+
+<script>
+const CALL_URL = 'https://cal.com/sotirios-seridis/clarity-call';
+const SITE_URL = 'https://sotirios-seridis.com';
+
+const COL = {
+  Albania:35, Argentina:40, Australia:90, Brazil:42, Bulgaria:40,
+  Canada:82, Colombia:38, 'Costa Rica':52, Cyprus:54, Czechia:55,
+  Denmark:90, Egypt:25, France:78, Georgia:35, Germany:75,
+  Greece:50, Hungary:46, India:28, 'Indonesia (Bali)':40, Ireland:88,
+  Italy:68, Japan:70, Kazakhstan:34, Malaysia:42, Malta:62,
+  Mexico:46, Montenegro:42, Netherlands:80, 'New Zealand':85, Norway:95,
+  Panama:50, Philippines:38, Poland:48, Portugal:55, Romania:42,
+  Singapore:95, Spain:58, Sweden:80, Switzerland:130, Thailand:42,
+  Turkey:38, UAE:78, 'United Kingdom':85, 'United States':100, Uruguay:52,
+  Vietnam:33,
+};
+
+const COUNTRIES = Object.keys(COL).sort().map(c => ({value:c, label:c}));
+const DEST_OPTS = [{value:'__stay__', label:'Stay in my country', pin:true}, ...COUNTRIES];
+
+const S = {
+  currency:'USD', home:'United States', dest:'__stay__',
+  age:38, spending:60000, assets:150000, monthly:2000, ret:7,
+};
+
+function makeDropdown(el, opts, initVal, onChange) {
+  let val = initVal;
+  let open = false;
+
+  function label(v) { return (opts.find(o=>o.value===v)||{label:'Select…'}).label; }
+
+  function draw() {
+    el.innerHTML = `
+      <button type="button" class="sd__btn${open?' is-open':''}"
+        aria-expanded="${open}" aria-haspopup="listbox">
+        <span class="sd__label">${label(val)}</span>
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M2.5 4.5l4 4 4-4" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      ${open ? `<div class="sd__panel">
+        <input class="sd__search" type="text" placeholder="Search…"
+          autocomplete="off" aria-label="Search countries">
+        <ul class="sd__list" role="listbox">${listHTML('')}</ul>
+      </div>` : ''}`;
+
+    el.querySelector('.sd__btn').onclick = () => { open=!open; draw(); };
+
+    if (open) {
+      const si = el.querySelector('.sd__search');
+      const li = el.querySelector('.sd__list');
+      si.focus();
+      si.oninput = () => { li.innerHTML = listHTML(si.value); bindOpts(li); };
+      bindOpts(li);
+    }
+  }
+
+  function listHTML(q) {
+    const lq = q.toLowerCase();
+    return opts.filter(o => o.pin || o.label.toLowerCase().includes(lq))
+      .map(o => `<li class="sd__opt${o.value===val?' is-sel':''}${o.pin?' is-pin':''}"
+          data-v="${o.value}" role="option" aria-selected="${o.value===val}" tabindex="0">
+          ${o.label}</li>`).join('');
+  }
+
+  function bindOpts(li) {
+    li.querySelectorAll('.sd__opt').forEach(row => {
+      row.onclick = () => pick(row.dataset.v);
+      row.onkeydown = e => { if (e.key==='Enter'||e.key===' '){e.preventDefault();pick(row.dataset.v);} };
+    });
+  }
+
+  function pick(v) { val=v; open=false; draw(); onChange(v); }
+
+  document.addEventListener('click', e => {
+    if (open && !el.contains(e.target)) { open=false; draw(); }
+  }, true);
+
+  draw();
+}
+
+function parseMoney(s) { return Math.max(0, parseInt(String(s).replace(/\D/g,''),10)||0); }
+
+function bindMoney(id, key) {
+  const el = document.getElementById(id);
+  el.addEventListener('input', () => {
+    const pos = el.selectionStart;
+    const dBefore = el.value.slice(0,pos).replace(/\D/g,'').length;
+    const raw = parseMoney(el.value);
+    S[key] = raw;
+    const fmt = raw ? raw.toLocaleString('en-US') : '';
+    el.value = fmt;
+    let d=0, np=fmt.length;
+    for (let i=0;i<fmt.length;i++){
+      if (/\d/.test(fmt[i])) d++;
+      if (d===dBefore){np=i+1;break;}
+    }
+    el.setSelectionRange(np,np);
+    docalc();
+  });
+}
+
+function fmt(n) {
+  try {
+    return new Intl.NumberFormat('en-US',{
+      style:'currency', currency:S.currency,
+      maximumFractionDigits:0, minimumFractionDigits:0,
+    }).format(Math.round(n));
+  } catch(e) { return '$'+Math.round(n).toLocaleString(); }
+}
+
+function updateSlider() {
+  const sl = document.getElementById('ret');
+  const pct = ((S.ret - 0) / 12) * 100;
+  sl.style.setProperty('--pct', pct+'%');
+  document.getElementById('ret-lbl').textContent = S.ret+'%';
+}
+
+function calc() {
+  const { home, dest, age, spending, assets, monthly, ret } = S;
+  const stay = dest==='__stay__' || dest===home;
+  const hIdx = COL[home]||100;
+  const dIdx = stay ? hIdx : (COL[dest]||100);
+  const mul = dIdx / hIdx;
+
+  const adj = spending * mul;
+  const target = adj * 25;
+  const prog = target > 0 ? Math.min(assets / target, 1) : 0;
+
+  if (assets >= target && target > 0) {
+    return { status:'done', target, adj, mul, stay, dest, prog:1 };
+  }
+
+  if (spending === 0 && target === 0) {
+    return { status:'zero', target:0, adj:0, mul, stay, dest, prog:0 };
+  }
+
+  if (assets === 0 && monthly === 0) {
+    return { status:'noinput', target, adj, mul, stay, dest, prog };
+  }
+
+  const r = ret / 100 / 12;
+  const P = monthly;
+  const PV = assets;
+  const FV = target;
+  let months;
+
+  if (r === 0) {
+    months = P > 0 ? (FV - PV) / P : Infinity;
+  } else if (P === 0) {
+    months = PV > 0 ? Math.log(FV/PV) / Math.log(1+r) : Infinity;
+  } else {
+    months = Math.log((FV*r+P)/(PV*r+P)) / Math.log(1+r);
+  }
+
+  if (!isFinite(months) || months < 0) {
+    return { status:'noinput', target, adj, mul, stay, dest, prog };
+  }
+
+  const years = months / 12;
+  const fiAge = Math.round(age + years);
+  return {
+    status:'ok', target, adj, mul, stay, dest,
+    years, fiAge, prog, ret,
+  };
+}
+
+const _anim = {};
+function animNum(el, id, to, fmtFn) {
+  const rm = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if (rm) { el.textContent = fmtFn(to); _anim[id]=to; return; }
+  const from = _anim[id]!==undefined ? _anim[id] : to;
+  _anim[id] = to;
+  const t0 = Date.now();
+  const dur = 300;
+  (function step(){
+    if (_anim[id]!==to) return;
+    const p = Math.min((Date.now()-t0)/dur,1);
+    const e = 1-Math.pow(1-p,3);
+    el.textContent = fmtFn(from + (to-from)*e);
+    if (p<1) requestAnimationFrame(step);
+  })();
+}
+
+function render(r) {
+  const out = document.getElementById('results');
+
+  if (r.status==='zero') {
+    out.innerHTML = `<div class="alert alert--hint">
+      <div class="alert__icon">💡</div>
+      <div class="alert__title">Enter your spending to get started.</div>
+    </div>${ctaBlock()}`;
+    return;
+  }
+
+  if (r.status==='noinput') {
+    out.innerHTML = `<div class="alert alert--hint">
+      <div class="alert__icon">💡</div>
+      <div class="alert__title">Add a monthly investment to see your timeline.</div>
+      <div class="alert__sub">Your Target Number is ${fmt(r.target)}</div>
+    </div>${ctaBlock()}`;
+    return;
+  }
+
+  if (r.status==='done') {
+    out.innerHTML = `<div class="alert alert--win">
+      <div class="alert__icon">🎉</div>
+      <div class="alert__title">You're already there.</div>
+      <div class="alert__sub">Your assets cover your Target Number. Financial independence is yours.</div>
+    </div>
+    <div class="target-card">
+      <div class="target-card__eyebrow">Your Target Number</div>
+      <div class="target-card__num" id="tn">${fmt(r.target)}</div>
+      <div class="target-card__sub">25 × your annual spending</div>
+    </div>
+    ${ctaBlock()}`;
+    return;
+  }
+
+  const relocHTML = buildRelocLine(r);
+  const progPct = Math.round(r.prog * 100);
+  const yDisplay = r.years.toFixed(1);
+  const ageDisplay = r.fiAge > 100 ? '100+' : String(r.fiAge);
+
+  out.innerHTML = `
+    <div class="target-card">
+      <div class="target-card__eyebrow">Your Target Number</div>
+      <div class="target-card__num" id="tn">${fmt(r.target)}</div>
+      <div class="target-card__sub">25 × adjusted annual spending of ${fmt(r.adj)}</div>
+    </div>
+    ${relocHTML}
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile__val" id="tv-yrs">${yDisplay}</div>
+        <div class="tile__lbl">Years to reach</div>
+      </div>
+      <div class="tile">
+        <div class="tile__val" id="tv-age">${ageDisplay}</div>
+        <div class="tile__lbl">FI age</div>
+      </div>
+      <div class="tile">
+        <div class="tile__val" id="tv-prog">${progPct}%</div>
+        <div class="tile__lbl">Progress today</div>
+      </div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-hdr"><span style="font-weight:600;color:var(--muted)">Progress towards your Target Number</span><span>${progPct}%</span></div>
+      <div class="prog-track"><div class="prog-fill" id="pf" style="width:${progPct}%"></div></div>
+    </div>
+    <p class="micro">Assumes ${r.ret}% average annual return, compounded monthly. Indicative, not financial advice.</p>
+    ${ctaBlock()}`;
+}
+
+function buildRelocLine(r) {
+  if (r.stay) return '';
+  const pct = Math.round(r.mul * 100);
+  const delta = Math.round((r.mul - 1) * 100);
+  const sign = delta >= 0 ? '+' : '';
+  const dir = delta >= 0 ? 'increased' : 'decreased';
+  return `<div class="reloc">
+    Same lifestyle in <strong>${r.dest}</strong> costs ~${pct}% of home cost —
+    your Target Number just ${dir} by <strong>${sign}${delta}%</strong>.
+  </div>`;
+}
+
+function ctaBlock() {
+  return `<div class="cta">
+    <div class="cta__title">Want this turned into a full plan — income mix, location, exit date?</div>
+    <a href="${CALL_URL}" target="_blank" rel="noopener noreferrer" class="cta__btn">
+      Book Your Free Clarity Call →
+    </a>
+    <a href="${SITE_URL}" target="_blank" rel="noopener noreferrer" class="cta__link">sotirios-seridis.com</a>
+  </div>`;
+}
+
+let _t;
+function docalc() { clearTimeout(_t); _t = setTimeout(() => render(calc()), 150); }
+
+(function init() {
+  document.getElementById('currency').onchange = function(){ S.currency=this.value; docalc(); };
+
+  makeDropdown(document.getElementById('sd-home'), COUNTRIES, S.home, v => { S.home=v; docalc(); });
+  makeDropdown(document.getElementById('sd-dest'), DEST_OPTS, S.dest, v => { S.dest=v; docalc(); });
+
+  document.getElementById('age').oninput = function(){
+    S.age = Math.min(70, Math.max(18, parseInt(this.value,10)||18));
+    docalc();
+  };
+
+  bindMoney('spending','spending');
+  bindMoney('assets','assets');
+  bindMoney('monthly','monthly');
+
+  const sl = document.getElementById('ret');
+  sl.oninput = function(){
+    S.ret = parseFloat(this.value);
+    updateSlider();
+    docalc();
+  };
+  updateSlider();
+
+  render(calc());
+})();
+</script>
+</body>
+</html>
