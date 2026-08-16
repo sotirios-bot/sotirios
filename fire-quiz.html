@@ -613,12 +613,14 @@ function bindEvents() {
       state.screen = 'question';
       state.currentQ = 0;
       state.answers = Array(9).fill(null);
-      render(); bindEvents(); return;
+      render(); return;
     }
 
     // Answer option
     const opt = e.target.closest('.opt');
     if (opt && state.screen === 'question') {
+      if (state.advancing) return;
+      state.advancing = true;
       const id = opt.dataset.id;
       const qi = state.currentQ;
       // Clear answers forward
@@ -627,13 +629,14 @@ function bindEvents() {
       // Highlight for 250ms then advance
       opt.classList.add('is-chosen');
       setTimeout(() => {
+        state.advancing = false;
         if (qi < 8) {
           state.currentQ = qi + 1;
           state.screen = 'question';
         } else {
           state.screen = 'result';
         }
-        render(); bindEvents();
+        render();
         window.scrollTo({top:0, behavior:'smooth'});
       }, 250);
       return;
@@ -646,7 +649,7 @@ function bindEvents() {
       } else {
         state.screen = 'intro';
       }
-      render(); bindEvents();
+      render();
       window.scrollTo({top:0, behavior:'smooth'});
       return;
     }
@@ -656,7 +659,7 @@ function bindEvents() {
       state.screen = 'intro';
       state.currentQ = 0;
       state.answers = Array(9).fill(null);
-      render(); bindEvents();
+      render();
       window.scrollTo({top:0, behavior:'smooth'});
       return;
     }
