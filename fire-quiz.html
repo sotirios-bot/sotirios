@@ -36,7 +36,6 @@ body{
 
 .quiz{max-width:640px;margin:0 auto;padding:1.5rem 1rem 3rem}
 
-/* ── INTRO ── */
 .intro{text-align:center;padding:2rem 0}
 .intro__eye{
   display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;
@@ -57,7 +56,6 @@ body{
 .intro__btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,165,0,.45)}
 .intro__fine{font-size:.75rem;color:var(--muted);margin-top:1rem}
 
-/* ── PROGRESS ── */
 .prog-bar{
   height:3px;background:var(--surface2);border-radius:3px;
   margin-bottom:1.25rem;overflow:hidden;
@@ -71,7 +69,6 @@ body{
   letter-spacing:.05em;margin-bottom:1.5rem;
 }
 
-/* ── QUESTION ── */
 .q-screen{animation:fadeUp .22s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.q-screen{animation:none}}
@@ -107,7 +104,6 @@ body{
 .back-link:hover{color:var(--ink)}
 .back-link:focus{outline:none;color:var(--blue)}
 
-/* ── RESULT ── */
 .res-screen{animation:fadeUp .25s ease}
 .profile-badge{
   display:inline-block;background:var(--gold);color:var(--navy);
@@ -153,7 +149,6 @@ body{
   font-size:.72rem;color:var(--muted);line-height:1.5;margin-bottom:1.5rem;
 }
 
-/* ── RESULT CTAs ── */
 .cta-primary{
   background:var(--navy);border-radius:var(--radius);
   padding:1.4rem;text-align:center;margin-bottom:.75rem;
@@ -195,7 +190,6 @@ body{
 }
 .res-links a{color:var(--blue);text-decoration:none;transition:opacity .15s}
 .res-links a:hover{opacity:.7}
-.res-links span{color:var(--border)}
 
 .copy-row{margin-bottom:.5rem}
 .copy-btn{
@@ -225,174 +219,49 @@ body{
 <div class="quiz" id="quiz"></div>
 
 <script>
-// ── v2 TODOs: email capture, result storage, per-question analytics, social share images, multi-language ──
-
-// ── CONSTANTS — update these before going live ──
 const CALL_URL      = 'https://cal.com/sotirios-seridis/clarity-call';
 const PLAYBOOK_URL  = 'https://sotirios.beehiiv.com/products/playbook';
-const CALCULATOR_URL = 'CALCULATOR_URL';     // swap for calculator page URL
-const PAGE_URL      = 'https://sotirios-seridis.com/fire-quiz'; // swap when live
+const PAGE_URL      = 'https://sotirios-seridis.com/fire-quiz';
 const SITE_URL      = 'https://sotirios-seridis.com';
 
-// ── QUESTIONS ──
 const QS = [
-  {
-    text: "When do you want work to become optional?",
-    opts: [
-      {id:'A', text:"As fast as humanly possible, whatever it takes"},
-      {id:'B', text:"By my early 50s, without suffering on the way"},
-      {id:'C', text:"I mainly want pressure off now — full retirement can wait"},
-      {id:'D', text:"When my income streams cover my life, wherever I am"},
-    ]
-  },
-  {
-    text: "Your honest relationship with spending:",
-    opts: [
-      {id:'A', text:"I can live happily on very little"},
-      {id:'B', text:"I want comfort — and eventually luxury"},
-      {id:'C', text:"Moderate — I'll trade some comfort for freedom"},
-      {id:'D', text:"Depends where I live — money stretches differently abroad"},
-    ]
-  },
-  {
-    text: "How do you feel about work itself?",
-    opts: [
-      {id:'A', text:"I want to stop completely, as soon as possible"},
-      {id:'B', text:"I don't mind working long if life is good along the way"},
-      {id:'C', text:"I'd happily work part-time on things I enjoy, forever"},
-      {id:'D', text:"Work is fine — as long as my assets are working harder"},
-    ]
-  },
-  {
-    text: "What savings rate could you genuinely sustain?",
-    opts: [
-      {id:'A', text:"50–70% — I'm ready to go extreme"},
-      {id:'B', text:"25–35% — ambitious but liveable"},
-      {id:'C', text:"Very high for a few years, then I want to ease off"},
-      {id:'D', text:"Moderate — I'd rather grow income and assets than cut lattes"},
-    ]
-  },
-  {
-    text: "Would you relocate to another country to hit your number faster?",
-    opts: [
-      {id:'A', text:"Yes — a cheaper country makes my small budget luxurious"},
-      {id:'B', text:"Unlikely — my life, family, and comfort are here"},
-      {id:'C', text:"Maybe later — flexibility is the whole point"},
-      {id:'D', text:"Absolutely — location is a financial strategy"},
-    ]
-  },
-  {
-    text: "Kids — current or planned?",
-    opts: [
-      {id:'A', text:"No kids planned — my number stays small"},
-      {id:'B', text:"Yes, and I want a comfortable family lifestyle throughout"},
-      {id:'C', text:"Yes — and I'd love to take years off while they're young"},
-      {id:'D', text:"Either way, I want income streams that support the family"},
-    ]
-  },
-  {
-    text: "Which portfolio feels right?",
-    opts: [
-      {id:'A', text:"Simple global index funds — set and forget"},
-      {id:'B', text:"Index funds plus career equity (RSUs, business, bonuses)"},
-      {id:'C', text:"A solid fund base I build early and never touch"},
-      {id:'D', text:"Dividends and rental property — I want to see income land monthly"},
-    ]
-  },
-  {
-    text: "A market crash the year you stop working. Your reaction?",
-    opts: [
-      {id:'A', text:"I'll cut spending hard and ride it out"},
-      {id:'B', text:"My buffer is big enough to absorb it"},
-      {id:'C', text:"I'd pick up part-time work until it recovers"},
-      {id:'D', text:"My rents and dividends keep paying — I don't need to sell"},
-    ]
-  },
-  {
-    text: "Ten years from now, the win looks like:",
-    opts: [
-      {id:'A', text:"Fully retired, living simply, completely free"},
-      {id:'B', text:"Wealthy, comfortable, retirement date locked in my 50s"},
-      {id:'C', text:"Working on my own terms — hours I choose, projects I like"},
-      {id:'D', text:"Passive income covering life in a country I chose deliberately"},
-    ]
-  },
+  {text:"When do you want work to become optional?",opts:[{id:'A',text:"As fast as humanly possible, whatever it takes"},{id:'B',text:"By my early 50s, without suffering on the way"},{id:'C',text:"I mainly want pressure off now — full retirement can wait"},{id:'D',text:"When my income streams cover my life, wherever I am"}]},
+  {text:"Your honest relationship with spending:",opts:[{id:'A',text:"I can live happily on very little"},{id:'B',text:"I want comfort — and eventually luxury"},{id:'C',text:"Moderate — I'll trade some comfort for freedom"},{id:'D',text:"Depends where I live — money stretches differently abroad"}]},
+  {text:"How do you feel about work itself?",opts:[{id:'A',text:"I want to stop completely, as soon as possible"},{id:'B',text:"I don't mind working long if life is good along the way"},{id:'C',text:"I'd happily work part-time on things I enjoy, forever"},{id:'D',text:"Work is fine — as long as my assets are working harder"}]},
+  {text:"What savings rate could you genuinely sustain?",opts:[{id:'A',text:"50–70% — I'm ready to go extreme"},{id:'B',text:"25–35% — ambitious but liveable"},{id:'C',text:"Very high for a few years, then I want to ease off"},{id:'D',text:"Moderate — I'd rather grow income and assets than cut lattes"}]},
+  {text:"Would you relocate to another country to hit your number faster?",opts:[{id:'A',text:"Yes — a cheaper country makes my small budget luxurious"},{id:'B',text:"Unlikely — my life, family, and comfort are here"},{id:'C',text:"Maybe later — flexibility is the whole point"},{id:'D',text:"Absolutely — location is a financial strategy"}]},
+  {text:"Kids — current or planned?",opts:[{id:'A',text:"No kids planned — my number stays small"},{id:'B',text:"Yes, and I want a comfortable family lifestyle throughout"},{id:'C',text:"Yes — and I'd love to take years off while they're young"},{id:'D',text:"Either way, I want income streams that support the family"}]},
+  {text:"Which portfolio feels right?",opts:[{id:'A',text:"Simple global index funds — set and forget"},{id:'B',text:"Index funds plus career equity (RSUs, business, bonuses)"},{id:'C',text:"A solid fund base I build early and never touch"},{id:'D',text:"Dividends and rental property — I want to see income land monthly"}]},
+  {text:"A market crash the year you stop working. Your reaction?",opts:[{id:'A',text:"I'll cut spending hard and ride it out"},{id:'B',text:"My buffer is big enough to absorb it"},{id:'C',text:"I'd pick up part-time work until it recovers"},{id:'D',text:"My rents and dividends keep paying — I don't need to sell"}]},
+  {text:"Ten years from now, the win looks like:",opts:[{id:'A',text:"Fully retired, living simply, completely free"},{id:'B',text:"Wealthy, comfortable, retirement date locked in my 50s"},{id:'C',text:"Working on my own terms — hours I choose, projects I like"},{id:'D',text:"Passive income covering life in a country I chose deliberately"}]},
 ];
 
-// ── PROFILES ──
 const PROFILES = {
-  A: {
-    badge:"SPRINTER", name:"The Sprinter",
-    identity:"Speed through frugality.",
-    desc:"You'd rather live small now and be completely free years before everyone else. Full retirement, as fast as the maths allow.",
-    paths:[
-      {name:"Lean FIRE",    meta:"Target $500,000 · 5–10 yrs"},
-      {name:"Traditional FIRE", meta:"Target $1,000,000 · 10–17 yrs"},
-    ],
-  },
-  B: {
-    badge:"BUILDER", name:"The Builder",
-    identity:"Comfort on the way, comfort at the end.",
-    desc:"You refuse the deprivation route. Your lever is income growth, not sacrifice — retire in your 50s without a single miserable year on the way.",
-    paths:[
-      {name:"Slow FIRE", meta:"Target $1,000,000 · 20–25 yrs"},
-      {name:"Fat FIRE",  meta:"Target $3,500,000 · 20–30 yrs"},
-    ],
-  },
-  C: {
-    badge:"FLEXER", name:"The Flexer",
-    identity:"Buying freedom in stages, starting now.",
-    desc:"You don't need to fully retire — you need pressure off. Front-load the savings, then work on your own terms for as long as you like.",
-    paths:[
-      {name:"Coast FIRE",  meta:"Target $200,000 early · then coast"},
-      {name:"Barista FIRE",meta:"Target $600,000 · 10–15 yrs"},
-      {name:"Baby FIRE",   meta:"Target $250,000 · 5–8 yrs"},
-    ],
-  },
-  D: {
-    badge:"STREAMER", name:"The Streamer",
-    identity:"Income streams plus geography.",
-    desc:"You want assets that pay you monthly — and you'd happily collect that income in a country where it goes twice as far. The most powerful combination there is.",
-    paths:[
-      {name:"Cash Flow FIRE", meta:"Target $1,200,000 in assets · 15–20 yrs"},
-      {name:"Expat FIRE",     meta:"Target $600,000 · 7–12 yrs"},
-    ],
-  },
-  HYBRID: {
-    badge:"HYBRID", name:"The Hybrid",
-    identity:"Life isn't one strategy.",
-    desc:"You scored across profiles — and that's a strength. Almost everyone who actually reaches financial independence combines paths: Coast + Barista, Lean now → Fat later, Cash Flow + Expat.",
-    paths:[
-      {name:"Hybrid FIRE", meta:"Target ~$700,000 · 8–15 yrs"},
-    ],
-  },
+  A:{badge:"SPRINTER",name:"The Sprinter",identity:"Speed through frugality.",desc:"You'd rather live small now and be completely free years before everyone else. Full retirement, as fast as the maths allow.",paths:[{name:"Lean FIRE",meta:"Target $500,000 · 5–10 yrs"},{name:"Traditional FIRE",meta:"Target $1,000,000 · 10–17 yrs"}]},
+  B:{badge:"BUILDER",name:"The Builder",identity:"Comfort on the way, comfort at the end.",desc:"You refuse the deprivation route. Your lever is income growth, not sacrifice — retire in your 50s without a single miserable year on the way.",paths:[{name:"Slow FIRE",meta:"Target $1,000,000 · 20–25 yrs"},{name:"Fat FIRE",meta:"Target $3,500,000 · 20–30 yrs"}]},
+  C:{badge:"FLEXER",name:"The Flexer",identity:"Buying freedom in stages, starting now.",desc:"You don't need to fully retire — you need pressure off. Front-load the savings, then work on your own terms for as long as you like.",paths:[{name:"Coast FIRE",meta:"Target $200,000 early · then coast"},{name:"Barista FIRE",meta:"Target $600,000 · 10–15 yrs"},{name:"Baby FIRE",meta:"Target $250,000 · 5–8 yrs"}]},
+  D:{badge:"STREAMER",name:"The Streamer",identity:"Income streams plus geography.",desc:"You want assets that pay you monthly — and you'd happily collect that income in a country where it goes twice as far. The most powerful combination there is.",paths:[{name:"Cash Flow FIRE",meta:"Target $1,200,000 in assets · 15–20 yrs"},{name:"Expat FIRE",meta:"Target $600,000 · 7–12 yrs"}]},
+  HYBRID:{badge:"HYBRID",name:"The Hybrid",identity:"Life isn't one strategy.",desc:"You scored across profiles — and that's a strength. Almost everyone who actually reaches financial independence combines paths: Coast + Barista, Lean now → Fat later, Cash Flow + Expat.",paths:[{name:"Hybrid FIRE",meta:"Target ~$700,000 · 8–15 yrs"}]},
 };
 
-// ── STATE ──
-const state = {
-  screen: 'intro',   // 'intro' | 'question' | 'result'
-  currentQ: 0,       // 0–8
-  answers: Array(9).fill(null),
-};
+const state = {screen:'intro',currentQ:0,answers:Array(9).fill(null)};
 
-// ── SCORING ──
-function score(answers) {
-  const c = {A:0,B:0,C:0,D:0};
-  answers.forEach(a => { if (a) c[a]++; });
-  const max = Math.max(c.A, c.B, c.C, c.D);
-  const tied = Object.keys(c).filter(k => c[k] === max);
-  return { profile: tied.length > 1 ? 'HYBRID' : tied[0], tied };
+function score(answers){
+  const c={A:0,B:0,C:0,D:0};
+  answers.forEach(a=>{if(a)c[a]++;});
+  const max=Math.max(c.A,c.B,c.C,c.D);
+  const tied=Object.keys(c).filter(k=>c[k]===max);
+  return{profile:tied.length>1?'HYBRID':tied[0],tied};
 }
 
-// ── RENDER ──
-function render() {
-  const el = document.getElementById('quiz');
-  if (state.screen === 'intro') { el.innerHTML = introHTML(); return; }
-  if (state.screen === 'question') { el.innerHTML = questionHTML(); return; }
-  if (state.screen === 'result') { el.innerHTML = resultHTML(); return; }
+function render(){
+  const el=document.getElementById('quiz');
+  if(state.screen==='intro'){el.innerHTML=introHTML();return;}
+  if(state.screen==='question'){el.innerHTML=questionHTML();return;}
+  if(state.screen==='result'){el.innerHTML=resultHTML();return;}
 }
 
-function introHTML() {
+function introHTML(){
   return `<div class="intro">
     <div class="intro__eye">Sotirios Seridis · FIRE Quiz</div>
     <h1 class="intro__h1">Which FIRE Type Are You?</h1>
@@ -402,203 +271,92 @@ function introHTML() {
   </div>`;
 }
 
-function questionHTML() {
-  const i = state.currentQ;
-  const q = QS[i];
-  const prev = state.answers[i];
-  const pct = Math.round((i / 9) * 100);
-
+function questionHTML(){
+  const i=state.currentQ,q=QS[i],prev=state.answers[i];
+  const pct=Math.round((i/9)*100);
   return `<div class="q-screen">
     <div class="prog-bar"><div class="prog-bar__fill" style="width:${pct}%"></div></div>
     <div class="prog-txt">Question ${i+1} of 9</div>
     <div class="q-text">${q.text}</div>
-    <div class="opts">
-      ${q.opts.map(o => `
-        <button class="opt${prev===o.id?' is-chosen':''}"
-          data-id="${o.id}" role="option" aria-selected="${prev===o.id}">
-          <span class="opt__letter">${o.id}</span>${o.text}
-        </button>`).join('')}
-    </div>
-    ${i > 0 ? `<button class="back-link" id="backBtn">← Back</button>` : ''}
+    <div class="opts">${q.opts.map(o=>`<button class="opt${prev===o.id?' is-chosen':''}" data-id="${o.id}" role="option" aria-selected="${prev===o.id}"><span class="opt__letter">${o.id}</span>${o.text}</button>`).join('')}</div>
+    ${i>0?`<button class="back-link" id="backBtn">← Back</button>`:''}
   </div>`;
 }
 
-function resultHTML() {
-  const { profile, tied } = score(state.answers);
-  const p = PROFILES[profile];
-  const isHybrid = profile === 'HYBRID';
-  const isSpringer = profile === 'A';
-  const q5D = state.answers[4] === 'D';
-  const showAccel = isSpringer && q5D;
-
-  // Build path cards
-  let pathsHTML = p.paths.map(pp => pathCard(pp.name, pp.meta, false)).join('');
-
-  // If hybrid, append tied profile paths
-  if (isHybrid && tied.length) {
-    tied.forEach(t => {
-      const tp = PROFILES[t];
-      if (!tp || !tp.paths) return;
-      pathsHTML += `<div class="paths-from">${tp.name} paths</div>`;
-      pathsHTML += tp.paths.map(pp => pathCard(pp.name, pp.meta, true)).join('');
-    });
-  }
-
-  const accelHTML = showAccel ? `<div class="accel">
-    You'd also relocate — look into <strong>Expat FIRE ($600,000 · 7–12 yrs)</strong>.
-    It's your accelerator: it can cut your Target Number by <strong>30–60%</strong>.
-  </div>` : '';
-
+function resultHTML(){
+  const{profile,tied}=score(state.answers);
+  const p=PROFILES[profile];
+  const isHybrid=profile==='HYBRID',isSpringer=profile==='A';
+  const showAccel=isSpringer&&state.answers[4]==='D';
+  let pathsHTML=p.paths.map(pp=>pathCard(pp.name,pp.meta,false)).join('');
+  if(isHybrid&&tied.length)tied.forEach(t=>{const tp=PROFILES[t];if(!tp||!tp.paths)return;pathsHTML+=`<div class="paths-from">${tp.name} paths</div>`;pathsHTML+=tp.paths.map(pp=>pathCard(pp.name,pp.meta,true)).join('');});
+  const accelHTML=showAccel?`<div class="accel">You'd also relocate — look into <strong>Expat FIRE ($600,000 · 7–12 yrs)</strong>. It's your accelerator: it can cut your Target Number by <strong>30–60%</strong>.</div>`:\';
   return `<div class="res-screen">
     <div class="profile-badge">${p.badge}</div>
     <h1 class="profile-name">${p.name}</h1>
     <div class="profile-id">${p.identity}</div>
     <p class="profile-desc">${p.desc}</p>
-    <div class="paths-lbl">Your ${isHybrid ? 'paths' : 'paths'}</div>
+    <div class="paths-lbl">Your paths</div>
     <div class="paths">${pathsHTML}</div>
     ${accelHTML}
     <p class="micro-paths">Targets are indicative, in USD, for a moderate lifestyle in a mid-cost country. Not financial advice.</p>
-
     <div class="cta-primary">
       <div class="cta-primary__title">Want this turned into a plan — income mix, location, exit date?</div>
-      <a href="${CALL_URL}" target="_blank" rel="noopener noreferrer" class="cta-primary__btn">
-        Book Your Free Clarity Call →
-      </a>
+      <a href="${CALL_URL}" target="_blank" rel="noopener noreferrer" class="cta-primary__btn">Book Your Free Clarity Call →</a>
       <div class="cta-primary__sub">20 minutes. Your profile into a plan. No pitch. Just clarity.</div>
     </div>
-
     <div class="cta-playbook">
       <div class="cta-playbook__title">Go deeper: the full Playbook</div>
       <div class="cta-playbook__desc">One page per path, 12 retirement destinations, visa &amp; tax shortcuts, and the 90-day quick-start.</div>
-      <a href="${PLAYBOOK_URL}" target="_blank" rel="noopener noreferrer" class="cta-playbook__btn">
-        Get the Playbook — $19
-      </a><span class="cta-playbook__strike">$49</span>
+      <a href="${PLAYBOOK_URL}" target="_blank" rel="noopener noreferrer" class="cta-playbook__btn">Get the Playbook — $19</a><span class="cta-playbook__strike">$49</span>
     </div>
-
-    <div class="res-links">
-      <a href="${CALCULATOR_URL}">Try the FIRE Calculator</a>
-      <span>·</span>
-      <a href="${SITE_URL}" target="_blank" rel="noopener noreferrer">sotirios-seridis.com</a>
-    </div>
-
-    <div class="copy-row">
-      <button class="copy-btn" id="copyBtn" data-name="${p.name}" data-id="${p.identity}">
-        Copy my result
-      </button>
-    </div>
-
+    <div class="res-links"><a href="${SITE_URL}" target="_blank" rel="noopener noreferrer">sotirios-seridis.com</a></div>
+    <div class="copy-row"><button class="copy-btn" id="copyBtn" data-name="${p.name}" data-id="${p.identity}">Copy my result</button></div>
     <button class="retake" id="retakeBtn">Retake the quiz</button>
   </div>`;
 }
 
-function pathCard(name, meta, sub) {
+function pathCard(name,meta,sub){
   return `<div class="path-card${sub?' path-card--sub':''}">
     <div class="path-card__name">${name}</div>
     <div class="path-card__meta">${meta}</div>
   </div>`;
 }
 
-// ── EVENTS ──
-function bindEvents() {
-  const el = document.getElementById('quiz');
-
-  el.addEventListener('click', e => {
-    // Start
-    if (e.target.id === 'startBtn') {
-      state.screen = 'question';
-      state.currentQ = 0;
-      state.answers = Array(9).fill(null);
-      render(); bindEvents(); return;
-    }
-
-    // Answer option
-    const opt = e.target.closest('.opt');
-    if (opt && state.screen === 'question') {
-      const id = opt.dataset.id;
-      const qi = state.currentQ;
-      // Clear answers forward
-      state.answers[qi] = id;
-      for (let j = qi+1; j < 9; j++) state.answers[j] = null;
-      // Highlight for 250ms then advance
+function bindEvents(){
+  const el=document.getElementById('quiz');
+  el.addEventListener('click',e=>{
+    if(e.target.id==='startBtn'){state.screen='question';state.currentQ=0;state.answers=Array(9).fill(null);render();bindEvents();return;}
+    const opt=e.target.closest('.opt');
+    if(opt&&state.screen==='question'){
+      const id=opt.dataset.id,qi=state.currentQ;
+      state.answers[qi]=id;
+      for(let j=qi+1;j<9;j++)state.answers[j]=null;
       opt.classList.add('is-chosen');
-      setTimeout(() => {
-        if (qi < 8) {
-          state.currentQ = qi + 1;
-          state.screen = 'question';
-        } else {
-          state.screen = 'result';
-        }
-        render(); bindEvents();
-        window.scrollTo({top:0, behavior:'smooth'});
-      }, 250);
+      setTimeout(()=>{if(qi<8){state.currentQ=qi+1;state.screen='question';}else{state.screen='result';}render();bindEvents();window.scrollTo({top:0,behavior:'smooth'});},250);
       return;
     }
-
-    // Back
-    if (e.target.id === 'backBtn') {
-      if (state.currentQ > 0) {
-        state.currentQ--;
-      } else {
-        state.screen = 'intro';
-      }
-      render(); bindEvents();
-      window.scrollTo({top:0, behavior:'smooth'});
-      return;
-    }
-
-    // Back from result
-    if (e.target.id === 'retakeBtn') {
-      state.screen = 'intro';
-      state.currentQ = 0;
-      state.answers = Array(9).fill(null);
-      render(); bindEvents();
-      window.scrollTo({top:0, behavior:'smooth'});
-      return;
-    }
-
-    // Copy result
-    if (e.target.id === 'copyBtn') {
-      const name = e.target.dataset.name;
-      const id   = e.target.dataset.id;
-      const text = `I'm ${name} — ${id} Find your FIRE type: ${PAGE_URL}`;
-      copyText(text, e.target);
-      return;
-    }
+    if(e.target.id==='backBtn'){if(state.currentQ>0)state.currentQ--;else state.screen='intro';render();bindEvents();window.scrollTo({top:0,behavior:'smooth'});return;}
+    if(e.target.id==='retakeBtn'){state.screen='intro';state.currentQ=0;state.answers=Array(9).fill(null);render();bindEvents();window.scrollTo({top:0,behavior:'smooth'});return;}
+    if(e.target.id==='copyBtn'){const name=e.target.dataset.name,id=e.target.dataset.id;copyText(`I'm ${name} — ${id} Find your FIRE type: ${PAGE_URL}`,e.target);return;}
   });
-
-  // Keyboard: Enter/Space on opt triggers click
-  el.addEventListener('keydown', e => {
-    if ((e.key==='Enter'||e.key===' ') && e.target.classList.contains('opt')) {
-      e.preventDefault(); e.target.click();
-    }
-  });
+  el.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('opt')){e.preventDefault();e.target.click();}});
 }
 
-// ── CLIPBOARD ──
-function copyText(text, btn) {
-  const orig = btn.textContent;
-  function done() {
-    btn.textContent = 'Copied!';
-    setTimeout(() => { btn.textContent = orig; }, 2000);
-  }
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(done).catch(() => fallback(text, done));
-  } else {
-    fallback(text, done);
-  }
+function copyText(text,btn){
+  const orig=btn.textContent;
+  function done(){btn.textContent='Copied!';setTimeout(()=>{btn.textContent=orig;},2000);}
+  if(navigator.clipboard)navigator.clipboard.writeText(text).then(done).catch(()=>fallback(text,done));
+  else fallback(text,done);
 }
-function fallback(text, cb) {
-  const ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
-  document.body.appendChild(ta);
-  ta.select();
-  try { document.execCommand('copy'); } catch(e){}
-  document.body.removeChild(ta);
-  cb();
+function fallback(text,cb){
+  const ta=document.createElement('textarea');ta.value=text;
+  ta.style.cssText='position:fixed;opacity:0;top:0;left:0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);cb();
 }
 
-// ── INIT ──
 render();
 bindEvents();
 </script>
