@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Ways to Retire Before 50: The Playbook — by Sotirios Seridis</title>
+<meta name="description" content="The 10 proven paths to early retirement compared — targets, timelines, quiz, and a 3-phase roadmap. 23-page playbook, $19.">
+<meta property="og:title" content="10 Ways to Retire Before 50: The Playbook — by Sotirios Seridis">
+<meta property="og:description" content="The 10 proven paths to early retirement compared — targets, timelines, quiz, and a 3-phase roadmap. 23-page playbook, $19.">
+<meta property="og:image" content="">
+<!-- v2 TODOs: testimonials, countdown timer, exit-intent popup, analytics wiring, multi-language -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#ffffff;
+  --surface:#f2f5ff;
+  --surface2:#e4eaff;
+  --ink:#0a1628;
+  --muted:#4a5a7a;
+  --border:rgba(19,70,200,0.14);
+  --blue:#1346c8;
+  --blue-dk:#0d35a0;
+  --gold:#f0a500;
+  --gold-bg:rgba(240,165,0,0.08);
+  --navy:#0a1628;
+  --radius:10px;
+  --sh:0 2px 16px rgba(10,22,40,0.08);
+}
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0d1828;--surface:#152238;--surface2:#1c2d48;
+    --ink:#dce8f8;--muted:#7a90b8;--border:rgba(100,148,255,0.18);
+    --sh:0 2px 16px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0d1828;--surface:#152238;--surface2:#1c2d48;
+  --ink:#dce8f8;--muted:#7a90b8;--border:rgba(100,148,255,0.18);
+  --sh:0 2px 16px rgba(0,0,0,0.35);
+}
+
+body{
+  font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);
+  line-height:1.65;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+.section-h2{
+  font-size:2rem;font-weight:800;letter-spacing:-.035em;
+  line-height:1.1;color:var(--ink);margin-bottom:2rem;text-wrap:balance;
+}
+
+/* ── BUTTONS ── */
+.btn-gold{
+  display:inline-block;background:var(--gold);color:#0a1628;
+  font-weight:800;font-size:1rem;padding:.85rem 2rem;
+  border-radius:50px;text-decoration:none;letter-spacing:-.01em;
+  border:none;cursor:pointer;font-family:inherit;white-space:nowrap;
+  transition:transform .15s,box-shadow .15s;
+}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(240,165,0,.4)}
+.btn-gold--wide{display:block;text-align:center;width:100%}
+
+/* ── HERO ── */
+.hero{background:#0a1628;padding:4.5rem 0 3.5rem}
+.hero__inner{
+  max-width:960px;margin:0 auto;padding:0 1.25rem;
+  display:grid;grid-template-columns:1fr 220px;gap:3rem;align-items:center;
+}
+.hero__kicker{
+  font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#4a5a7a;margin-bottom:1.1rem;line-height:1.8;
+}
+.hero__kicker .k-gold{color:#f0a500}
+.hero__h1{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:800;
+  letter-spacing:-.04em;line-height:1.05;color:#ffffff;
+  margin-bottom:.3rem;text-wrap:balance;
+}
+.hero__h1 .h-gold{color:#f0a500}
+.hero__sub{
+  font-size:1rem;font-weight:700;color:#4a5a7a;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.25rem;
+}
+.hero__desc{
+  font-size:1rem;color:rgba(220,232,248,.7);line-height:1.7;
+  max-width:500px;margin-bottom:1.75rem;
+}
+.hero__price{
+  display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.25rem;
+}
+.hero__strike{font-size:1.25rem;color:#4a5a7a;text-decoration:line-through}
+.hero__amount{font-size:2.5rem;font-weight:800;color:#f0a500;letter-spacing:-.04em;line-height:1}
+.hero__trust{font-size:.8rem;color:#4a5a7a;margin-top:.8rem;line-height:1.55}
+
+.hero__img{
+  width:220px;border-radius:12px;
+  box-shadow:0 8px 48px rgba(0,0,0,.45);display:block;
+}
+.hero__img-ph{
+  width:220px;height:286px;border-radius:12px;
+  background:#152238;border:2px dashed #1c2d48;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:#4a5a7a;text-align:center;padding:1rem;
+}
+
+@media(max-width:680px){
+  .hero__inner{grid-template-columns:1fr;gap:0}
+  .hero__media{order:-1;margin-bottom:1.5rem}
+  .hero__img,.hero__img-ph{width:130px;height:169px}
+}
+
+/* ── CONTRAST ── */
+.contrast{background:var(--bg);padding:4.5rem 0}
+.contrast__cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.cc{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.75rem;
+}
+.cc--default{border-top:4px solid #4a5a7a}
+.cc--other{border-top:4px solid var(--blue)}
+.cc__title{
+  font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1rem;
+}
+.cc--other .cc__title{color:var(--blue)}
+.cc ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.cc li{
+  font-size:.92rem;color:var(--ink);line-height:1.5;
+  padding-left:1rem;position:relative;
+}
+.cc li::before{content:'·';position:absolute;left:0;color:var(--muted)}
+.cc--other li::before{color:var(--blue)}
+@media(max-width:560px){.contrast__cards{grid-template-columns:1fr}}
+
+/* ── FEATURES ── */
+.features{background:var(--surface);padding:4.5rem 0}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.feat{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:1.4rem;
+}
+.feat__n{
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:.5rem;
+}
+.feat__title{font-size:.97rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;line-height:1.35}
+.feat__desc{font-size:.85rem;color:var(--muted);line-height:1.55}
+@media(max-width:520px){.feat-grid{grid-template-columns:1fr}}
+
+/* ── PATHS ── */
+.paths{background:var(--bg);padding:4.5rem 0}
+.table-wrap{overflow-x:auto;margin-bottom:.85rem}
+.paths-tbl{width:100%;border-collapse:collapse;min-width:340px}
+.paths-tbl th{
+  font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);padding:.6rem .85rem;text-align:left;
+  border-bottom:2px solid var(--border);
+}
+.paths-tbl td{
+  padding:.6rem .85rem;font-size:.9rem;color:var(--ink);
+  border-bottom:1px solid var(--border);
+  font-variant-numeric:tabular-nums;
+}
+.paths-tbl tr:last-child td{border-bottom:none}
+.paths-tbl .tbl-name{font-weight:600}
+.paths-tbl .tbl-num{color:var(--blue);font-weight:600}
+.paths__fn{font-size:.72rem;color:var(--muted);margin-bottom:.75rem}
+.paths__quiz a{color:var(--blue);text-decoration:none;font-size:.88rem}
+.paths__quiz a:hover{text-decoration:underline}
+
+/* ── AUTHOR ── */
+.author{background:#0a1628;padding:4.5rem 0}
+.author .section-h2{color:#ffffff}
+.author__body{
+  font-size:1rem;color:rgba(220,232,248,.72);line-height:1.8;
+  max-width:680px;margin-bottom:1.5rem;
+}
+.author__sig{font-size:.88rem;font-weight:700;color:rgba(220,232,248,.45)}
+.author__sig a{color:#f0a500;text-decoration:none}
+.author__sig a:hover{text-decoration:underline}
+
+/* ── BONUS ── */
+.bonus{background:var(--surface);padding:4rem 0}
+.bonus__card{
+  background:var(--bg);border:2px solid var(--gold);
+  border-radius:var(--radius);padding:1.85rem;max-width:640px;
+}
+.bonus__chip{
+  display:inline-block;background:var(--gold);color:#0a1628;
+  font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:.2em .8em;border-radius:50px;margin-bottom:.9rem;
+}
+.bonus__title{font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:.4rem}
+.bonus__desc{font-size:.9rem;color:var(--muted);line-height:1.65}
+
+/* ── PRICING ── */
+.pricing{background:var(--bg);padding:4.5rem 0}
+.pricing__card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:2.25rem;
+  max-width:480px;margin:0 auto;text-align:center;
+}
+.pricing__badge{
+  display:inline-block;background:var(--gold);color:#0a1628;
+  font-size:.63rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:.2em .85em;border-radius:50px;margin-bottom:1.1rem;
+}
+.pricing__price{
+  display:flex;align-items:baseline;justify-content:center;
+  gap:.7rem;margin-bottom:1.5rem;
+}
+.pricing__strike{font-size:1.15rem;color:var(--muted);text-decoration:line-through}
+.pricing__amount{font-size:2.6rem;font-weight:800;color:var(--gold);letter-spacing:-.04em;line-height:1}
+.pricing__list{
+  list-style:none;text-align:left;
+  display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.75rem;
+}
+.pricing__list li{
+  font-size:.9rem;color:var(--ink);padding-left:1.4rem;
+  position:relative;line-height:1.4;
+}
+.pricing__list li::before{
+  content:'✓';position:absolute;left:0;
+  color:var(--blue);font-weight:700;font-size:.85rem;
+}
+.pricing__micro{font-size:.78rem;color:var(--muted);margin-top:.9rem}
+
+/* ── FAQ ── */
+.faq-sec{background:var(--surface);padding:4.5rem 0}
+.faq-sec .section-h2{text-align:center}
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:.5rem}
+.faq-item{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+}
+.faq-btn{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;padding:1.1rem 1.25rem;
+  background:none;border:none;cursor:pointer;font-family:inherit;
+  font-size:.95rem;font-weight:700;color:var(--ink);text-align:left;
+  transition:background .12s;
+}
+.faq-btn:hover{background:var(--surface2)}
+.faq-btn:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+.faq-chevron{
+  flex-shrink:0;width:18px;height:18px;color:var(--muted);
+  transition:transform .22s ease;
+}
+.faq-item.is-open .faq-chevron{transform:rotate(180deg)}
+.faq-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .28s ease;
+}
+.faq-body-inner{
+  padding:0 1.25rem 1.1rem;
+  font-size:.9rem;color:var(--muted);line-height:1.7;
+}
+.faq-item.is-open .faq-body{max-height:280px}
+@media(prefers-reduced-motion:reduce){
+  .faq-body{transition:none}
+  .faq-chevron{transition:none}
+}
+
+/* ── FINAL CTA ── */
+.final-cta{background:#0a1628;padding:5.5rem 0;text-align:center}
+.final-cta .section-h2{color:#ffffff}
+.final-cta__btns{display:flex;flex-direction:column;align-items:center;gap:1rem;margin-bottom:2rem}
+.final-cta__call{color:rgba(220,232,248,.6);text-decoration:none;font-size:.9rem;transition:color .15s}
+.final-cta__call:hover{color:#f0a500}
+.final-cta__legal{font-size:.72rem;color:rgba(220,232,248,.3);margin-top:2.5rem}
+
+/* ── STICKY BAR (mobile only) ── */
+.sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:#0a1628;padding:.9rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  box-shadow:0 -4px 24px rgba(0,0,0,.4);
+  transform:translateY(110%);
+  transition:transform .28s ease;
+}
+.sticky-bar.is-visible{transform:translateY(0)}
+.sticky-bar__price{font-size:.88rem;color:rgba(220,232,248,.6);white-space:nowrap;flex-shrink:0}
+.sticky-bar__strike{text-decoration:line-through}
+.sticky-bar__amt{color:#f0a500;font-weight:700}
+.sticky-bar__btn{
+  display:inline-block;background:#f0a500;color:#0a1628;
+  font-weight:800;font-size:.88rem;padding:.65rem 1.35rem;
+  border-radius:50px;text-decoration:none;white-space:nowrap;
+  transition:transform .12s;flex-shrink:0;
+}
+.sticky-bar__btn:hover{transform:translateY(-1px)}
+@media(min-width:769px){.sticky-bar{display:none}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  section,
+  .contrast,.features,.paths,.author,.bonus,.pricing,.faq-sec,.final-cta{padding:3rem 0}
+  .section-h2{font-size:1.65rem}
+  .hero{padding:3rem 0 2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__kicker">LONDON › DUBAI › SINGAPORE › 35 COUNTRIES › <span class="k-gold">FREEDOM</span></div>
+      <h1 class="hero__h1">10 Ways to Retire Before <span class="h-gold">50</span></h1>
+      <div class="hero__sub">The Playbook</div>
+      <p class="hero__desc">Work until 65 is not a plan. It's a default. There are 10 proven paths out — and you don't need to be a millionaire for most of them.</p>
+      <div class="hero__price">
+        <span class="hero__strike">$49</span>
+        <span class="hero__amount">$19</span>
+      </div>
+      <a href="" id="hero-buy" class="btn-gold" target="_blank" rel="noopener noreferrer">Get the Playbook — $19</a>
+      <div class="hero__trust">Instant PDF download · 23 pages · Includes the FIRE Calculator spreadsheet</div>
+    </div>
+    <div class="hero__media" id="hero-media">
+      <div class="hero__img-ph" id="hero-ph">Product image</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── THE LIE YOU WERE SOLD ── -->
+<section class="contrast">
+  <div class="wrap">
+    <h2 class="section-h2">The Lie You Were Sold</h2>
+    <div class="contrast__cards">
+      <div class="cc cc--default">
+        <div class="cc__title">The Default</div>
+        <ul>
+          <li>a salary you can't walk away from</li>
+          <li>no exit date — work until they let you stop</li>
+          <li>retirement funded by a system under strain</li>
+          <li>location chosen by habit, not by maths</li>
+        </ul>
+      </div>
+      <div class="cc cc--other">
+        <div class="cc__title">The Other Path</div>
+        <ul>
+          <li>a target number that makes work optional</li>
+          <li>an exit date YOU set — 40, 45, 50</li>
+          <li>income that doesn't need you in the room</li>
+          <li>a location where the maths actually work</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT'S INSIDE ── -->
+<section class="features">
+  <div class="wrap">
+    <h2 class="section-h2">What's Inside the Playbook</h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat__n">01</div>
+        <div class="feat__title">The 10 paths compared</div>
+        <div class="feat__desc">Target Number, monthly income, years to reach, and best fit — in one master table</div>
+      </div>
+      <div class="feat">
+        <div class="feat__n">02</div>
+        <div class="feat__title">One page per path</div>
+        <div class="feat__desc">Real example, step-by-step, pros &amp; cons, and the red flags that derail people</div>
+      </div>
+      <div class="feat">
+        <div class="feat__n">03</div>
+        <div class="feat__title">The Engine</div>
+        <div class="feat__desc">The 7 asset types that produce monthly cashflow, and 7 lessons from my own journey</div>
+      </div>
+      <div class="feat">
+        <div class="feat__n">04</div>
+        <div class="feat__title">The Quiz</div>
+        <div class="feat__desc">"Which FIRE Type Are You?" 9 questions, instant profile</div>
+      </div>
+      <div class="feat">
+        <div class="feat__n">05</div>
+        <div class="feat__title">The Roadmap</div>
+        <div class="feat__desc">The 3-phase sequence: $1,000/month → $2,000/month → FIRE, and the one mistake that ruins it</div>
+      </div>
+      <div class="feat">
+        <div class="feat__n">06</div>
+        <div class="feat__title">6 real stories</div>
+        <div class="feat__desc">People from my personal network who already made it out, on 6 different paths</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 10 PATHS ── -->
+<section class="paths">
+  <div class="wrap">
+    <h2 class="section-h2">10 Paths. One Is Yours.</h2>
+    <div class="table-wrap">
+      <table class="paths-tbl">
+        <thead>
+          <tr><th>Path</th><th>Target Number</th><th>Avg. Years</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="tbl-name">Fat FIRE</td><td class="tbl-num">$3,500,000</td><td>20–30</td></tr>
+          <tr><td class="tbl-name">Cash Flow FIRE</td><td class="tbl-num">$1,200,000</td><td>15–20</td></tr>
+          <tr><td class="tbl-name">Traditional FIRE</td><td class="tbl-num">$1,000,000</td><td>10–17</td></tr>
+          <tr><td class="tbl-name">Slow FIRE</td><td class="tbl-num">$1,000,000</td><td>20–25</td></tr>
+          <tr><td class="tbl-name">Hybrid FIRE</td><td class="tbl-num">$700,000</td><td>8–15</td></tr>
+          <tr><td class="tbl-name">Barista FIRE</td><td class="tbl-num">$600,000</td><td>10–15</td></tr>
+          <tr><td class="tbl-name">Expat FIRE</td><td class="tbl-num">$600,000</td><td>7–12</td></tr>
+          <tr><td class="tbl-name">Lean FIRE</td><td class="tbl-num">$500,000</td><td>5–10</td></tr>
+          <tr><td class="tbl-name">Baby FIRE</td><td class="tbl-num">$250,000</td><td>5–8</td></tr>
+          <tr><td class="tbl-name">Coast FIRE</td><td class="tbl-num">$200,000</td><td>5–10 then coast</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="paths__fn">Indicative, USD, moderate lifestyle in a mid-cost country.</p>
+    <p class="paths__quiz"><a href="" id="quiz-link">Not sure which fits you? Take the free quiz →</a></p>
+  </div>
+</section>
+
+<!-- ── AUTHOR ── -->
+<section class="author">
+  <div class="wrap">
+    <h2 class="section-h2">Written by someone who actually did it</h2>
+    <p class="author__body">15+ years in digital media agencies, freelancing, and teaching digital marketing. Savings invested into property and dividend stocks. Today my passive income covers my entire cost of living — from Almaty, Kazakhstan, one of the world's best value-for-money bases. This playbook is the route, written down.</p>
+    <div class="author__sig">Sotirios Seridis · <a href="https://sotirios-seridis.com" target="_blank" rel="noopener noreferrer">sotirios-seridis.com</a></div>
+  </div>
+</section>
+
+<!-- ── BONUS ── -->
+<section class="bonus">
+  <div class="wrap">
+    <div class="bonus__card">
+      <span class="bonus__chip">Bonus</span>
+      <div class="bonus__title">The FIRE Calculator — included free</div>
+      <p class="bonus__desc">A spreadsheet that turns your spending into your Target Number, years to reach it, and projected FI age. Included free with the playbook.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing">
+  <div class="wrap">
+    <div class="pricing__card">
+      <span class="pricing__badge">Launch offer</span>
+      <div class="pricing__price">
+        <span class="pricing__strike">$49</span>
+        <span class="pricing__amount">$19</span>
+      </div>
+      <ul class="pricing__list">
+        <li>23-page PDF</li>
+        <li>master comparison table</li>
+        <li>quiz + scoring</li>
+        <li>3-phase roadmap</li>
+        <li>6 real case studies</li>
+        <li>FIRE Calculator spreadsheet</li>
+        <li>clickable links throughout</li>
+      </ul>
+      <a href="" id="pricing-buy" class="btn-gold btn-gold--wide" target="_blank" rel="noopener noreferrer">Get the Playbook — $19</a>
+      <p class="pricing__micro">Instant download. Read it in one sitting. Use it for years.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq-sec">
+  <div class="wrap">
+    <h2 class="section-h2">Frequently Asked Questions</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq1">
+          What format is it?
+          <svg class="faq-chevron" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-body" id="faq1" role="region">
+          <div class="faq-body-inner">A 23-page PDF, designed for mobile and desktop, with clickable links. The bonus calculator is an Excel/Google Sheets file.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq2">
+          Who is it for?
+          <svg class="faq-chevron" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-body" id="faq2" role="region">
+          <div class="faq-body-inner">Professionals who want out of the default path — full retirement, semi-retirement, or work on their own terms, at home or abroad.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq3">
+          Is this financial advice?
+          <svg class="faq-chevron" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-body" id="faq3" role="region">
+          <div class="faq-body-inner">No — it's education and a method. Figures are indicative; always verify numbers for your own situation.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq4">
+          I'm not rich. Is it still for me?
+          <svg class="faq-chevron" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-body" id="faq4" role="region">
+          <div class="faq-body-inner">Yes. Several paths start from zero, and the roadmap's first milestone is $1,000/month of passive income — not millions.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false" aria-controls="faq5">
+          Do I need to move abroad?
+          <svg class="faq-chevron" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 6.5l5 5 5-5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-body" id="faq5" role="region">
+          <div class="faq-body-inner">No. Relocation is one lever of ten. The playbook covers stay-home paths equally.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2 class="section-h2">You have one career. Don't spend all of it.</h2>
+    <div class="final-cta__btns">
+      <a href="" id="final-buy" class="btn-gold" target="_blank" rel="noopener noreferrer">Get the Playbook — $19</a>
+      <a href="" id="call-link" class="final-cta__call" target="_blank" rel="noopener noreferrer">Prefer to talk it through first? Book a Free Clarity Call →</a>
+    </div>
+    <div class="final-cta__legal">© Sotirios Seridis · Educational content, not financial, tax, or immigration advice.</div>
+  </div>
+</section>
+
+<!-- ── STICKY BAR (mobile only) ── -->
+<div class="sticky-bar" id="sticky-bar" aria-hidden="true">
+  <div class="sticky-bar__price">
+    <span class="sticky-bar__strike">$49</span> <span class="sticky-bar__amt">$19</span>
+  </div>
+  <a href="" id="sticky-buy" class="sticky-bar__btn" target="_blank" rel="noopener noreferrer">Get the Playbook →</a>
+</div>
+
+<script>
+// ── CONSTANTS — swap before going live ──
+const BUY_URL        = 'https://sotirios.beehiiv.com/products/playbook';
+const CALL_URL       = 'https://cal.com/sotirios-seridis/clarity-call';
+const QUIZ_URL       = 'QUIZ_URL';        // swap for quiz page URL
+const CALCULATOR_URL = 'CALCULATOR_URL';  // swap for calculator page URL
+const THUMB_IMG      = 'THUMB_IMG';       // swap for product image path
+
+// ── WIRE URLS ──
+document.getElementById('hero-buy').href    = BUY_URL;
+document.getElementById('pricing-buy').href = BUY_URL;
+document.getElementById('final-buy').href   = BUY_URL;
+document.getElementById('sticky-buy').href  = BUY_URL;
+document.getElementById('quiz-link').href   = QUIZ_URL;
+document.getElementById('call-link').href   = CALL_URL;
+
+// ── OG IMAGE ──
+document.querySelector('meta[property="og:image"]').content = THUMB_IMG !== 'THUMB_IMG' ? THUMB_IMG : '';
+
+// ── PRODUCT IMAGE ──
+if (THUMB_IMG !== 'THUMB_IMG') {
+  const ph = document.getElementById('hero-ph');
+  const img = document.createElement('img');
+  img.src = THUMB_IMG; img.alt = '10 Ways to Retire Before 50 — The Playbook';
+  img.className = 'hero__img';
+  ph.replaceWith(img);
+}
+
+// ── FAQ ACCORDION ──
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('is-open');
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('is-open');
+      i.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) {
+      item.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// ── STICKY BAR ──
+const stickyBar = document.getElementById('sticky-bar');
+new IntersectionObserver(([e]) => {
+  const show = !e.isIntersecting;
+  stickyBar.classList.toggle('is-visible', show);
+  stickyBar.setAttribute('aria-hidden', String(!show));
+}, { threshold: 0 }).observe(document.getElementById('hero'));
+
+// ── SMOOTH SCROLL ──
+if (!window.matchMedia('(prefers-reduced-motion:reduce)').matches) {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+}
+</script>
+</body>
+</html>
