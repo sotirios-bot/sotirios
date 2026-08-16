@@ -742,6 +742,7 @@ a { color: inherit; text-decoration: none; }
 .floating-btn__label { font-size: 0.88rem; font-weight: 700; letter-spacing: 0.2px; }
 .floating-btn__icon { width: 20px; height: 20px; flex-shrink: 0; }
 .floating-btn--whatsapp { background: #25d366; }
+.floating-btn--playbook  { background: #e07b00; }
 .floating-btn--booking   { background: var(--accent); }
 .floating-btn--beehiiv   { background: var(--gold); }
 .floating-btn--youtube   { background: var(--dark); }
