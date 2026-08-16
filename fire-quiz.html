@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Which FIRE Type Are You? — Sotirios Seridis</title>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-53PJ25VD');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Which FIRE Type Are You? — Free Quiz | Sotirios Seridis</title>
+  <meta name="description" content="9 questions, 60 seconds. Find your early-retirement profile and the FIRE paths that fit it — free, no email required." />
+  <link rel="canonical" href="https://www.sotirios-seridis.com/fire-quiz" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.sotirios-seridis.com/fire-quiz" />
+  <meta property="og:title" content="Which FIRE Type Are You? — Free Quiz" />
+  <meta property="og:description" content="9 questions, 60 seconds. Find your early-retirement profile and the FIRE paths that fit it — free, no email required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
 
-:root{
-  --bg:#ffffff;--surface:#f2f5ff;--surface2:#e4eaff;
-  --ink:#0a1628;--muted:#4a5a7a;--border:rgba(19,70,200,0.14);
-  --blue:#1346c8;--blue-dk:#0d35a0;--gold:#f0a500;--gold-bg:rgba(240,165,0,0.1);
-  --navy:#0a1628;--radius:10px;
-  --sh:0 2px 12px rgba(10,22,40,0.08);
+/* page tokens on top of style.css */
+.quiz-page{
+  --blue:#1346C8;--blue-dk:#0D3BAA;--navy:#0A1628;
+  --surface2:#D6E1FF;--gold-bg:rgba(240,165,0,0.1);
+  font-size:15px;line-height:1.6;
 }
-@media(prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#0d1828;--surface:#152238;--surface2:#1c2d48;
-    --ink:#dce8f8;--muted:#7a90b8;--border:rgba(100,148,255,0.18);
-    --sh:0 2px 12px rgba(0,0,0,0.35);
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#0d1828;--surface:#152238;--surface2:#1c2d48;
-  --ink:#dce8f8;--muted:#7a90b8;--border:rgba(100,148,255,0.18);
-  --sh:0 2px 12px rgba(0,0,0,0.35);
-}
-
-body{
-  font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;
-  background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px;
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
-}
+.quiz-page{min-height:60vh}
 
 .quiz{max-width:640px;margin:0 auto;padding:1.5rem 1rem 3rem}
 
+/* ── INTRO ── */
 .intro{text-align:center;padding:2rem 0}
 .intro__eye{
   display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;
@@ -56,6 +56,7 @@ body{
 .intro__btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,165,0,.45)}
 .intro__fine{font-size:.75rem;color:var(--muted);margin-top:1rem}
 
+/* ── PROGRESS ── */
 .prog-bar{
   height:3px;background:var(--surface2);border-radius:3px;
   margin-bottom:1.25rem;overflow:hidden;
@@ -69,6 +70,7 @@ body{
   letter-spacing:.05em;margin-bottom:1.5rem;
 }
 
+/* ── QUESTION ── */
 .q-screen{animation:fadeUp .22s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.q-screen{animation:none}}
@@ -104,6 +106,7 @@ body{
 .back-link:hover{color:var(--ink)}
 .back-link:focus{outline:none;color:var(--blue)}
 
+/* ── RESULT ── */
 .res-screen{animation:fadeUp .25s ease}
 .profile-badge{
   display:inline-block;background:var(--gold);color:var(--navy);
@@ -125,13 +128,13 @@ body{
   color:var(--muted);margin-bottom:.65rem;
 }
 .paths{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem}
-.path-card{
+.qpath-card{
   background:var(--surface);border:1px solid var(--border);
   border-left:3px solid var(--gold);border-radius:8px;padding:.85rem 1rem;
 }
-.path-card__name{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.15rem}
-.path-card__meta{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.path-card--sub{border-left-color:var(--blue)}
+.qpath-card__name{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.15rem}
+.qpath-card__meta{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.qpath-card--sub{border-left-color:var(--blue)}
 
 .paths-from{
   font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
@@ -149,6 +152,7 @@ body{
   font-size:.72rem;color:var(--muted);line-height:1.5;margin-bottom:1.5rem;
 }
 
+/* ── RESULT CTAs ── */
 .cta-primary{
   background:var(--navy);border-radius:var(--radius);
   padding:1.4rem;text-align:center;margin-bottom:.75rem;
@@ -214,17 +218,106 @@ body{
   .profile-name{font-size:1.65rem}
   .q-text{font-size:1.1rem}
 }
-</style>
+  </style>
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53PJ25VD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager -->
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo">Sotirios Seridis</a>
+      <nav class="nav__links">
+        <a href="/#newsletter" class="nav__link">Newsletter</a>
+        <a href="/#offer" class="nav__link">FIRE Programme</a>
+        <a href="/playbook" class="nav__link">Playbook</a>
+        <a href="/fire-quiz" class="nav__link nav__link--active">Quiz</a>
+        <a href="/#coaching" class="btn btn--primary btn--sm">Free Clarity Call</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="/#coaching" onclick="toggleMenu()">Free Clarity Call</a>
+      <a href="/#newsletter" onclick="toggleMenu()">Newsletter</a>
+      <a href="/#offer" onclick="toggleMenu()">FIRE Programme</a>
+      <a href="/playbook" onclick="toggleMenu()">Playbook</a>
+      <a href="/fire-quiz" onclick="toggleMenu()">Quiz</a>
+      <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a>
+      <a href="https://www.youtube.com/@GreekInAlmaty" target="_blank">YouTube</a>
+    </div>
+  </header>
+
+<div class="quiz-page">
+
 <div class="quiz" id="quiz"></div>
 
+</div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__cols">
+        <div>
+          <h4 class="footer__subtitle">Contact</h4>
+          <ul class="footer__list">
+            <li>📧 <a href="mailto:sotirios@xyzlab.com">sotirios@xyzlab.com</a></li>
+            <li>🌎 GMT+5, Almaty</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__subtitle">Socials</h4>
+          <ul class="footer__list">
+            <li>💻 <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a></li>
+            <li>🎥 <a href="https://www.youtube.com/@xyzl" target="_blank">Digital Marketing Tutorials</a></li>
+            <li>🎥 <a href="https://www.youtube.com/@GreekInAlmaty" target="_blank">Greek in Almaty</a></li>
+            <li>📰 <a href="https://sotirios.beehiiv.com/subscribe" target="_blank">Newsletter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__subtitle">Free Tools</h4>
+          <ul class="footer__list">
+            <li>📖 <a href="/playbook">The Playbook</a></li>
+            <li>🎯 <a href="/fire-quiz">FIRE Quiz</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__subtitle">My Companies</h4>
+          <ul class="footer__list">
+            <li><a href="https://www.xyzlab.com/" target="_blank">XYZ Lab</a></li>
+            <li><a href="https://www.mytheon.co/" target="_blank">Mytheon Technologies</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 Sotirios Seridis</p>
+        <a href="/privacy.html" class="footer__privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('nav__mobile--open');
+    }
+    document.querySelectorAll('a[target="_blank"]').forEach(a => {
+      a.rel = 'noopener noreferrer';
+    });
+  </script>
 <script>
+// ── v2 TODOs: email capture, result storage, per-question analytics, social share images, multi-language ──
+
+// ── CONSTANTS — update these before going live ──
 const CALL_URL      = 'https://cal.com/sotirios-seridis/clarity-call';
 const PLAYBOOK_URL  = 'https://sotirios.beehiiv.com/products/playbook';
-const PAGE_URL      = 'https://sotirios-seridis.com/fire-quiz';
+const PAGE_URL      = 'https://sotirios-seridis.com/fire-quiz'; // swap when live
 const SITE_URL      = 'https://sotirios-seridis.com';
 
+// ── QUESTIONS ──
 const QS = [
   {
     text: "When do you want work to become optional?",
@@ -309,6 +402,7 @@ const QS = [
   },
 ];
 
+// ── PROFILES ──
 const PROFILES = {
   A: {
     badge:"SPRINTER", name:"The Sprinter",
@@ -357,12 +451,14 @@ const PROFILES = {
   },
 };
 
+// ── STATE ──
 const state = {
-  screen: 'intro',
-  currentQ: 0,
+  screen: 'intro',   // 'intro' | 'question' | 'result'
+  currentQ: 0,       // 0–8
   answers: Array(9).fill(null),
 };
 
+// ── SCORING ──
 function score(answers) {
   const c = {A:0,B:0,C:0,D:0};
   answers.forEach(a => { if (a) c[a]++; });
@@ -371,6 +467,7 @@ function score(answers) {
   return { profile: tied.length > 1 ? 'HYBRID' : tied[0], tied };
 }
 
+// ── RENDER ──
 function render() {
   const el = document.getElementById('quiz');
   if (state.screen === 'intro') { el.innerHTML = introHTML(); return; }
@@ -400,7 +497,7 @@ function questionHTML() {
     <div class="q-text">${q.text}</div>
     <div class="opts">
       ${q.opts.map(o => `
-        <button class="opt${prev===o.id?' is-chosen':'"}
+        <button class="opt${prev===o.id?' is-chosen':''}"
           data-id="${o.id}" role="option" aria-selected="${prev===o.id}">
           <span class="opt__letter">${o.id}</span>${o.text}
         </button>`).join('')}
@@ -414,10 +511,13 @@ function resultHTML() {
   const p = PROFILES[profile];
   const isHybrid = profile === 'HYBRID';
   const isSpringer = profile === 'A';
-  const showAccel = isSpringer && state.answers[4] === 'D';
+  const q5D = state.answers[4] === 'D';
+  const showAccel = isSpringer && q5D;
 
+  // Build path cards
   let pathsHTML = p.paths.map(pp => pathCard(pp.name, pp.meta, false)).join('');
 
+  // If hybrid, append tied profile paths
   if (isHybrid && tied.length) {
     tied.forEach(t => {
       const tp = PROFILES[t];
@@ -437,7 +537,7 @@ function resultHTML() {
     <h1 class="profile-name">${p.name}</h1>
     <div class="profile-id">${p.identity}</div>
     <p class="profile-desc">${p.desc}</p>
-    <div class="paths-lbl">Your paths</div>
+    <div class="paths-lbl">Your ${isHybrid ? 'paths' : 'paths'}</div>
     <div class="paths">${pathsHTML}</div>
     ${accelHTML}
     <p class="micro-paths">Targets are indicative, in USD, for a moderate lifestyle in a mid-cost country. Not financial advice.</p>
@@ -473,16 +573,18 @@ function resultHTML() {
 }
 
 function pathCard(name, meta, sub) {
-  return `<div class="path-card${sub?' path-card--sub':''}">
-    <div class="path-card__name">${name}</div>
-    <div class="path-card__meta">${meta}</div>
+  return `<div class="qpath-card${sub?' qpath-card--sub':''}">
+    <div class="qpath-card__name">${name}</div>
+    <div class="qpath-card__meta">${meta}</div>
   </div>`;
 }
 
+// ── EVENTS ──
 function bindEvents() {
   const el = document.getElementById('quiz');
 
   el.addEventListener('click', e => {
+    // Start
     if (e.target.id === 'startBtn') {
       state.screen = 'question';
       state.currentQ = 0;
@@ -490,12 +592,15 @@ function bindEvents() {
       render(); bindEvents(); return;
     }
 
+    // Answer option
     const opt = e.target.closest('.opt');
     if (opt && state.screen === 'question') {
       const id = opt.dataset.id;
       const qi = state.currentQ;
+      // Clear answers forward
       state.answers[qi] = id;
       for (let j = qi+1; j < 9; j++) state.answers[j] = null;
+      // Highlight for 250ms then advance
       opt.classList.add('is-chosen');
       setTimeout(() => {
         if (qi < 8) {
@@ -510,6 +615,7 @@ function bindEvents() {
       return;
     }
 
+    // Back
     if (e.target.id === 'backBtn') {
       if (state.currentQ > 0) {
         state.currentQ--;
@@ -521,6 +627,7 @@ function bindEvents() {
       return;
     }
 
+    // Back from result
     if (e.target.id === 'retakeBtn') {
       state.screen = 'intro';
       state.currentQ = 0;
@@ -530,6 +637,7 @@ function bindEvents() {
       return;
     }
 
+    // Copy result
     if (e.target.id === 'copyBtn') {
       const name = e.target.dataset.name;
       const id   = e.target.dataset.id;
@@ -539,6 +647,7 @@ function bindEvents() {
     }
   });
 
+  // Keyboard: Enter/Space on opt triggers click
   el.addEventListener('keydown', e => {
     if ((e.key==='Enter'||e.key===' ') && e.target.classList.contains('opt')) {
       e.preventDefault(); e.target.click();
@@ -546,6 +655,7 @@ function bindEvents() {
   });
 }
 
+// ── CLIPBOARD ──
 function copyText(text, btn) {
   const orig = btn.textContent;
   function done() {
@@ -569,6 +679,7 @@ function fallback(text, cb) {
   cb();
 }
 
+// ── INIT ──
 render();
 bindEvents();
 </script>
