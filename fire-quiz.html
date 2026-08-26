@@ -245,6 +245,68 @@
 .gate__btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
 .gate__micro{font-size:.72rem;color:var(--muted);margin-top:.75rem;line-height:1.5}
 
+
+/* ── RESULT v2 ── */
+.res-hero{
+  background:var(--navy);border-radius:14px;
+  padding:2rem 1.75rem;margin-bottom:.85rem;
+  background-image:radial-gradient(ellipse at top right,rgba(19,70,200,.35),transparent 60%);
+}
+.res-hero .profile-name{color:#fff}
+.res-hero .profile-id{color:#f0a500}
+.res-hero .profile-desc{color:rgba(220,232,248,.75);margin-bottom:0}
+.res-hero .profile-desc strong{color:#fff}
+
+.res-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:1.5rem 1.5rem 1.4rem;margin-bottom:.85rem;
+}
+.res-lbl{
+  font-size:.68rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1rem;
+}
+.res-lbl--light{color:rgba(220,232,248,.5)}
+
+.mix{display:flex;flex-direction:column;gap:.6rem}
+.mix__row{display:grid;grid-template-columns:74px 1fr 40px;align-items:center;gap:.75rem}
+.mix__name{font-size:.8rem;font-weight:600;color:var(--muted)}
+.mix__row--top .mix__name{color:var(--ink);font-weight:700}
+.mix__track{
+  height:10px;background:var(--surface2);border-radius:6px;overflow:hidden;display:block;
+}
+.mix__fill{
+  display:block;height:100%;border-radius:6px;background:var(--blue);opacity:.45;
+  width:0;animation:mixGrow .9s ease .15s forwards;
+}
+.mix__row--top .mix__fill{background:var(--gold);opacity:1}
+.mix__pct{font-size:.8rem;font-weight:700;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.mix__row--top .mix__pct{color:var(--ink)}
+@keyframes mixGrow{to{width:var(--w)}}
+@media(prefers-reduced-motion:reduce){.mix__fill{animation:none;width:var(--w)}}
+
+.res-target{
+  background:var(--navy);border-radius:14px;
+  padding:1.6rem 1.5rem;margin-bottom:.85rem;text-align:center;
+  background-image:radial-gradient(ellipse at bottom left,rgba(240,165,0,.12),transparent 60%);
+}
+.res-target__amt{
+  font-size:2.3rem;font-weight:800;color:#f0a500;
+  letter-spacing:-.04em;line-height:1.1;font-variant-numeric:tabular-nums;
+}
+.res-target__years{font-size:.9rem;font-weight:700;color:#fff;margin-top:.3rem}
+.res-target__note{font-size:.78rem;color:rgba(220,232,248,.55);margin-top:.5rem;line-height:1.5}
+
+.ways{list-style:none;display:flex;flex-direction:column;gap:.7rem;padding:0}
+.way{display:flex;gap:.8rem;align-items:flex-start}
+.way__n{
+  flex-shrink:0;width:24px;height:24px;border-radius:50%;
+  background:var(--gold);color:var(--navy);
+  font-size:.75rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:.1rem;
+}
+.way__txt{font-size:.88rem;color:var(--ink);line-height:1.55}
+.way__txt strong{font-weight:700}
+
 @media(max-width:400px){
   .intro__h1{font-size:1.65rem}
   .profile-name{font-size:1.65rem}
@@ -580,21 +642,82 @@ function gateHTML() {
   </div>`;
 }
 
+const MIX_NAMES = { A:'Sprinter', B:'Builder', C:'Flexer', D:'Streamer' };
+
+const TARGETS = {
+  A:{range:'$500K – $1M',   years:'5–17 yrs',  note:'Lean fast-track or full Traditional — 25 × your annual spending'},
+  B:{range:'$1M – $3.5M',   years:'20–30 yrs', note:'Comfort-first: your income growth does the heavy lifting'},
+  C:{range:'$200K – $600K', years:'5–15 yrs',  note:'Front-load early, then let compounding and part-time work carry it'},
+  D:{range:'$600K – $1.2M', years:'7–20 yrs',  note:'Built from assets that pay you monthly'},
+  HYBRID:{range:'~$700K',   years:'8–15 yrs',  note:'A blend of paths — your exact number is 25 × your annual spending'},
+};
+
+const WAYS = {
+  A:[
+    'Push your savings rate above <strong>50%</strong> — automate transfers the day you get paid',
+    'Cut the big three — <strong>housing, transport, food</strong> — not the lattes',
+    'Park everything in <strong>low-cost global index funds</strong> and stop tinkering',
+    'Add a side income and <strong>invest 100% of it</strong>',
+    'Every <strong>$1,000 less</strong> you spend per year cuts <strong>$25,000</strong> off your Target Number',
+  ],
+  B:[
+    'Negotiate income up — <strong>raises, RSUs, bonuses</strong> beat frugality at your level',
+    'Hold a <strong>25–35% savings rate</strong> while lifestyle grows slower than income',
+    'Invest <strong>windfalls immediately</strong> instead of upgrading the lifestyle',
+    'Build <strong>career equity</strong> — skills, brand and network that compound your pay',
+    '<strong>Automate investing</strong> so comfort never quietly eats the plan',
+  ],
+  C:[
+    '<strong>Front-load</strong>: save aggressively for the next 3–5 years while energy is high',
+    'Build your fund base early and <strong>never touch it</strong> — compounding does the rest',
+    'Design your <strong>part-time offer</strong> — what would people pay you for, on your terms?',
+    'Test <strong>one paid side project</strong> this year — proof beats theory',
+    'Set your <strong>coast number</strong> — the point where you can downshift for good',
+  ],
+  D:[
+    'Buy assets that <strong>pay you monthly</strong> — dividends, rentals, fixed income',
+    '<strong>Reinvest every payout</strong> until streams cover your core living costs',
+    'Build <strong>2–3 income streams</strong> — one stream is a single point of failure',
+    'Shortlist countries where your income goes <strong>2× further</strong>',
+    'Track monthly passive income <strong>like a KPI</strong> — it is your real net worth',
+  ],
+  HYBRID:[
+    'Pick your <strong>two strongest profiles</strong> and borrow the best of each',
+    'Set one clear <strong>Target Number</strong> — 25 × your annual spending',
+    'Automate a <strong>savings rate you can sustain</strong> for years, not months',
+    'Add <strong>one income stream</strong> outside your salary this year',
+    '<strong>Review every 6 months</strong> — hybrids win by adjusting, not by rigid plans',
+  ],
+};
+
 function resultHTML() {
   const { profile, tied } = score(state.answers);
   const p = PROFILES[profile];
   const isHybrid = profile === 'HYBRID';
   const isSpringer = profile === 'A';
-  const q5D = state.answers[4] === 'D';
-  const showAccel = isSpringer && q5D;
+  const showAccel = isSpringer && state.answers[4] === 'D';
 
-  // Build path cards
+  // personality mix
+  const counts = {A:0,B:0,C:0,D:0};
+  state.answers.forEach(a => { if (a) counts[a]++; });
+  const mixHTML = ['A','B','C','D'].map(k => {
+    const pct = Math.round((counts[k] / 9) * 100);
+    const isTop = isHybrid ? tied.indexOf(k) !== -1 : k === profile;
+    return `<div class="mix__row${isTop ? ' mix__row--top' : ''}">
+      <span class="mix__name">${MIX_NAMES[k]}</span>
+      <span class="mix__track"><span class="mix__fill" style="--w:${pct}%"></span></span>
+      <span class="mix__pct">${pct}%</span>
+    </div>`;
+  }).join('');
+
+  const t = TARGETS[profile];
+  const waysHTML = WAYS[profile].map((w, i) =>
+    `<li class="way"><span class="way__n">${i + 1}</span><span class="way__txt">${w}</span></li>`).join('');
+
   let pathsHTML = p.paths.map(pp => pathCard(pp.name, pp.meta, false)).join('');
-
-  // If hybrid, append tied profile paths
   if (isHybrid && tied.length) {
-    tied.forEach(t => {
-      const tp = PROFILES[t];
+    tied.forEach(tk => {
+      const tp = PROFILES[tk];
       if (!tp || !tp.paths) return;
       pathsHTML += `<div class="paths-from">${tp.name} paths</div>`;
       pathsHTML += tp.paths.map(pp => pathCard(pp.name, pp.meta, true)).join('');
@@ -607,17 +730,39 @@ function resultHTML() {
   </div>` : '';
 
   return `<div class="res-screen">
-    <div class="profile-badge">${p.badge}</div>
-    <h1 class="profile-name">${p.name}</h1>
-    <div class="profile-id">${p.identity}</div>
-    <p class="profile-desc">${p.desc}</p>
-    <div class="paths-lbl">Your ${isHybrid ? 'paths' : 'paths'}</div>
-    <div class="paths">${pathsHTML}</div>
-    ${accelHTML}
-    <p class="micro-paths">Targets are indicative, in USD, for a moderate lifestyle in a mid-cost country. Not financial advice.</p>
+    <div class="res-hero">
+      <div class="profile-badge">${p.badge}</div>
+      <h1 class="profile-name">${p.name}</h1>
+      <div class="profile-id">${p.identity}</div>
+      <p class="profile-desc">${p.desc}</p>
+    </div>
+
+    <div class="res-card">
+      <div class="res-lbl">Your FIRE personality mix</div>
+      <div class="mix">${mixHTML}</div>
+    </div>
+
+    <div class="res-target">
+      <div class="res-lbl res-lbl--light">Your Target Number</div>
+      <div class="res-target__amt">${t.range}</div>
+      <div class="res-target__years">${t.years} to get there</div>
+      <div class="res-target__note">${t.note}</div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-lbl">Your paths</div>
+      <div class="paths">${pathsHTML}</div>
+      ${accelHTML}
+      <p class="micro-paths">Targets are indicative, in USD, for a moderate lifestyle in a mid-cost country. Not financial advice.</p>
+    </div>
+
+    <div class="res-card">
+      <div class="res-lbl">5 ways to work towards your target</div>
+      <ol class="ways">${waysHTML}</ol>
+    </div>
 
     <div class="cta-primary">
-      <div class="cta-primary__title">Want this turned into a plan — income mix, location, exit date?</div>
+      <div class="cta-primary__title">Want this turned into a plan — income mix, career, exit date?</div>
       <a href="${CALL_URL}" target="_blank" rel="noopener noreferrer" class="cta-primary__btn">
         Book Your Free Clarity Call →
       </a>
@@ -626,7 +771,7 @@ function resultHTML() {
 
     <div class="cta-playbook">
       <div class="cta-playbook__title">Go deeper: the full Playbook</div>
-      <div class="cta-playbook__desc">One page per path, 12 retirement destinations, visa &amp; tax shortcuts, and the 90-day quick-start.</div>
+      <div class="cta-playbook__desc">All 10 paths compared — targets, timelines, pros &amp; cons, and the 3-phase roadmap.</div>
       <a href="${PLAYBOOK_URL}" target="_blank" rel="noopener noreferrer" class="cta-playbook__btn">
         Get the Playbook — $19
       </a><span class="cta-playbook__strike">$49</span>
