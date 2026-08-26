@@ -320,6 +320,19 @@
 
 .qpath-card__desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:.3rem}
 
+.persona{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.persona__tile{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;padding:.9rem 1rem;
+}
+.persona__t{
+  font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:.35rem;
+}
+.persona__d{font-size:.82rem;color:var(--muted);line-height:1.6}
+.persona__d strong{color:var(--ink);font-weight:700}
+@media(max-width:520px){.persona{grid-template-columns:1fr}}
+
 @media(max-width:400px){
   .intro__h1{font-size:1.65rem}
   .profile-name{font-size:1.65rem}
@@ -656,6 +669,49 @@ function gateHTML() {
 
 const MIX_NAMES = { A:'Sprinter', B:'Builder', C:'Flexer', D:'Streamer' };
 
+const PERSONA = {
+  A:[
+    {t:'Money mindset',  d:'Money is freedom units — every dollar spent is future time given away. You feel spending in <strong>years, not amounts</strong>.'},
+    {t:'Your superpower',d:'<strong>Discipline.</strong> You can sustain a savings rate most people think is impossible — without needing external motivation.'},
+    {t:'Your blind spot',d:'Over-optimising the plan and under-living the years on the way. <strong>Frugality is a tool, not an identity.</strong>'},
+    {t:'Under pressure', d:'In a downturn you instinctively cut deeper and ride it out. Resilient — just don\'t cut into <strong>health, relationships, or joy</strong>.'},
+    {t:'What energises you', d:'Progress you can measure — net-worth updates, savings-rate records, <strong>a date on the calendar getting closer</strong>.'},
+    {t:'Your ideal pace', d:'<strong>Sprint hard for 5–10 years, then stop completely.</strong> One intense decade beats three comfortable ones.'},
+  ],
+  B:[
+    {t:'Money mindset',  d:'Money is a byproduct of value — you\'d rather <strong>earn more than cut back</strong>. Comfort is non-negotiable; misery is not a strategy.'},
+    {t:'Your superpower',d:'<strong>Earning power.</strong> Career capital, negotiation, equity — your income curve is the strongest engine you own.'},
+    {t:'Your blind spot',d:'Lifestyle inflation hides in comfort. If spending grows with income, <strong>the target moves with you — forever</strong>.'},
+    {t:'Under pressure', d:'You buffer: bigger cushions, longer horizon, more comfort in the plan. Solid — but <strong>delay is your quiet enemy</strong>.'},
+    {t:'What energises you', d:'Winning the career game — promotions, bonuses, businesses that scale — <strong>while the portfolio grows in the background</strong>.'},
+    {t:'Your ideal pace', d:'<strong>Steady and comfortable over 20+ years.</strong> You arrive later than the Sprinter, but you enjoy every year on the way.'},
+  ],
+  C:[
+    {t:'Money mindset',  d:'Money buys options, not exits. You don\'t need to never work — <strong>you need to never HAVE to work</strong>.'},
+    {t:'Your superpower',d:'<strong>Adaptability.</strong> You can downshift, pivot, and redesign your work life around what matters this decade.'},
+    {t:'Your blind spot',d:'Optionality can become drift. Without a clear coast number, <strong>"flexible" quietly turns into "unplanned"</strong>.'},
+    {t:'Under pressure', d:'You flex — pick up more work, trim the budget, adjust. <strong>Your plan bends where rigid plans break.</strong>'},
+    {t:'What energises you', d:'Autonomy — choosing your hours, projects and people, <strong>while the fund compounds untouched</strong>.'},
+    {t:'Your ideal pace', d:'<strong>Front-load hard early, then downshift for decades.</strong> Freedom arrives in stages — and stage one starts soon.'},
+  ],
+  D:[
+    {t:'Money mindset',  d:'Money should work while you sleep. You measure wealth in <strong>monthly income, not net worth</strong>.'},
+    {t:'Your superpower',d:'<strong>Systems thinking.</strong> You build machines — portfolios, properties, businesses — that pay you whether you show up or not.'},
+    {t:'Your blind spot',d:'Complexity creep. Streams multiply, borders add tax rules, and <strong>"passive" can quietly become a second job</strong>.'},
+    {t:'Under pressure', d:'Your income keeps landing even when markets fall — <strong>you don\'t need to sell</strong>. That\'s your calm in the storm.'},
+    {t:'What energises you', d:'Watching income land — the first $100 month, the first $1,000 month, <strong>the month it covers rent</strong>.'},
+    {t:'Your ideal pace', d:'<strong>Build streams for 7–15 years</strong>, add geography when it multiplies the result — then let the machine run.'},
+  ],
+  HYBRID:[
+    {t:'Money mindset',  d:'Money is a toolbox, not a religion. You take <strong>what works from every strategy</strong> and leave the dogma.'},
+    {t:'Your superpower',d:'<strong>Range.</strong> You can save like a Sprinter one season, earn like a Builder the next, and build streams like a Streamer after that.'},
+    {t:'Your blind spot',d:'A foot in every path can mean momentum in none. <strong>Blends need one number and one direction.</strong>'},
+    {t:'Under pressure', d:'You re-balance — shifting weight to the strategy that fits the moment. Adaptive, <strong>as long as you don\'t restart from zero</strong>.'},
+    {t:'What energises you', d:'Designing a life that\'s actually yours — <strong>not following someone else\'s FIRE template</strong>.'},
+    {t:'Your ideal pace', d:'<strong>Iterate.</strong> Commit to a mix for a year, review, adjust. The blend evolves as your life does.'},
+  ],
+};
+
 const MIX_DESC = {
   A:'Full retirement as fast as possible, powered by a high savings rate',
   B:'Comfort now and later — income growth does the work, not sacrifice',
@@ -814,6 +870,16 @@ function resultHTML() {
       <div class="mix">${mixHTML}</div>
       <div class="mix-legend">${['A','B','C','D'].map(k =>
         `<div class="mix-legend__row"><strong>${MIX_NAMES[k]}</strong> — ${MIX_DESC[k]}</div>`).join('')}
+      </div>
+    </div>
+
+    <div class="res-card">
+      <div class="res-lbl">${p.name} — up close</div>
+      <div class="persona">${PERSONA[profile].map(tr =>
+        `<div class="persona__tile">
+          <div class="persona__t">${tr.t}</div>
+          <div class="persona__d">${tr.d}</div>
+        </div>`).join('')}
       </div>
     </div>
 
