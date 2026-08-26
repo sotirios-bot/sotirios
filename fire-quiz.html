@@ -244,6 +244,9 @@
 .gate__btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,165,0,.45)}
 .gate__btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
 .gate__micro{font-size:.72rem;color:var(--muted);margin-top:.75rem;line-height:1.5}
+.gate__err{font-size:.8rem;font-weight:600;color:#c0392b;line-height:1.4}
+.gate__input--err{border-color:#c0392b}
+.gate__input--err:focus{border-color:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.12)}
 
 
 /* ── RESULT v2 ── */
@@ -631,11 +634,10 @@ function gateHTML() {
   return `<div class="gate">
     <div class="gate__eye">One last step</div>
     <h1 class="gate__title">Your result is ready</h1>
-    <p class="gate__sub">Tell me where to send it and see your FIRE type instantly.</p>
+    <p class="gate__sub">Enter your email and see your FIRE type instantly.</p>
     <form class="gate__form" id="leadForm" novalidate>
-      <input class="gate__input" id="leadName"  type="text"  name="name"  placeholder="Your name"  autocomplete="name" required>
       <input class="gate__input" id="leadEmail" type="email" name="email" placeholder="Email address" autocomplete="email" required>
-      <input class="gate__input" id="leadPhone" type="tel"   name="phone" placeholder="Phone number" autocomplete="tel" required>
+      <p class="gate__err" id="leadErr" role="alert" hidden>Please enter a valid email address — e.g. name&#64;example.com</p>
       <button class="gate__btn" id="leadBtn" type="submit">Show my result →</button>
     </form>
     <p class="gate__micro">Your details are safe — I'll send you your FIRE profile and occasional practical FIRE insights. No spam, unsubscribe any time.</p>
@@ -873,23 +875,24 @@ function bindEvents() {
   el.addEventListener('submit', e => {
     if (e.target.id !== 'leadForm') return;
     e.preventDefault();
-    const name  = document.getElementById('leadName').value.trim();
-    const email = document.getElementById('leadEmail').value.trim();
-    const phone = document.getElementById('leadPhone').value.trim();
+    const emailInput = document.getElementById('leadEmail');
+    const err = document.getElementById('leadErr');
+    const email = emailInput.value.trim();
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const phoneOk = phone.replace(/\D/g, '').length >= 6;
-    if (!name || !emailOk || !phoneOk) {
-      if (!name) document.getElementById('leadName').focus();
-      else if (!emailOk) document.getElementById('leadEmail').focus();
-      else document.getElementById('leadPhone').focus();
+    if (!emailOk) {
+      err.hidden = false;
+      emailInput.classList.add('gate__input--err');
+      emailInput.focus();
       return;
     }
+    err.hidden = true;
+    emailInput.classList.remove('gate__input--err');
     const btn = document.getElementById('leadBtn');
     if (btn.disabled) return;
     btn.disabled = true; btn.textContent = 'One moment…';
     const { profile } = score(state.answers);
     const payload = new URLSearchParams({
-      name, email, phone,
+      email,
       profile: PROFILES[profile].name,
       profile_key: profile,
       answers: state.answers.join(''),
@@ -907,6 +910,13 @@ function bindEvents() {
       fetch(ZAPIER_WEBHOOK_URL, { method: 'POST', body: payload }).catch(() => {}),
       timeout
     ]).then(reveal, reveal);
+  });
+
+  el.addEventListener('input', e => {
+    if (e.target.id === 'leadEmail') {
+      const err = document.getElementById('leadErr');
+      if (err) { err.hidden = true; e.target.classList.remove('gate__input--err'); }
+    }
   });
 
   el.addEventListener('keydown', e => {
