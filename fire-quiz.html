@@ -213,6 +213,38 @@
 }
 .retake:hover{color:var(--ink)}
 
+
+.profile-desc strong{color:var(--ink);font-weight:700}
+
+/* ── LEAD GATE ── */
+.gate{max-width:440px;margin:1.5rem auto 0;animation:fadeUp .25s ease}
+.gate__eye{
+  display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.75rem;
+}
+.gate__title{
+  font-size:1.6rem;font-weight:800;letter-spacing:-.035em;
+  line-height:1.15;color:var(--ink);margin-bottom:.5rem;text-wrap:balance;
+}
+.gate__sub{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.gate__form{display:flex;flex-direction:column;gap:.75rem}
+.gate__input{
+  width:100%;padding:.8rem 1rem;font-size:.95rem;font-family:inherit;
+  color:var(--ink);background:var(--bg);
+  border:1.5px solid var(--border);border-radius:var(--radius);
+  transition:border-color .15s;
+}
+.gate__input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(19,70,200,.1)}
+.gate__input::placeholder{color:var(--muted);opacity:.7}
+.gate__btn{
+  background:var(--gold);color:var(--navy);font-weight:800;font-size:1rem;
+  padding:.85rem 2rem;border-radius:50px;border:none;cursor:pointer;
+  font-family:inherit;margin-top:.25rem;transition:transform .15s,box-shadow .15s;
+}
+.gate__btn:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,165,0,.45)}
+.gate__btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
+.gate__micro{font-size:.72rem;color:var(--muted);margin-top:.75rem;line-height:1.5}
+
 @media(max-width:400px){
   .intro__h1{font-size:1.65rem}
   .profile-name{font-size:1.65rem}
@@ -340,6 +372,8 @@ const CALL_URL      = 'https://cal.com/sotirios-seridis/clarity-call';
 const PLAYBOOK_URL  = 'https://sotirios.beehiiv.com/products/playbook';
 const PAGE_URL      = 'https://sotirios-seridis.com/fire-quiz'; // swap when live
 const SITE_URL      = 'https://sotirios-seridis.com';
+const ZAPIER_WEBHOOK_URL = 'ZAPIER_WEBHOOK_URL'; // paste your Zapier Catch Hook URL to enable lead capture
+const CAPTURE_ENABLED = ZAPIER_WEBHOOK_URL.indexOf('https://') === 0;
 
 // ── QUESTIONS ──
 const QS = [
@@ -431,7 +465,7 @@ const PROFILES = {
   A: {
     badge:"SPRINTER", name:"The Sprinter",
     identity:"Speed through frugality.",
-    desc:"You'd rather live small now and be completely free years before everyone else. Full retirement, as fast as the maths allow.",
+    desc:"You'd rather <strong>live small now and be completely free years before everyone else</strong>. Full retirement, <strong>as fast as the maths allow</strong>.",
     paths:[
       {name:"Lean FIRE",    meta:"Target $500,000 · 5–10 yrs"},
       {name:"Traditional FIRE", meta:"Target $1,000,000 · 10–17 yrs"},
@@ -440,7 +474,7 @@ const PROFILES = {
   B: {
     badge:"BUILDER", name:"The Builder",
     identity:"Comfort on the way, comfort at the end.",
-    desc:"You refuse the deprivation route. Your lever is income growth, not sacrifice — retire in your 50s without a single miserable year on the way.",
+    desc:"You refuse the deprivation route. Your lever is <strong>income growth, not sacrifice</strong> — retire in your 50s <strong>without a single miserable year</strong> on the way.",
     paths:[
       {name:"Slow FIRE", meta:"Target $1,000,000 · 20–25 yrs"},
       {name:"Fat FIRE",  meta:"Target $3,500,000 · 20–30 yrs"},
@@ -449,7 +483,7 @@ const PROFILES = {
   C: {
     badge:"FLEXER", name:"The Flexer",
     identity:"Buying freedom in stages, starting now.",
-    desc:"You don't need to fully retire — you need pressure off. Front-load the savings, then work on your own terms for as long as you like.",
+    desc:"You don't need to fully retire — <strong>you need pressure off</strong>. Front-load the savings, then <strong>work on your own terms</strong> for as long as you like.",
     paths:[
       {name:"Coast FIRE",  meta:"Target $200,000 early · then coast"},
       {name:"Barista FIRE",meta:"Target $600,000 · 10–15 yrs"},
@@ -459,7 +493,7 @@ const PROFILES = {
   D: {
     badge:"STREAMER", name:"The Streamer",
     identity:"Income streams plus geography.",
-    desc:"You want assets that pay you monthly — and you'd happily collect that income in a country where it goes twice as far. The most powerful combination there is.",
+    desc:"You want <strong>assets that pay you monthly</strong> — and you'd happily collect that income <strong>in a country where it goes twice as far</strong>. The most powerful combination there is.",
     paths:[
       {name:"Cash Flow FIRE", meta:"Target $1,200,000 in assets · 15–20 yrs"},
       {name:"Expat FIRE",     meta:"Target $600,000 · 7–12 yrs"},
@@ -468,7 +502,7 @@ const PROFILES = {
   HYBRID: {
     badge:"HYBRID", name:"The Hybrid",
     identity:"Life isn't one strategy.",
-    desc:"You scored across profiles — and that's a strength. Almost everyone who actually reaches financial independence combines paths: Coast + Barista, Lean now → Fat later, Cash Flow + Expat.",
+    desc:"You scored across profiles — <strong>and that's a strength</strong>. Almost everyone who actually reaches financial independence <strong>combines paths</strong>: Coast + Barista, Lean now → Fat later, Cash Flow + Expat.",
     paths:[
       {name:"Hybrid FIRE", meta:"Target ~$700,000 · 8–15 yrs"},
     ],
@@ -496,6 +530,7 @@ function render() {
   const el = document.getElementById('quiz');
   if (state.screen === 'intro') { el.innerHTML = introHTML(); return; }
   if (state.screen === 'question') { el.innerHTML = questionHTML(); return; }
+  if (state.screen === 'gate') { el.innerHTML = gateHTML(); return; }
   if (state.screen === 'result') { el.innerHTML = resultHTML(); return; }
 }
 
@@ -505,7 +540,7 @@ function introHTML() {
     <h1 class="intro__h1">Which FIRE Type Are You?</h1>
     <p class="intro__sub">9 questions. 60 seconds. Your early-retirement profile, instantly.</p>
     <button class="intro__btn" id="startBtn">Start →</button>
-    <p class="intro__fine">No email. No sign-up. Result appears immediately.</p>
+    <p class="intro__fine">${CAPTURE_ENABLED ? 'Free · 9 questions · 60 seconds' : 'No email. No sign-up. Result appears immediately.'}</p>
   </div>`;
 }
 
@@ -527,6 +562,21 @@ function questionHTML() {
         </button>`).join('')}
     </div>
     ${i > 0 ? `<button class="back-link" id="backBtn">← Back</button>` : ''}
+  </div>`;
+}
+
+function gateHTML() {
+  return `<div class="gate">
+    <div class="gate__eye">One last step</div>
+    <h1 class="gate__title">Your result is ready</h1>
+    <p class="gate__sub">Tell me where to send it and see your FIRE type instantly.</p>
+    <form class="gate__form" id="leadForm" novalidate>
+      <input class="gate__input" id="leadName"  type="text"  name="name"  placeholder="Your name"  autocomplete="name" required>
+      <input class="gate__input" id="leadEmail" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+      <input class="gate__input" id="leadPhone" type="tel"   name="phone" placeholder="Phone number" autocomplete="tel" required>
+      <button class="gate__btn" id="leadBtn" type="submit">Show my result →</button>
+    </form>
+    <p class="gate__micro">Your details are safe — I'll send you your FIRE profile and occasional practical FIRE insights. No spam, unsubscribe any time.</p>
   </div>`;
 }
 
@@ -634,7 +684,7 @@ function bindEvents() {
           state.currentQ = qi + 1;
           state.screen = 'question';
         } else {
-          state.screen = 'result';
+          state.screen = CAPTURE_ENABLED ? 'gate' : 'result';
         }
         render();
         window.scrollTo(0, 0);
@@ -675,6 +725,45 @@ function bindEvents() {
   });
 
   // Keyboard: Enter/Space on opt triggers click
+  el.addEventListener('submit', e => {
+    if (e.target.id !== 'leadForm') return;
+    e.preventDefault();
+    const name  = document.getElementById('leadName').value.trim();
+    const email = document.getElementById('leadEmail').value.trim();
+    const phone = document.getElementById('leadPhone').value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const phoneOk = phone.replace(/\D/g, '').length >= 6;
+    if (!name || !emailOk || !phoneOk) {
+      if (!name) document.getElementById('leadName').focus();
+      else if (!emailOk) document.getElementById('leadEmail').focus();
+      else document.getElementById('leadPhone').focus();
+      return;
+    }
+    const btn = document.getElementById('leadBtn');
+    if (btn.disabled) return;
+    btn.disabled = true; btn.textContent = 'One moment…';
+    const { profile } = score(state.answers);
+    const payload = new URLSearchParams({
+      name, email, phone,
+      profile: PROFILES[profile].name,
+      profile_key: profile,
+      answers: state.answers.join(''),
+      source: location.href,
+      submitted_at: new Date().toISOString()
+    });
+    const reveal = () => {
+      if (window.dataLayer) window.dataLayer.push({ event: 'quiz_lead', quiz_profile: PROFILES[profile].name });
+      state.screen = 'result';
+      render();
+      window.scrollTo(0, 0);
+    };
+    const timeout = new Promise(res => setTimeout(res, 4000));
+    Promise.race([
+      fetch(ZAPIER_WEBHOOK_URL, { method: 'POST', body: payload }).catch(() => {}),
+      timeout
+    ]).then(reveal, reveal);
+  });
+
   el.addEventListener('keydown', e => {
     if ((e.key==='Enter'||e.key===' ') && e.target.classList.contains('opt')) {
       e.preventDefault(); e.target.click();
