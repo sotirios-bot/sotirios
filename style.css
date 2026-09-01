@@ -743,6 +743,7 @@ a { color: inherit; text-decoration: none; }
 .floating-btn__icon { width: 20px; height: 20px; flex-shrink: 0; }
 .floating-btn--whatsapp { background: #25d366; }
 .floating-btn--booking   { background: var(--accent); }
+.floating-btn--quiz      { background: #0E9F6E; }
 .floating-btn--beehiiv   { background: var(--gold); }
 .floating-btn--youtube   { background: var(--dark); }
 .floating-btn--linkedin  { background: var(--muted); }
