@@ -837,3 +837,111 @@ a { color: inherit; text-decoration: none; }
   transition: border-color 0.15s;
 }
 .offer__start-alt a:hover { border-bottom-color: var(--gold); }
+
+
+/* ══ MASTERMIND SECTION — layout ══ */
+.offer__head { text-align: center; max-width: 700px; margin: 0 auto 2rem; }
+.offer__head h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.4px;
+  line-height: 1.12;
+  margin-bottom: 0.5rem;
+}
+.offer .offer__duration {
+  font-family: inherit;
+  font-size: 0.92rem;
+  letter-spacing: 0;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0;
+}
+
+/* price bar — full width, price left, extras right */
+.offer__price-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2.5rem;
+  flex-wrap: wrap;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.15rem;
+}
+.offer__price-bar .offer__price-main { margin-bottom: 0; }
+.offer__price-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.offer__price-bar .offer__bonus { margin: 0; }
+.offer__price-bar .offer__faq-link { margin: 0; white-space: nowrap; }
+
+/* two balanced cards */
+.offer__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+  align-items: stretch;
+  margin-bottom: 1.15rem;
+}
+.offer__card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius);
+  padding: 2rem;
+}
+.offer__card-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1.35rem;
+}
+.offer__card .offer__list,
+.offer__card .offer__what-next { margin: 0; }
+
+/* guarantee — full width band */
+.offer .offer__guarantee {
+  margin: 0 0 2rem;
+  text-align: center;
+}
+
+.offer .offer__start--center { margin-top: 0; }
+
+/* not-for — horizontal strip instead of a buried list */
+.offer__not-for {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.offer__not-for h4 { text-align: center; margin-bottom: 1.25rem; color: rgba(255,255,255,0.5); }
+.offer .offer__not-for ul {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 1.75rem;
+}
+.offer .offer__not-for ul li { color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+
+@media (max-width: 860px) {
+  .offer__cols { grid-template-columns: 1fr; }
+  .offer .offer__not-for ul { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .offer__price-bar { flex-direction: column; align-items: flex-start; }
+  .offer .offer__not-for ul { grid-template-columns: 1fr; }
+}
+
+/* Mastermind refinements */
+.offer .offer__start--center .btn { display: inline-block; }
+.offer__card { display: flex; flex-direction: column; }
+.offer__card .offer__list { flex: 1; justify-content: space-evenly; }
+.offer .offer__guarantee {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
