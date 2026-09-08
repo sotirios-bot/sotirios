@@ -819,3 +819,21 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 860px) {
   .quiz-cta__inner { flex-direction: column; align-items: flex-start; gap: 1.75rem; }
 }
+
+
+/* ── OFFER: get-started CTA ── */
+.offer__start { margin-top: 1.5rem; }
+.offer__start--center { text-align: center; margin-top: 2rem; }
+.offer__start--center .btn { display: block; text-align: center; }
+.offer__start-alt {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.85rem;
+}
+.offer__start-alt a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(240,165,0,0.35);
+  transition: border-color 0.15s;
+}
+.offer__start-alt a:hover { border-bottom-color: var(--gold); }
