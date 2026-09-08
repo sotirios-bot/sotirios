@@ -1046,3 +1046,96 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 520px) {
   .offer__steps { grid-template-columns: 1fr; }
 }
+
+
+/* ══ MASTERMIND — consistent rhythm, type & closing block ══ */
+/* even 2rem between every block; 3.5rem before the closing strip */
+.offer .offer__head       { margin-bottom: 2rem; }
+.offer .offer__outcomes   { margin-bottom: 2rem; }
+.offer .offer__programme  { margin-bottom: 2rem; }
+.offer .offer__guarantee  { margin: 0 auto 2rem; }
+.offer .offer__close      { margin-bottom: 0; }
+.offer .offer__not-for    { margin-top: 3.5rem; }
+
+/* one line-height, one type scale */
+.offer .offer__what-next li,
+.offer .offer__step-t,
+.offer .offer__guarantee,
+.offer .offer__duration   { font-size: 0.95rem; line-height: 1.6; }
+.offer .offer__not-for ul li,
+.offer .offer__close .offer__start-alt { font-size: 0.85rem; line-height: 1.6; }
+
+/* matching list rhythm in both blocks */
+.offer .offer__what-next--grid { gap: 1.25rem 2.5rem; }
+
+/* steps are divs now — no list semantics, no stray markers */
+.offer .offer__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.offer .offer__step { list-style: none; }
+
+/* key phrase in each deliverable */
+.offer__key { color: var(--gold); font-weight: 700; }
+
+/* closing block — a real card, not floating elements */
+.offer .offer__close {
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 2.75rem 2rem;
+}
+.offer__close-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1rem;
+}
+.offer .offer__price-line { margin-bottom: 2rem; }
+.offer__price-amt {
+  display: block;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+.offer__price-ctx {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.4rem;
+}
+.offer .offer__close .btn { display: inline-block; }
+.offer .offer__close .offer__start-alt { margin-top: 1.35rem; }
+.offer .offer__close .offer__faq-link { display: inline-block; margin-top: 1.5rem; }
+
+@media (max-width: 860px) { .offer .offer__steps { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) {
+  .offer .offer__steps { grid-template-columns: 1fr; }
+  .offer .offer__close { padding: 2rem 1.25rem; }
+}
+
+/* price amount must beat the older `.offer__price-line span` rule */
+.offer .offer__price-line .offer__price-amt {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.offer .offer__price-line .offer__price-ctx {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+}
+
+/* YouTube brand red */
+.floating-btn--youtube { background: #FF0000; }
