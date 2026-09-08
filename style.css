@@ -945,3 +945,104 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto 2rem;
   text-align: left;
 }
+
+
+/* ══ MASTERMIND v2 — outcomes lead, price supports ══ */
+.offer__h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.2px;
+  margin-bottom: 1.6rem;
+}
+
+/* outcomes — the hero block */
+.offer__outcomes {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  margin-bottom: 1.15rem;
+}
+.offer .offer__what-next--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem 2.5rem;
+  margin: 0;
+}
+.offer__incl { color: var(--gold); font-weight: 700; }
+
+/* programme — the 4 sessions as a sequence */
+.offer__programme {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  margin-bottom: 2.25rem;
+}
+.offer__steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+  margin: 0;
+  counter-reset: none;
+}
+.offer__step {
+  padding-top: 1rem;
+  border-top: 2px solid rgba(19,70,200,0.55);
+}
+.offer__step-n {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.offer__step-t {
+  display: block;
+  font-size: 0.93rem;
+  color: #fff;
+  line-height: 1.5;
+}
+
+/* close block — price as supporting detail, then the ask */
+.offer__close { text-align: center; }
+.offer__price-line {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin-bottom: 1.35rem;
+}
+.offer__price-line span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+}
+.offer__close .btn { display: inline-block; }
+.offer__close .offer__start-alt {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.9rem;
+}
+.offer__close .offer__start-alt a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(240,165,0,0.35);
+}
+.offer__close .offer__start-alt a:hover { border-bottom-color: var(--gold); }
+.offer__close .offer__faq-link { display: inline-block; margin-top: 1.25rem; }
+
+@media (max-width: 860px) {
+  .offer__steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .offer .offer__what-next--grid { grid-template-columns: 1fr; }
+  .offer__outcomes, .offer__programme { padding: 1.75rem; }
+}
+@media (max-width: 520px) {
+  .offer__steps { grid-template-columns: 1fr; }
+}
