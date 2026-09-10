@@ -10,13 +10,13 @@
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Which Life Change Do You Need? — Free Quiz | Sotirios Seridis</title>
-  <meta name="description" content="9 questions, 60 seconds. Find out what life change you actually need — and the first move that gets you there. Free, instant result." />
+  <title>What's Your Way Out of Corporate? — Free Quiz | Sotirios Seridis</title>
+  <meta name="description" content="Twelve questions, two minutes. Find your route out of corporate — your profile, your Freedom Number, and the alternatives that actually fit you." />
   <link rel="canonical" href="https://www.sotirios-seridis.com/life-quiz" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sotirios-seridis.com/life-quiz" />
-  <meta property="og:title" content="Which Life Change Do You Need? — Free Quiz" />
-  <meta property="og:description" content="9 questions, 60 seconds. Find out what life change you actually need — and the first move that gets you there. Free, instant result." />
+  <meta property="og:title" content="What's Your Way Out of Corporate? — Free Quiz" />
+  <meta property="og:description" content="Twelve questions, two minutes. Find your route out of corporate — your profile, your Freedom Number, and the alternatives that actually fit you." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -317,6 +317,50 @@
 .persona__d strong{color:var(--ink);font-weight:700}
 @media(max-width:520px){.persona{grid-template-columns:1fr}}
 
+
+/* ── INTRO v2 ── */
+.intro{
+  max-width:560px;margin:0 auto;text-align:center;
+  padding:2.5rem 1.5rem 3rem;
+  background:linear-gradient(180deg,var(--surface) 0%,transparent 75%);
+  border-radius:16px;
+}
+.intro__h1{
+  font-size:2.15rem;font-weight:800;letter-spacing:-.04em;
+  line-height:1.1;color:var(--ink);margin-bottom:.75rem;text-wrap:balance;
+}
+.intro__hl{color:var(--blue)}
+.intro__sub{
+  font-size:1rem;color:var(--muted);line-height:1.65;
+  margin:0 auto 1.75rem;max-width:430px;
+}
+.intro__gets{
+  list-style:none;text-align:left;display:flex;flex-direction:column;gap:.7rem;
+  max-width:400px;margin:0 auto 2rem;padding:1.25rem 1.4rem;
+  background:var(--bg);border:1px solid var(--border);border-radius:12px;
+}
+.intro__gets li{
+  font-size:.88rem;color:var(--ink);line-height:1.5;
+  padding-left:1.6rem;position:relative;
+}
+.intro__gets li::before{
+  content:'✓';position:absolute;left:0;top:0;
+  color:var(--blue);font-weight:800;
+}
+.intro__gets em{color:var(--blue);font-style:normal;font-weight:700}
+.intro__fine{font-size:.75rem;color:var(--muted);margin-top:1rem}
+
+/* ── ALTERNATIVES TO CORPORATE ── */
+.alts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.alt{
+  background:var(--bg);border:1px solid var(--border);
+  border-left:3px solid var(--blue);border-radius:8px;
+  padding:.85rem 1rem;
+}
+.alt__n{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem;line-height:1.35}
+.alt__d{font-size:.78rem;color:var(--muted);line-height:1.5}
+@media(max-width:560px){.alts{grid-template-columns:1fr}}
+
 @media(max-width:400px){
   .intro__h1{font-size:1.65rem}
   .profile-name{font-size:1.65rem}
@@ -441,84 +485,111 @@ const CAPTURE_ENABLED = ZAPIER_WEBHOOK_URL.indexOf('https://') === 0;
 
 const QS = [
   {
-    text: "It's Sunday evening. How do you feel about the week ahead?",
+    text: "What does freedom look like to you?",
     opts: [
-      {id:'A', text:"<strong>Dread.</strong> I'm counting down to a day I don't have to show up at all"},
-      {id:'B', text:"<strong>Restless.</strong> I have my own ideas I'd rather be building"},
-      {id:'C', text:"<strong>Tired before it starts.</strong> The work is fine — the pace isn't"},
-      {id:'D', text:"<strong>Flat.</strong> It's not the job. This just isn't the life I pictured"},
+      {id:'A', text:"<strong>Never having to work again</strong>"},
+      {id:'B', text:"<strong>Working for myself</strong> — owning what I build"},
+      {id:'C', text:"<strong>Work becoming a choice</strong>, not an obligation"},
+      {id:'D', text:"<strong>A different life entirely</strong> — new work, new place"},
     ]
   },
   {
-    text: "What's really pushing you to change?",
+    text: "What's the biggest thing holding you back right now?",
     opts: [
-      {id:'A', text:"I want <strong>my time back</strong>, permanently"},
-      {id:'B', text:"I'm <strong>capable of more</strong> than this role will ever allow"},
-      {id:'C', text:"My <strong>health, family and relationships</strong> are paying for this"},
-      {id:'D', text:"I want a <strong>different life</strong>, not a better version of this one"},
+      {id:'A', text:"<strong>Everything depends on one salary</strong>"},
+      {id:'B', text:"<strong>Ideas, but no runway</strong> — no time or money to start"},
+      {id:'C', text:"<strong>A mortgage and commitments</strong> I can't walk away from"},
+      {id:'D', text:"<strong>I'm in a life I didn't really choose</strong>"},
     ]
   },
   {
-    text: "What role does money play in the change you want?",
+    text: "What's pulling you forward?",
     opts: [
-      {id:'A', text:"It's my <strong>exit fund</strong> — enough to never need a salary again"},
-      {id:'B', text:"It's <strong>fuel</strong> — I want to earn more, on my own terms"},
-      {id:'C', text:"It's a <strong>buffer</strong> — enough to slow down without fear"},
-      {id:'D', text:"It's a <strong>passport</strong> — enough to live somewhere and something different"},
+      {id:'A', text:"<strong>Never needing a salary again</strong>"},
+      {id:'B', text:"<strong>Building something of my own</strong>"},
+      {id:'C', text:"<strong>A pace I can actually live with</strong>"},
+      {id:'D', text:"<strong>Becoming someone different</strong>, somewhere else"},
     ]
   },
   {
-    text: "Five years from now, in your ideal life, work is…",
+    text: "In the life you want, what role does work play?",
     opts: [
-      {id:'A', text:"<strong>Optional.</strong> I might work, but nothing depends on it"},
-      {id:'B', text:"<strong>Mine.</strong> My business, my projects, my upside"},
-      {id:'C', text:"<strong>Lighter.</strong> Same field, far fewer hours, no pressure"},
-      {id:'D', text:"<strong>Different.</strong> New craft, new place, new people"},
+      {id:'A', text:"<strong>Optional</strong> — nothing depends on it"},
+      {id:'B', text:"<strong>Central, but it's mine</strong> — my projects, my upside"},
+      {id:'C', text:"<strong>Lighter</strong> — good work, far fewer hours"},
+      {id:'D', text:"<strong>Different</strong> — work I'd choose all over again"},
     ]
   },
   {
-    text: "What are you actually willing to risk to get there?",
+    text: "What's money actually for, in your plan?",
     opts: [
-      {id:'A', text:"<strong>Comfort now</strong> — I'll live smaller to buy freedom sooner"},
-      {id:'B', text:"<strong>Security</strong> — I'd trade a stable salary for equity in something I own"},
-      {id:'C', text:"<strong>Status</strong> — I'll take a smaller title and less money for my time back"},
-      {id:'D', text:"<strong>Familiarity</strong> — I'd leave the country, the network, the identity behind"},
+      {id:'A', text:"<strong>Buying my time back</strong>, permanently"},
+      {id:'B', text:"<strong>Fuel</strong> for what I'm building"},
+      {id:'C', text:"<strong>Breathing room</strong> — enough to slow down safely"},
+      {id:'D', text:"<strong>A passport</strong> to a different life"},
     ]
   },
   {
-    text: "When do you realistically want this change to happen?",
+    text: "What's your biggest advantage in making this happen?",
     opts: [
-      {id:'A', text:"<strong>As soon as the numbers allow.</strong> I'm already counting"},
-      {id:'B', text:"<strong>I'm building now</strong> — it goes live when it's ready"},
-      {id:'C', text:"I need <strong>relief in months</strong>, not years"},
-      {id:'D', text:"When the plan is solid enough to make <strong>one clean break</strong>"},
+      {id:'A', text:"<strong>Discipline</strong> — I can hold a plan for years"},
+      {id:'B', text:"<strong>Drive</strong> — I make things happen"},
+      {id:'C', text:"<strong>Perspective</strong> — I know what actually matters"},
+      {id:'D', text:"<strong>Courage</strong> — I'll walk away from what isn't working"},
     ]
   },
   {
-    text: "What's the biggest thing standing in your way?",
+    text: "What pace feels right?",
     opts: [
-      {id:'A', text:"<strong>The number.</strong> I don't know how much is actually enough"},
-      {id:'B', text:"<strong>Focus.</strong> Too many ideas, none of them committed to"},
-      {id:'C', text:"<strong>Permission.</strong> I can't see how to slow down without losing everything"},
-      {id:'D', text:"<strong>Direction.</strong> I know I want out — I don't know what I'm walking into"},
+      {id:'A', text:"<strong>Sprint hard now</strong>, finish years early"},
+      {id:'B', text:"<strong>Build steadily</strong> and let it compound"},
+      {id:'C', text:"<strong>Gradual</strong> — ease into it, no drama"},
+      {id:'D', text:"<strong>One clean break</strong> when the moment is right"},
     ]
   },
   {
-    text: "How do you make big life decisions?",
+    text: "What would you happily trade to get there sooner?",
     opts: [
-      {id:'A', text:"<strong>Spreadsheets.</strong> I want the maths to tell me it's safe"},
-      {id:'B', text:"<strong>Momentum.</strong> I start, then figure it out as I go"},
-      {id:'C', text:"<strong>Together.</strong> Family and stability come first — we decide as one"},
-      {id:'D', text:"<strong>Instinct.</strong> When something feels wrong long enough, I move"},
+      {id:'A', text:"<strong>Spending</strong> — I'd live smaller for a bigger life"},
+      {id:'B', text:"<strong>Certainty</strong> — a salary for equity in my own thing"},
+      {id:'C', text:"<strong>Status</strong> — a smaller title for more life"},
+      {id:'D', text:"<strong>Familiarity</strong> — the country, the network, the comfort"},
     ]
   },
   {
-    text: "Ten years out, the change worked. What does it look like?",
+    text: "How do you like to grow money?",
     opts: [
-      {id:'A', text:"I <strong>answer to no one</strong>. My time is entirely my own"},
-      {id:'B', text:"I <strong>built something that's mine</strong>, and it pays me"},
-      {id:'C', text:"I'm <strong>present</strong> — health, family, a pace I can hold for decades"},
-      {id:'D', text:"I live <strong>somewhere I chose</strong>, doing work I'd do for free"},
+      {id:'A', text:"<strong>Simple index funds</strong> — set it and forget it"},
+      {id:'B', text:"<strong>Into my own thing</strong> — it's my best asset"},
+      {id:'C', text:"<strong>Steady and automatic</strong> — and left untouched"},
+      {id:'D', text:"<strong>Assets that pay monthly</strong> — dividends, rentals"},
+    ]
+  },
+  {
+    text: "How much does <em>where</em> you live matter?",
+    opts: [
+      {id:'A', text:"<strong>A cheaper base</strong> would get me there years sooner"},
+      {id:'B', text:"<strong>Wherever the opportunity is</strong>"},
+      {id:'C', text:"<strong>Roots matter</strong> — home, family, community"},
+      {id:'D', text:"<strong>Everything</strong> — a new place is half the point"},
+    ]
+  },
+  {
+    text: "Your income jumps by $1,000 a month, starting now. Where does it go?",
+    opts: [
+      {id:'A', text:"<strong>Straight into investments</strong> — it buys months of freedom"},
+      {id:'B', text:"<strong>Into the thing I'm building</strong>"},
+      {id:'C', text:"<strong>Into the buffer</strong> — less pressure, more room"},
+      {id:'D', text:"<strong>Saved for the move</strong> — runway for a fresh start"},
+    ]
+  },
+  {
+    text: "Ten years on, it worked. What are you proudest of?",
+    opts: [
+      {id:'A', text:"<strong>My time is entirely my own</strong>"},
+      {id:'B', text:"<strong>I built something real</strong> that outlasts me"},
+      {id:'C', text:"<strong>I was there</strong> — present, healthy, not missing it"},
+      {id:'D', text:"<strong>I became someone</strong> I wouldn't have recognised"},
     ]
   },
 ];
@@ -575,7 +646,7 @@ const PROFILES = {
 const state = {
   screen: 'intro',   // 'intro' | 'question' | 'result'
   currentQ: 0,       // 0–8
-  answers: Array(9).fill(null),
+  answers: Array(12).fill(null),
 };
 
 // ── SCORING ──
@@ -598,11 +669,16 @@ function render() {
 
 function introHTML() {
   return `<div class="intro">
-    <div class="intro__eye">Sotirios Seridis · Life Quiz</div>
-    <h1 class="intro__h1">Which Life Change Do You Need?</h1>
-    <p class="intro__sub">9 questions. 60 seconds. What needs to change — and your first move.</p>
-    <button class="intro__btn" id="startBtn">Start →</button>
-    <p class="intro__fine">${CAPTURE_ENABLED ? 'Free · 9 questions · 60 seconds' : 'No email. No sign-up. Result appears immediately.'}</p>
+    <div class="intro__eye">Free · 12 questions · 2 minutes</div>
+    <h1 class="intro__h1">What's your way out of <span class="intro__hl">corporate</span>?</h1>
+    <p class="intro__sub">You don't need another job. You need a different setup — and there are more of them than most people realise.</p>
+    <ul class="intro__gets">
+      <li>Your profile — what you're really optimising for</li>
+      <li>Your Freedom Number, and how long it takes</li>
+      <li>The alternatives to corporate that fit <em>you</em></li>
+    </ul>
+    <button class="intro__btn" id="startBtn">Start the quiz →</button>
+    <p class="intro__fine">${CAPTURE_ENABLED ? 'No sign-up to start · Instant result' : 'No email. No sign-up. Result appears immediately.'}</p>
   </div>`;
 }
 
@@ -610,11 +686,11 @@ function questionHTML() {
   const i = state.currentQ;
   const q = QS[i];
   const prev = state.answers[i];
-  const pct = Math.round((i / 9) * 100);
+  const pct = Math.round((i / 12) * 100);
 
   return `<div class="q-screen">
     <div class="prog-bar"><div class="prog-bar__fill" style="width:${pct}%"></div></div>
-    <div class="prog-txt">Question ${i+1} of 9</div>
+    <div class="prog-txt">Question ${i+1} of 12</div>
     <div class="q-text">${q.text}</div>
     <div class="opts">
       ${q.opts.map(o => `
@@ -690,6 +766,39 @@ const PERSONA = {
     {t:'Under pressure',     d:"You rebalance rather than panic. <strong>Adaptive — as long as you don't restart from zero.</strong>"},
     {t:'What energises you', d:"Designing a life that's genuinely yours — <strong>not a template someone else wrote</strong>."},
     {t:'Your first move',    d:"Choose your <strong>two strongest changes</strong> and sequence them — one first, one second."},
+  ],
+};
+
+const ALTERNATIVES = {
+  A:[
+    {n:'Live off your assets', d:'Full independence — the portfolio covers life, work is optional'},
+    {n:'Contract in bursts',   d:'Six months on, six months off — high day rate, long breaks'},
+    {n:'Remote job, cheaper base', d:'Same salary, half the costs — the gap closes fast'},
+    {n:'Capped freelancing',   d:'Your skills, sold directly, with a hard limit on hours'},
+  ],
+  B:[
+    {n:'Productised service',  d:'Fixed scope, fixed price, repeatable — the freelancer\'s escape from hours'},
+    {n:'Freelance, then agency', d:'Start solo, add people, sell the capacity rather than your time'},
+    {n:'Buy a small business', d:'Skip the zero-to-one — acquire something that already earns'},
+    {n:'Consulting with upside', d:'Equity or revenue share instead of a day rate'},
+  ],
+  C:[
+    {n:'Four-day week',        d:'Often available in your current role — you just have to ask'},
+    {n:'Fractional senior role', d:'Two or three days a week, senior pay, no politics'},
+    {n:'A small, steady client base', d:'Three or four good clients beats one employer'},
+    {n:'Teaching or training',  d:'Sell what you already know, on a schedule you set'},
+  ],
+  D:[
+    {n:'Remote first, then move', d:'Change the job before the country — keep income through the transition'},
+    {n:'Retrain deliberately',  d:'A focused course or certification into work you\'d actually choose'},
+    {n:'Location-independent freelancing', d:'Skills that travel, clients that don\'t care where you are'},
+    {n:'Build small, somewhere cheaper', d:'A modest business goes much further in a low-cost country'},
+  ],
+  HYBRID:[
+    {n:'Remote now, freelance later', d:'Change one variable at a time — sequence beats leaping'},
+    {n:'Part-time job + side business', d:'Stability underneath, upside on top'},
+    {n:'Consulting + investments', d:'Fees cover today, the portfolio covers tomorrow'},
+    {n:'Contract work + lower cost base', d:'Earn at home rates, live at local ones'},
   ],
 };
 
@@ -795,12 +904,12 @@ function resultHTML() {
   const { profile, tied } = score(state.answers);
   const p = PROFILES[profile];
   const isHybrid = profile === 'HYBRID';
-  const showAccel = profile === 'A' && state.answers[4] === 'D';
+  const showAccel = profile === 'A' && (state.answers[9] === 'A' || state.answers[9] === 'D');
 
   const counts = {A:0,B:0,C:0,D:0};
   state.answers.forEach(a => { if (a) counts[a]++; });
   const mixHTML = ['A','B','C','D'].map(k => {
-    const pct = Math.round((counts[k] / 9) * 100);
+    const pct = Math.round((counts[k] / 12) * 100);
     const isTop = isHybrid ? tied.indexOf(k) !== -1 : k === profile;
     return `<div class="mix__row${isTop ? ' mix__row--top' : ''}">
       <span class="mix__name">${MIX_NAMES[k]}</span>
@@ -872,6 +981,16 @@ function resultHTML() {
     </div>
 
     <div class="res-card">
+      <div class="res-lbl">Your best alternatives to corporate</div>
+      <div class="alts">${ALTERNATIVES[profile].map(a =>
+        `<div class="alt">
+          <div class="alt__n">${a.n}</div>
+          <div class="alt__d">${a.d}</div>
+        </div>`).join('')}
+      </div>
+    </div>
+
+    <div class="res-card">
       <div class="res-lbl">5 ways to work towards your change</div>
       <ol class="ways">${waysHTML}</ol>
     </div>
@@ -921,7 +1040,7 @@ function bindEvents() {
     if (e.target.id === 'startBtn') {
       state.screen = 'question';
       state.currentQ = 0;
-      state.answers = Array(9).fill(null);
+      state.answers = Array(12).fill(null);
       render(); return;
     }
 
@@ -934,12 +1053,12 @@ function bindEvents() {
       const qi = state.currentQ;
       // Clear answers forward
       state.answers[qi] = id;
-      for (let j = qi+1; j < 9; j++) state.answers[j] = null;
+      for (let j = qi+1; j < 12; j++) state.answers[j] = null;
       // Highlight for 250ms then advance
       opt.classList.add('is-chosen');
       setTimeout(() => {
         state.advancing = false;
-        if (qi < 8) {
+        if (qi < 11) {
           state.currentQ = qi + 1;
           state.screen = 'question';
         } else {
@@ -967,7 +1086,7 @@ function bindEvents() {
     if (e.target.id === 'retakeBtn') {
       state.screen = 'intro';
       state.currentQ = 0;
-      state.answers = Array(9).fill(null);
+      state.answers = Array(12).fill(null);
       render();
       window.scrollTo(0, 0);
       return;
