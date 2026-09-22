@@ -12,9 +12,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How Exposed Are You? — Free Plan B Quiz | Sotirios Seridis</title>
   <meta name="description" content="Twelve questions, two minutes. Get your exposure score and the Plan B route that fits your skills — plus the first moves worth making." />
-  <link rel="canonical" href="https://www.sotirios-seridis.com/life-quiz" />
+  <link rel="canonical" href="https://www.sotirios-seridis.com/plan-b-quiz" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.sotirios-seridis.com/life-quiz" />
+  <meta property="og:url" content="https://www.sotirios-seridis.com/plan-b-quiz" />
   <meta property="og:title" content="How Exposed Are You? — Free Plan B Quiz" />
   <meta property="og:description" content="Twelve questions, two minutes. Get your exposure score and the Plan B route that fits your skills — plus the first moves worth making." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -350,16 +350,6 @@
 .intro__gets em{color:var(--blue);font-style:normal;font-weight:700}
 .intro__fine{font-size:.75rem;color:var(--muted);margin-top:1rem}
 
-/* ── ALTERNATIVES TO CORPORATE ── */
-.alts{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.alt{
-  background:var(--bg);border:1px solid var(--border);
-  border-left:3px solid var(--blue);border-radius:8px;
-  padding:.85rem 1rem;
-}
-.alt__n{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem;line-height:1.35}
-.alt__d{font-size:.78rem;color:var(--muted);line-height:1.5}
-@media(max-width:560px){.alts{grid-template-columns:1fr}}
 
 
 /* ── EXPOSURE SCORE ── */
@@ -434,7 +424,7 @@
       <nav class="nav__links">
         <a href="/#newsletter" class="nav__link">Newsletter</a>
         <a href="/#offer" class="nav__link">Mastermind</a>
-        <a href="/life-quiz" class="nav__link nav__link--active">Plan B Quiz</a>
+        <a href="/plan-b-quiz" class="nav__link nav__link--active">Plan B Quiz</a>
         <a href="/#coaching" class="btn btn--primary btn--sm">Clarity Call</a>
       </nav>
       <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
@@ -443,7 +433,7 @@
       <a href="/#coaching" onclick="toggleMenu()">Clarity Call</a>
       <a href="/#newsletter" onclick="toggleMenu()">Newsletter</a>
       <a href="/#offer" onclick="toggleMenu()">Mastermind</a>
-      <a href="/life-quiz" onclick="toggleMenu()">Plan B Quiz</a>
+      <a href="/plan-b-quiz" onclick="toggleMenu()">Plan B Quiz</a>
       <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a>
       <a href="https://www.youtube.com/@GreekInLowLatency" target="_blank">YouTube</a>
     </div>
@@ -498,7 +488,7 @@
         <div>
           <h4 class="footer__subtitle">Free Tools</h4>
           <ul class="footer__list">
-            <li>🎯 <a href="/life-quiz">Plan B Quiz</a></li>
+            <li>🎯 <a href="/plan-b-quiz">Plan B Quiz</a></li>
           </ul>
         </div>
         <div>
@@ -531,7 +521,7 @@
 
 // ── CONSTANTS — update these before going live ──
 const CALL_URL      = 'https://cal.com/sotirios-seridis/clarity-call';
-const PAGE_URL      = 'https://sotirios-seridis.com/life-quiz';
+const PAGE_URL      = 'https://sotirios-seridis.com/plan-b-quiz';
 const SITE_URL      = 'https://sotirios-seridis.com';
 const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/6107620/4t7hbkx/';
 const CAPTURE_ENABLED = ZAPIER_WEBHOOK_URL.indexOf('https://') === 0;
@@ -617,12 +607,12 @@ const QS = [
     ]
   },
   {
-    text: "How do you feel about risk?",
+    text: "What's actually stopped you so far?",
     opts: [
-      {id:'A', text:"<strong>Low</strong> — I want predictable income I control"},
-      {id:'B', text:"<strong>Fine with it</strong>, as long as the upside is mine"},
-      {id:'C', text:"<strong>Cautious</strong> — steady and boring beats exciting"},
-      {id:'D', text:"<strong>Comfortable</strong> — I've reinvented myself before"},
+      {id:'A', text:"<strong>I didn't know what I'd sell</strong> — or what to charge for it"},
+      {id:'B', text:"<strong>Too many ideas</strong>, and never one I committed to"},
+      {id:'C', text:"<strong>I don't want another job</strong> — whatever I do has to run without me"},
+      {id:'D', text:"<strong>My setup makes it hard</strong> — wrong place, wrong hours, wrong life"},
     ]
   },
   {
