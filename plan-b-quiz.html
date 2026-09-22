@@ -10,13 +10,13 @@
   <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How Exposed Are You? — Free Plan B Quiz | Sotirios Seridis</title>
-  <meta name="description" content="Twelve questions, two minutes. Get your exposure score and the Plan B route that fits your skills — plus the first moves worth making." />
+  <title>Plan A Is Fine. What's Your Plan B? — Free Quiz | Sotirios Seridis</title>
+  <meta name="description" content="Twelve questions, two minutes. Get your Plan B Readiness Score and the route that fits your skills — plus the first moves worth making." />
   <link rel="canonical" href="https://www.sotirios-seridis.com/plan-b-quiz" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.sotirios-seridis.com/plan-b-quiz" />
-  <meta property="og:title" content="How Exposed Are You? — Free Plan B Quiz" />
-  <meta property="og:description" content="Twelve questions, two minutes. Get your exposure score and the Plan B route that fits your skills — plus the first moves worth making." />
+  <meta property="og:title" content="Plan A Is Fine. What's Your Plan B? — Free Quiz" />
+  <meta property="og:description" content="Twelve questions, two minutes. Get your Plan B Readiness Score and the route that fits your skills — plus the first moves worth making." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -352,7 +352,7 @@
 
 
 
-/* ── EXPOSURE SCORE ── */
+/* ── PLAN B READINESS SCORE ── */
 .exp{
   background:var(--navy);border-radius:14px;padding:2rem 1.75rem 1.75rem;
   margin-bottom:.85rem;text-align:center;
@@ -377,14 +377,14 @@
   font-size:.85rem;color:rgba(220,232,248,.65);line-height:1.6;
   margin-top:.5rem;max-width:460px;margin-left:auto;margin-right:auto;
 }
-.exp[data-band="low"]      .exp__fill{background:#22c55e}
-.exp[data-band="low"]      .exp__band{color:#22c55e}
-.exp[data-band="moderate"] .exp__fill{background:var(--gold)}
-.exp[data-band="moderate"] .exp__band{color:var(--gold)}
-.exp[data-band="high"]     .exp__fill{background:#f97316}
-.exp[data-band="high"]     .exp__band{color:#f97316}
-.exp[data-band="critical"] .exp__fill{background:#ef4444}
-.exp[data-band="critical"] .exp__band{color:#ef4444}
+.exp[data-band="covered"] .exp__fill{background:#22c55e}
+.exp[data-band="covered"] .exp__band{color:#22c55e}
+.exp[data-band="partly"]  .exp__fill{background:var(--gold)}
+.exp[data-band="partly"]  .exp__band{color:var(--gold)}
+.exp[data-band="thin"]    .exp__fill{background:#f97316}
+.exp[data-band="thin"]    .exp__band{color:#f97316}
+.exp[data-band="scratch"] .exp__fill{background:#ef4444}
+.exp[data-band="scratch"] .exp__band{color:#ef4444}
 @media(prefers-reduced-motion:reduce){.exp__fill{animation:none;width:var(--w)}}
 
 /* ── MILESTONES ── */
@@ -646,11 +646,12 @@ const QS = [
 
 const EXPOSURE_MAX = 12;
 
+// Readiness = how much of a Plan B you already have. Higher is better.
 const BANDS = [
-  {max:3,  key:'low',      label:'Low exposure',      line:"You have real slack in the system. That's rare — the job now is keeping it that way as things shift."},
-  {max:6,  key:'moderate', label:'Moderate exposure', line:"You're not fragile, but you're more dependent on one thing than you probably realise."},
-  {max:9,  key:'high',     label:'High exposure',     line:"A single decision you don't control could reshape your finances. Worth acting on while everything still looks fine."},
-  {max:12, key:'critical', label:'Critical exposure', line:"Almost everything rests on one income and there's little runway behind it. This is the most valuable time to build options."},
+  {max:3,  key:'scratch', label:'Starting from scratch', line:"Almost everything rests on Plan A right now. That's the most common starting point — and the cheapest moment to start building."},
+  {max:6,  key:'thin',    label:'Thin',                  line:"More of a hope than a plan. The good news is that the first milestone is closer than most people expect."},
+  {max:9,  key:'partly',  label:'Partly covered',        line:"The foundations are there, with real gaps. Worth closing them while everything still looks fine."},
+  {max:12, key:'covered', label:'Well covered',          line:"You've quietly built most of one already. The job now is filling the gaps and keeping it current as things shift."},
 ];
 
 const PROFILES = {
@@ -730,10 +731,10 @@ function render() {
 function introHTML() {
   return `<div class="intro">
     <div class="intro__eye">Free · 12 questions · 2 minutes</div>
-    <h1 class="intro__h1">How exposed are you <span class="intro__hl">really</span>?</h1>
-    <p class="intro__sub">Most white-collar income rests on a single decision someone else makes. Twelve questions will tell you how much yours does — and what to do about it.</p>
+    <h1 class="intro__h1">Plan A is fine. <span class="intro__hl">What&rsquo;s your Plan B?</span></h1>
+    <p class="intro__sub">Most people have more of one than they think — or far less. Twelve questions will tell you which, and what to build next.</p>
     <ul class="intro__gets">
-      <li>Your exposure score, out of 100</li>
+      <li>Your Plan B Readiness Score, out of 100</li>
       <li>The Plan B route that fits your skills</li>
       <li>Five moves to make &mdash; and five to avoid</li>
     </ul>
@@ -925,7 +926,7 @@ function resultHTML() {
   const p = PROFILES[profile];
   const isHybrid = profile === 'HYBRID';
 
-  // ── exposure ──
+  // ── Plan B readiness: the inverse of how exposed the current setup is ──
   let expRaw = 0;
   QS.forEach((qq, i) => {
     if (!qq.exposure) return;
@@ -933,8 +934,9 @@ function resultHTML() {
     const opt = qq.opts.find(o => o.id === a);
     if (opt) expRaw += opt.exp;
   });
-  const expPct = Math.round((expRaw / EXPOSURE_MAX) * 100);
-  const band = bandFor(expRaw);
+  const readyRaw = EXPOSURE_MAX - expRaw;
+  const readyPct = Math.round((readyRaw / EXPOSURE_MAX) * 100);
+  const band = bandFor(readyRaw);
 
   // ── profile mix across the 8 preference questions ──
   const counts = {A:0,B:0,C:0,D:0};
@@ -972,9 +974,9 @@ function resultHTML() {
   return `<div class="res-screen">
 
     <div class="exp" data-band="${band.key}">
-      <div class="exp__lbl">Your exposure score</div>
-      <div class="exp__num">${expPct}<span>/100</span></div>
-      <div class="exp__meter"><span class="exp__fill" style="--w:${expPct}%"></span></div>
+      <div class="exp__lbl">Your Plan B Readiness Score</div>
+      <div class="exp__num">${readyPct}<span>/100</span></div>
+      <div class="exp__meter"><span class="exp__fill" style="--w:${readyPct}%"></span></div>
       <div class="exp__band">${band.label}</div>
       <p class="exp__line">${band.line}</p>
     </div>
@@ -1124,7 +1126,7 @@ function bindEvents() {
     if (e.target.id === 'copyBtn') {
       const name = e.target.dataset.name;
       const id   = e.target.dataset.id;
-      const text = `I'm ${name} — ${id} Find your exposure score: ${PAGE_URL}`;
+      const text = `I'm ${name} — ${id} Find your Plan B Readiness Score: ${PAGE_URL}`;
       copyText(text, e.target);
       return;
     }
