@@ -1139,3 +1139,30 @@ a { color: inherit; text-decoration: none; }
 
 /* YouTube brand red */
 .floating-btn--youtube { background: #FF0000; }
+
+
+/* ── THE SHIFT ── */
+.shift__path {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 0.6rem 0.9rem;
+  margin: 0 auto 3rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px dashed rgba(255,255,255,0.18);
+  border-radius: var(--radius);
+  max-width: 900px;
+}
+.shift__path span {
+  font-size: 0.85rem; color: rgba(255,255,255,0.65);
+  font-family: 'Courier New', monospace; letter-spacing: 0.5px;
+}
+.shift__sep { color: var(--gold) !important; font-weight: 700; }
+.shift__close {
+  margin-top: 2.5rem; text-align: center;
+  font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,0.7);
+  max-width: 720px; margin-left: auto; margin-right: auto;
+}
+.shift__close strong { color: #fff; }
+@media (max-width: 640px) {
+  .shift__path { gap: 0.4rem 0.6rem; padding: 1rem; }
+  .shift__path span { font-size: 0.75rem; }
+}
