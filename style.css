@@ -1483,18 +1483,16 @@ a { color: inherit; text-decoration: none; }
 .faq__a a:hover { border-bottom-color: var(--accent); }
 
 
-/* nav logo with role line */
+/* nav logo: name | role, on one line */
 .nav__logo {
-  display: flex; flex-direction: column; justify-content: center;
-  line-height: 1.15;
+  display: inline-flex; align-items: baseline; gap: 0.55rem;
+  line-height: 1.2; white-space: nowrap;
 }
+.nav__sep { color: var(--border); font-weight: 400; }
 .nav__role {
-  display: block;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--accent);
-  margin-top: 0.2rem;
 }
-@media (max-width: 420px) { .nav__role { display: none; } }
+@media (max-width: 1040px) { .nav__sep, .nav__role { display: none; } }
