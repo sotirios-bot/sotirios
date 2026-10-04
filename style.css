@@ -1483,12 +1483,15 @@ a { color: inherit; text-decoration: none; }
 .faq__a a:hover { border-bottom-color: var(--accent); }
 
 
-/* nav logo: name | role, on one line */
-.nav__logo {
-  display: inline-flex; align-items: baseline; gap: 0.55rem;
-  line-height: 1.2; white-space: nowrap;
+/* nav logo: name | role, on one line.
+   Spacing lives in the markup, not in a flex gap, so it still reads
+   correctly if the stylesheet is cached or fails to load. */
+.nav__logo { white-space: nowrap; line-height: 1.2; }
+.nav__sep {
+  color: var(--border);
+  font-weight: 400;
+  margin: 0 0.15rem;
 }
-.nav__sep { color: var(--border); font-weight: 400; }
 .nav__role {
   font-size: 0.8rem;
   font-weight: 600;
