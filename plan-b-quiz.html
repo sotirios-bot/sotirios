@@ -123,23 +123,7 @@
   margin-bottom:1.5rem;max-width:520px;
 }
 
-.paths-lbl{
-  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.65rem;
-}
-.paths{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1rem}
-.qpath-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-left:3px solid var(--gold);border-radius:8px;padding:.85rem 1rem;
-}
-.qpath-card__name{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.15rem}
-.qpath-card__meta{font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.qpath-card--sub{border-left-color:var(--blue)}
 
-.paths-from{
-  font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--muted);margin:1rem 0 .5rem;
-}
 
 .accel{
   background:var(--gold-bg);border-left:3px solid var(--gold);
@@ -254,22 +238,6 @@
 }
 .res-lbl--light{color:rgba(220,232,248,.5)}
 
-.mix{display:flex;flex-direction:column;gap:.6rem}
-.mix__row{display:grid;grid-template-columns:74px 1fr 40px;align-items:center;gap:.75rem}
-.mix__name{font-size:.8rem;font-weight:600;color:var(--muted)}
-.mix__row--top .mix__name{color:var(--ink);font-weight:700}
-.mix__track{
-  height:10px;background:var(--surface2);border-radius:6px;overflow:hidden;display:block;
-}
-.mix__fill{
-  display:block;height:100%;border-radius:6px;background:var(--blue);opacity:.45;
-  width:0;animation:mixGrow .9s ease .15s forwards;
-}
-.mix__row--top .mix__fill{background:var(--gold);opacity:1}
-.mix__pct{font-size:.8rem;font-weight:700;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
-.mix__row--top .mix__pct{color:var(--ink)}
-@keyframes mixGrow{to{width:var(--w)}}
-@media(prefers-reduced-motion:reduce){.mix__fill{animation:none;width:var(--w)}}
 
 .res-target{
   background:var(--navy);border-radius:14px;
@@ -295,27 +263,9 @@
 .way__txt strong{font-weight:700}
 .way__n--avoid{background:rgba(192,57,43,.12);color:#c0392b}
 
-.mix-legend{
-  margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);
-  display:flex;flex-direction:column;gap:.4rem;
-}
-.mix-legend__row{font-size:.78rem;color:var(--muted);line-height:1.5}
-.mix-legend__row strong{color:var(--ink);font-weight:700}
 
-.qpath-card__desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:.3rem}
 
-.persona{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.persona__tile{
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:10px;padding:.9rem 1rem;
-}
-.persona__t{
-  font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:.35rem;
-}
-.persona__d{font-size:.82rem;color:var(--muted);line-height:1.6}
-.persona__d strong{color:var(--ink);font-weight:700}
-@media(max-width:520px){.persona{grid-template-columns:1fr}}
+
 
 
 /* ── INTRO v2 ── */
@@ -387,22 +337,70 @@
 .exp[data-band="scratch"] .exp__band{color:#ef4444}
 @media(prefers-reduced-motion:reduce){.exp__fill{animation:none;width:var(--w)}}
 
-/* ── MILESTONES ── */
-.mstone{
-  background:var(--navy);border-radius:14px;padding:1.75rem 1.5rem;margin-bottom:.85rem;
-  background-image:radial-gradient(ellipse at bottom right,rgba(240,165,0,.12),transparent 60%);
+
+
+/* ── FOUR AREAS ── */
+.areas{display:flex;flex-direction:column;gap:1.25rem}
+.ar__top{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.45rem}
+.ar__name{font-size:.9rem;font-weight:700;color:var(--ink)}
+.ar__n{
+  display:inline-block;font-size:.65rem;font-weight:800;letter-spacing:.08em;
+  color:var(--muted);margin-right:.5rem;
 }
-.mstone__row{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:.9rem}
-.mstone__n{
-  flex-shrink:0;font-size:.7rem;font-weight:800;letter-spacing:.1em;
-  color:var(--gold);margin-top:.25rem;
+.ar__pct{font-size:.9rem;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.ar__track{display:block;height:10px;background:var(--surface2);border-radius:6px;overflow:hidden}
+.ar__fill{
+  display:block;height:100%;border-radius:6px;background:var(--blue);opacity:.4;
+  width:0;animation:mixGrow .9s ease .15s forwards;
 }
-.mstone__t{font-size:.88rem;color:rgba(220,232,248,.75);line-height:1.55}
-.mstone__t strong{color:#fff}
-.mstone__note{
-  font-size:.8rem;color:rgba(220,232,248,.5);line-height:1.55;
-  margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);
+.ar__note{font-size:.78rem;color:var(--muted);line-height:1.5;margin-top:.45rem}
+.ar--rec .ar__name,.ar--rec .ar__pct{color:var(--ink)}
+.ar--rec .ar__n{color:var(--gold)}
+.ar--rec .ar__fill{background:var(--gold);opacity:1}
+.ar--rec .ar__note{color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.ar__fill{animation:none;width:var(--w)}}
+
+/* ── RECOMMENDED MODULE ── */
+.rec{
+  background:var(--navy);border-radius:14px;padding:1.9rem 1.6rem;margin-bottom:.85rem;
+  background-image:radial-gradient(ellipse at top left,rgba(240,165,0,.16),transparent 62%);
 }
+.rec__eye{
+  font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.6rem;
+}
+.rec__title{font-size:1.6rem;font-weight:800;letter-spacing:-.035em;color:#fff;margin-bottom:.6rem}
+.rec__lead{font-size:.9rem;color:rgba(220,232,248,.75);line-height:1.65;margin-bottom:1.5rem}
+.rec__lead strong{color:#fff}
+.rec__foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.rec__meta{font-size:.85rem;color:rgba(220,232,248,.6)}
+.rec__meta strong{color:var(--gold);font-size:1.05rem;font-weight:800}
+.rec__btn{
+  display:inline-block;background:var(--gold);color:var(--navy);
+  font-weight:800;font-size:.9rem;padding:.7rem 1.4rem;border-radius:50px;
+  text-decoration:none;transition:transform .15s;
+}
+.rec__btn:hover{transform:translateY(-1px)}
+
+/* ── FULL PROGRAMME ── */
+.prog{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:1.6rem;margin-bottom:.85rem;text-align:center;
+}
+.prog__eye{
+  font-size:.66rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.45rem;
+}
+.prog__title{font-size:1.15rem;font-weight:800;color:var(--ink);margin-bottom:.5rem}
+.prog__desc{font-size:.85rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.prog__price{font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:1rem}
+.prog__price span{font-size:.82rem;font-weight:500;color:var(--muted)}
+.prog__btn{
+  display:inline-block;background:var(--blue);color:#fff;font-weight:700;
+  font-size:.88rem;padding:.7rem 1.4rem;border-radius:50px;text-decoration:none;
+  transition:background .15s;
+}
+.prog__btn:hover{background:var(--blue-dk)}
 
 @media(max-width:400px){
   .intro__h1{font-size:1.65rem}
@@ -527,179 +525,225 @@ const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/6107620/4t7hbkx
 const CAPTURE_ENABLED = ZAPIER_WEBHOOK_URL.indexOf('https://') === 0;
 
 const QS = [
-  // ── Q1–Q4: exposure diagnostic (exp = 0–3) ──
+  // ── PERSONAL FINANCE ──
   {
-    text: "Where does your income come from today?",
-    exposure: true,
-    opts: [
-      {id:'A', exp:3, text:"<strong>One salary</strong> — that's the whole picture"},
-      {id:'B', exp:2, text:"One salary, plus <strong>something small on the side</strong>"},
-      {id:'C', exp:2, text:"<strong>Two incomes</strong> in the household"},
-      {id:'D', exp:0, text:"A salary plus <strong>income that doesn't depend on an employer</strong>"},
+    area:'PF',
+    text:"Do you know what you actually spend each month?",
+    opts:[
+      {id:'a', s:0, text:"<strong>Not really</strong> — I'd be guessing"},
+      {id:'b', s:1, text:"<strong>Roughly</strong>, within a few hundred"},
+      {id:'c', s:2, text:"<strong>Fairly well</strong> — I check now and then"},
+      {id:'d', s:3, text:"<strong>Exactly</strong> — I track it"},
     ]
   },
   {
-    text: "If your income stopped tomorrow, how long could you cover your life?",
-    exposure: true,
-    opts: [
-      {id:'A', exp:3, text:"<strong>Under a month</strong>"},
-      {id:'B', exp:2, text:"<strong>A few months</strong>"},
-      {id:'C', exp:1, text:"<strong>Six months to a year</strong>"},
-      {id:'D', exp:0, text:"<strong>Over a year</strong> — or indefinitely"},
+    area:'PF',
+    text:"What's left at the end of a typical month?",
+    opts:[
+      {id:'a', s:0, text:"<strong>Nothing</strong> — or less than nothing"},
+      {id:'b', s:1, text:"<strong>A little</strong>, but it varies wildly"},
+      {id:'c', s:2, text:"<strong>A consistent amount</strong>"},
+      {id:'d', s:3, text:"<strong>A set amount</strong> — it's planned, not leftover"},
     ]
   },
   {
-    text: "How much of your day-to-day work could a capable AI tool already do?",
-    exposure: true,
-    opts: [
-      {id:'A', exp:3, text:"Honestly? <strong>A lot of it</strong>"},
-      {id:'B', exp:2, text:"<strong>Meaningful parts</strong> of it"},
-      {id:'C', exp:1, text:"Some of it — but <strong>the judgement is mine</strong>"},
-      {id:'D', exp:0, text:"<strong>Very little</strong> — it's hands-on or highly relational"},
-    ]
-  },
-  {
-    text: "How locked in are your fixed commitments?",
-    exposure: true,
-    opts: [
-      {id:'A', exp:3, text:"<strong>Mortgage, dependents, obligations</strong> I can't reduce quickly"},
-      {id:'B', exp:2, text:"<strong>Significant</strong>, but there's some flex"},
-      {id:'C', exp:1, text:"<strong>Moderate</strong> — I could adjust if I had to"},
-      {id:'D', exp:0, text:"<strong>Light</strong> — I could change my cost base fast"},
+    area:'PF',
+    text:"If your income stopped, how long could you cover your life?",
+    opts:[
+      {id:'a', s:0, text:"<strong>Under a month</strong>"},
+      {id:'b', s:1, text:"<strong>A few months</strong>"},
+      {id:'c', s:2, text:"<strong>Six months to a year</strong>"},
+      {id:'d', s:3, text:"<strong>Over a year</strong>"},
     ]
   },
 
-  // ── Q5–Q12: which Plan B fits ──
+  // ── ACTIVE INCOME ──
   {
-    text: "Of these, which appeals most as a second income?",
-    opts: [
-      {id:'A', text:"<strong>Selling my existing skills directly</strong> — freelance or consulting"},
-      {id:'B', text:"<strong>Building something of my own</strong> — a product, a business, an audience"},
-      {id:'C', text:"<strong>Putting capital to work</strong> so money earns without me"},
-      {id:'D', text:"<strong>Going remote</strong> and living where my money goes further"},
+    area:'AI',
+    text:"Where does your income come from today?",
+    opts:[
+      {id:'a', s:0, text:"<strong>One salary</strong> — that's the whole picture"},
+      {id:'b', s:1, text:"One salary, plus <strong>something very small</strong>"},
+      {id:'c', s:2, text:"A salary plus <strong>real income on the side</strong>"},
+      {id:'d', s:3, text:"<strong>Several sources</strong>, none of them dominant"},
     ]
   },
   {
-    text: "How much time could you realistically give it each week?",
-    opts: [
-      {id:'A', text:"<strong>A few focused hours</strong> — I'd rather charge well than work more"},
-      {id:'B', text:"<strong>Evenings and weekends</strong> — I'll put the work in"},
-      {id:'C', text:"<strong>Almost none</strong> — it has to run without me"},
-      {id:'D', text:"<strong>Depends where I am</strong> — I'd restructure my life around it"},
+    area:'AI',
+    text:"Have you ever been paid directly for your skills, outside a job?",
+    opts:[
+      {id:'a', s:0, text:"<strong>Never</strong>"},
+      {id:'b', s:1, text:"<strong>Once or twice</strong>, informally"},
+      {id:'c', s:2, text:"<strong>Occasionally</strong> — a few projects"},
+      {id:'d', s:3, text:"<strong>Regularly</strong> — I have clients"},
     ]
   },
   {
-    text: "What's your biggest advantage?",
-    opts: [
-      {id:'A', text:"<strong>Skills people already pay for</strong>"},
-      {id:'B', text:"<strong>Drive</strong> — I make things happen"},
-      {id:'C', text:"<strong>Discipline</strong> — I save steadily and I don't panic"},
-      {id:'D', text:"<strong>Adaptability</strong> — I can rebuild anywhere"},
+    area:'AI',
+    text:"Do you know what you'd sell, and what you'd charge?",
+    opts:[
+      {id:'a', s:0, text:"<strong>No idea</strong> on either"},
+      {id:'b', s:1, text:"<strong>A vague idea</strong>, nothing concrete"},
+      {id:'c', s:2, text:"<strong>I know what</strong> — not sure on price"},
+      {id:'d', s:3, text:"<strong>Both</strong>, clearly"},
+    ]
+  },
+
+  // ── PASSIVE INCOME ──
+  {
+    area:'PI',
+    text:"Do you invest money regularly?",
+    opts:[
+      {id:'a', s:0, text:"<strong>No</strong> — it sits in my account"},
+      {id:'b', s:1, text:"<strong>Occasionally</strong>, when there's spare"},
+      {id:'c', s:2, text:"<strong>Monthly</strong>, and automated"},
+      {id:'d', s:3, text:"<strong>Monthly</strong>, automated, and I raise it as income grows"},
     ]
   },
   {
-    text: "An extra $1,000 a month arrives, starting now. Where does it go?",
-    opts: [
-      {id:'A', text:"<strong>Banked</strong> while I build a client base"},
-      {id:'B', text:"<strong>Reinvested</strong> into the thing I'm building"},
-      {id:'C', text:"<strong>Straight into investments</strong> — let it compound"},
-      {id:'D', text:"<strong>Saved for the move</strong> — runway for a different setup"},
+    area:'PI',
+    text:"Does anything pay you each month without you working for it?",
+    opts:[
+      {id:'a', s:0, text:"<strong>Nothing at all</strong>"},
+      {id:'b', s:1, text:"<strong>A small amount</strong> — more symbolic than useful"},
+      {id:'c', s:2, text:"<strong>Enough to notice</strong> — a bill or two"},
+      {id:'d', s:3, text:"<strong>A meaningful share</strong> of my costs"},
     ]
   },
   {
-    text: "What's actually stopped you so far?",
-    opts: [
-      {id:'A', text:"<strong>I didn't know what I'd sell</strong> — or what to charge for it"},
-      {id:'B', text:"<strong>Too many ideas</strong>, and never one I committed to"},
-      {id:'C', text:"<strong>I don't want another job</strong> — whatever I do has to run without me"},
-      {id:'D', text:"<strong>My setup makes it hard</strong> — wrong place, wrong hours, wrong life"},
+    area:'PI',
+    text:"Do you know how much you'd need invested to cover your life?",
+    opts:[
+      {id:'a', s:0, text:"<strong>No</strong> — I've never worked it out"},
+      {id:'b', s:1, text:"<strong>A rough guess</strong>"},
+      {id:'c', s:2, text:"<strong>Approximately</strong> — I've done the maths once"},
+      {id:'d', s:3, text:"<strong>Exactly</strong> — and I track progress toward it"},
+    ]
+  },
+
+  // ── LOCATION ──
+  {
+    area:'LO',
+    text:"Have you ever properly priced living somewhere cheaper?",
+    opts:[
+      {id:'a', s:0, text:"<strong>Never</strong>"},
+      {id:'b', s:1, text:"<strong>Idly googled it</strong> once"},
+      {id:'c', s:2, text:"<strong>Researched it seriously</strong>"},
+      {id:'d', s:3, text:"<strong>Costed it fully</strong> — rent, tax, healthcare"},
     ]
   },
   {
-    text: "How much does <em>where</em> you live matter?",
-    opts: [
-      {id:'A', text:"<strong>Not much</strong> — my work travels either way"},
-      {id:'B', text:"<strong>I'll be where the opportunity is</strong>"},
-      {id:'C', text:"<strong>Roots matter</strong> — home, family, community"},
-      {id:'D', text:"<strong>Enormously</strong> — it's the biggest lever I have"},
+    area:'LO',
+    text:"How quickly could you change your cost base if you wanted to?",
+    opts:[
+      {id:'a', s:0, text:"<strong>I couldn't</strong> — mortgage, school, commitments"},
+      {id:'b', s:1, text:"<strong>Slowly</strong> — a year or two of unwinding"},
+      {id:'c', s:2, text:"<strong>Within a year</strong>, with planning"},
+      {id:'d', s:3, text:"<strong>Quickly</strong> — I'm not tied down"},
     ]
   },
   {
-    text: "Five years out, what does \"covered\" look like?",
-    opts: [
-      {id:'A', text:"<strong>Clients I choose</strong>, income I control"},
-      {id:'B', text:"<strong>Something I built</strong> that pays me"},
-      {id:'C', text:"<strong>A portfolio</strong> that quietly covers the basics"},
-      {id:'D', text:"<strong>A life that costs less</strong> and suits me more"},
-    ]
-  },
-  {
-    text: "What would make you proudest?",
-    opts: [
-      {id:'A', text:"I was <strong>never dependent on one employer</strong> again"},
-      {id:'B', text:"I <strong>built something real</strong>"},
-      {id:'C', text:"I made my <strong>money work without me</strong>"},
-      {id:'D', text:"I <strong>designed a life</strong> on my own terms"},
+    area:'LO',
+    text:"Could your income work from anywhere?",
+    opts:[
+      {id:'a', s:0, text:"<strong>No</strong> — it needs me in a specific place"},
+      {id:'b', s:1, text:"<strong>Partly</strong> — some of it could travel"},
+      {id:'c', s:2, text:"<strong>Mostly</strong>, with a conversation"},
+      {id:'d', s:3, text:"<strong>Already does</strong>"},
     ]
   },
 ];
 
-const EXPOSURE_MAX = 12;
-
-// Readiness = how much of a Plan B you already have. Higher is better.
-const BANDS = [
-  {max:3,  key:'scratch', label:'Starting from scratch', line:"Almost everything rests on Plan A right now. That's the most common starting point — and the cheapest moment to start building."},
-  {max:6,  key:'thin',    label:'Thin',                  line:"More of a hope than a plan. The good news is that the first milestone is closer than most people expect."},
-  {max:9,  key:'partly',  label:'Partly covered',        line:"The foundations are there, with real gaps. Worth closing them while everything still looks fine."},
-  {max:12, key:'covered', label:'Well covered',          line:"You've quietly built most of one already. The job now is filling the gaps and keeping it current as things shift."},
-];
-
-const PROFILES = {
-  A: {
-    badge:"OPERATOR", name:"The Operator",
-    identity:"Your skills are the asset. Sell them directly.",
-    desc:"You already have something people pay for — it's just currently sold to one buyer. Your Plan B is <strong>the shortest of all four</strong>: the same expertise, sold directly, to several clients instead of one employer.",
-    paths:[
-      {name:"Independent consulting", meta:"First income in 1–3 months"},
-      {name:"Fractional senior role", meta:"2–3 days a week, senior rate"},
-    ],
-  },
-  B: {
-    badge:"BUILDER", name:"The Builder",
-    identity:"Build something that outgrows your hours.",
-    desc:"You don't just want another way to sell time — you want <strong>something that keeps earning when you stop working</strong>. It's the slowest Plan B to start and the most valuable once it runs.",
-    paths:[
-      {name:"Productised service", meta:"Fixed scope, repeatable, 3–9 months"},
-      {name:"Product or audience",  meta:"Compounds slowly, then quickly"},
-    ],
-  },
-  C: {
-    badge:"INVESTOR", name:"The Investor",
-    identity:"Make the capital do the work.",
-    desc:"You'd rather not take on a second job at all — and you don't have to. Your Plan B is <strong>capital, not hours</strong>: a deliberate allocation, an automatic contribution, and enough patience to let it compound.",
-    paths:[
-      {name:"Index-first portfolio", meta:"Automatic, boring, effective"},
-      {name:"Income assets",         meta:"Dividends and rent that pay monthly"},
-    ],
-  },
-  D: {
-    badge:"GEOGRAPHER", name:"The Geographer",
-    identity:"Location is your biggest lever.",
-    desc:"For you the fastest change isn't earning more — it's <strong>needing less for the same life</strong>. Remote income plus a lower cost base can do in two years what saving alone takes ten to achieve.",
-    paths:[
-      {name:"Remote-first income", meta:"Decouple the job from the postcode"},
-      {name:"Cost-base arbitrage", meta:"Same income, 30–60% lower costs"},
-    ],
-  },
-  HYBRID: {
-    badge:"DIVERSIFIER", name:"The Diversifier",
-    identity:"More than one lever at once.",
-    desc:"You scored across routes — <strong>which is how most real Plan Bs actually look</strong>. Consulting while investing. Remote work while building. Your advantage is range; your risk is doing all of it at half strength.",
-    paths:[
-      {name:"Two levers, sequenced", meta:"One now, one next year"},
-    ],
-  },
+const AREAS = {
+  PF:{ n:1, key:'PF', name:'Personal Finance',
+       gap:"You don't yet have a clear picture of where your money goes — and every other move depends on that picture.",
+       strong:"You know your numbers. That's the foundation most people never lay.",
+       book:'BOOK_1' },
+  AI:{ n:2, key:'AI', name:'Active Income',
+       gap:"Everything still comes from one employer. The fastest fix is a second buyer for skills you already have.",
+       strong:"You've already proven someone will pay you directly. That's the hard part done.",
+       book:'BOOK_2' },
+  PI:{ n:3, key:'PI', name:'Passive Income',
+       gap:"Nothing is paying you while you sleep. Even a small amount, invested consistently, changes the maths over time.",
+       strong:"Your money is already working. Now it's about scale and consistency.",
+       book:'BOOK_3' },
+  LO:{ n:4, key:'LO', name:'Location',
+       gap:"You've never priced what your income is worth elsewhere — so you're carrying an option you can't value.",
+       strong:"You know what geography is worth to you. Most people never find out.",
+       book:'BOOK_4' },
 };
+
+const ORDER = ['PF','AI','PI','LO'];
+const THRESHOLD = 55;   // below this, the area counts as a gap
+
+const MOVES = {
+  PF:[
+    "Work out <strong>one number</strong>: what your life actually costs each month",
+    "Track every pound for <strong>30 days</strong> — not forever, just once, properly",
+    "Find your <strong>three biggest costs</strong>. That's where the money is, not the coffee",
+    "Automate a transfer on <strong>payday</strong>, before anything else moves",
+    "Target <strong>six months of expenses</strong> before anything clever",
+  ],
+  AI:[
+    "Name <strong>the one thing</strong> people already pay you for — that's your offer",
+    "Set a <strong>day rate</strong>: salary ÷ 220, then double it",
+    "Tell <strong>ten people who know your work</strong> you're taking on outside projects",
+    "Deliver <strong>one small paid piece of work</strong> — proof beats planning",
+    "Bank all of it until you have <strong>real runway</strong>",
+  ],
+  PI:[
+    "Start with <strong>whatever feels almost too small</strong> — the habit matters more",
+    "Automate it on <strong>payday</strong> so it never competes with spending",
+    "Keep it <strong>boring and low-cost</strong> — simple beats clever over 10 years",
+    "Raise the amount <strong>every time your income rises</strong>",
+    "Work out your number: <strong>25 × your annual spending</strong>",
+  ],
+  LO:[
+    "Pick <strong>three places</strong> and price them properly — rent, tax, healthcare",
+    "Work out what <strong>your current income</strong> is actually worth in each",
+    "Make your income <strong>portable first</strong> — change the job before the country",
+    "<strong>Live somewhere a month</strong> before committing a year",
+    "Keep it as a <strong>costed option</strong>, even if you never use it",
+  ],
+};
+
+const AVOID = {
+  PF:[
+    "Budgeting apps you abandon in <strong>three weeks</strong>",
+    "Cutting small pleasures while <strong>ignoring the big three</strong>",
+    "Investing before you have <strong>a cash buffer</strong>",
+    "Treating a bonus as <strong>spending money</strong> rather than runway",
+    "Waiting until you earn more to <strong>start paying attention</strong>",
+  ],
+  AI:[
+    "Waiting for a <strong>brand new idea</strong> — you need a second buyer, not a new skill",
+    "Pricing from your salary — <strong>that's the employed rate</strong>",
+    "Building a second job that's <strong>as demanding as the first</strong>",
+    "Quitting <strong>before a single client exists</strong>",
+    "Spending the new income instead of <strong>banking it</strong>",
+  ],
+  PI:[
+    "Waiting until the amount feels <strong>big enough to bother</strong>",
+    "Chasing yield — <strong>double-digit promises cost you the principal</strong>",
+    "Checking daily and <strong>selling on a bad week</strong>",
+    "Confusing <strong>saving with investing</strong>",
+    "Dipping into it — <strong>compounding only works untouched</strong>",
+  ],
+  LO:[
+    "Romanticising somewhere you've only seen <strong>on holiday</strong>",
+    "Moving to escape — <strong>the problem usually follows</strong>",
+    "Ignoring <strong>visa, tax and healthcare</strong> until after you commit",
+    "Chasing <strong>tax-free</strong> without checking what you'd actually keep",
+    "Burning the bridge before <strong>the runway exists</strong>",
+  ],
+};
+
+const BANDS = [
+  {max:25,  key:'scratch', label:'Starting from scratch', line:"Almost everything rests on Plan A right now. That's the most common place to begin — and the cheapest time to start."},
+  {max:50,  key:'thin',    label:'Thin',                  line:"More of a hope than a plan. The good news is the first milestone is closer than most people expect."},
+  {max:75,  key:'partly',  label:'Partly covered',        line:"Real foundations, with real gaps. Worth closing them while everything still looks fine."},
+  {max:100, key:'covered', label:'Well covered',          line:"You've quietly built most of one already. Now it's about sharpening the weakest part."},
+];
 
 const state = {
   screen: 'intro',   // 'intro' | 'question' | 'result'
@@ -709,15 +753,30 @@ const state = {
 
 // ── SCORING ──
 function score(answers) {
-  const c = {A:0,B:0,C:0,D:0};
+  const raw = {PF:0, AI:0, PI:0, LO:0};
+  const max = {PF:0, AI:0, PI:0, LO:0};
   QS.forEach((qq, i) => {
-    if (qq.exposure) return;          // exposure questions don't pick a route
+    max[qq.area] += 3;
     const a = answers[i];
-    if (a) c[a]++;
+    const opt = qq.opts.find(o => o.id === a);
+    if (opt) raw[qq.area] += opt.s;
   });
-  const max = Math.max(c.A, c.B, c.C, c.D);
-  const tied = Object.keys(c).filter(k => c[k] === max);
-  return { profile: tied.length > 1 ? 'HYBRID' : tied[0], tied };
+  const pct = {};
+  ORDER.forEach(k => pct[k] = Math.round((raw[k] / max[k]) * 100));
+  const overall = Math.round(ORDER.reduce((s, k) => s + pct[k], 0) / ORDER.length);
+
+  // recommend the first gap in sequence — the areas build on each other
+  let rec = ORDER.find(k => pct[k] < THRESHOLD);
+  const allClear = !rec;
+  // no gap: take the weakest, and on a tie prefer the later (more advanced) area
+  if (!rec) rec = ORDER.slice().sort((a, b) => (pct[a] - pct[b]) || (ORDER.indexOf(b) - ORDER.indexOf(a)))[0];
+
+  return { pct, overall, rec, allClear };
+}
+
+function bandFor(n) {
+  for (const b of BANDS) if (n <= b.max) return b;
+  return BANDS[BANDS.length - 1];
 }
 
 function render() {
@@ -732,11 +791,11 @@ function introHTML() {
   return `<div class="intro">
     <div class="intro__eye">Free · 12 questions · 2 minutes</div>
     <h1 class="intro__h1">Plan A is fine. <span class="intro__hl">What&rsquo;s your Plan B?</span></h1>
-    <p class="intro__sub">Most people have more of one than they think — or far less. Twelve questions will tell you which, and what to build next.</p>
+    <p class="intro__sub">Twelve questions scores you across all four areas &mdash; your money, your income, your investments and where you live. Then it tells you which to fix first.</p>
     <ul class="intro__gets">
       <li>Your Plan B Readiness Score, out of 100</li>
-      <li>The Plan B route that fits your skills</li>
-      <li>Five moves to make &mdash; and five to avoid</li>
+      <li>A score for each of the four areas</li>
+      <li>The one area to fix first &mdash; and how</li>
     </ul>
     <button class="intro__btn" id="startBtn">Start the quiz →</button>
     <p class="intro__fine">${CAPTURE_ENABLED ? 'No sign-up to start · Instant result' : 'No email. No sign-up. Result appears immediately.'}</p>
@@ -778,250 +837,60 @@ function gateHTML() {
   </div>`;
 }
 
-const MIX_NAMES = { A:'Operator', B:'Builder', C:'Investor', D:'Geographer' };
-
-const MIX_DESC = {
-  A:'Sell the skills you already have, directly — fastest route to a second income',
-  B:'Build something that earns beyond the hours you put in',
-  C:'Put capital to work so money earns without you',
-  D:'Use location as an economic lever — earn more, need less',
-};
-
-const PERSONA = {
-  A:[
-    {t:'Your edge',       d:"<strong>Proven, paid skills.</strong> You don't need to invent anything — just find the second, third and fourth buyer."},
-    {t:'Your blind spot', d:"Selling hours again. <strong>A second job isn't a Plan B</strong> if it owns you the same way the first one does."},
-    {t:'Start here',      d:"Name your offer and your rate, then tell <strong>ten people who already know your work</strong>."},
-    {t:'Watch for',       d:"Undercharging out of nerves. <strong>Your rate is the whole point</strong> — it's what buys back the hours."},
-  ],
-  B:[
-    {t:'Your edge',       d:"<strong>You actually ship.</strong> Most people stop at the idea; you'll get something in front of people."},
-    {t:'Your blind spot', d:"Building in private for a year. <strong>The market answers faster than you can guess.</strong>"},
-    {t:'Start here',      d:"Sell it before you build it. <strong>One paying customer</strong> beats a perfect plan."},
-    {t:'Watch for',       d:"Starting five things. <strong>Focus is the constraint</strong> — not capability, not time."},
-  ],
-  C:[
-    {t:'Your edge',       d:"<strong>Temperament.</strong> You save steadily and you don't sell in a panic — rarer and more valuable than people think."},
-    {t:'Your blind spot', d:"Waiting until the amount feels 'worth it'. <strong>The habit matters more than the starting figure.</strong>"},
-    {t:'Start here',      d:"Automate the contribution on payday, then <strong>stop looking at it</strong>."},
-    {t:'Watch for',       d:"Chasing yield. <strong>Double-digit promises usually cost you the principal.</strong>"},
-  ],
-  D:[
-    {t:'Your edge',       d:"<strong>Mobility.</strong> You'll consider options most people rule out without ever doing the maths."},
-    {t:'Your blind spot', d:"Moving to escape rather than to arrive. <strong>A new place solves less than a new plan.</strong>"},
-    {t:'Start here',      d:"Make the income portable first. <strong>Change the job before the country.</strong>"},
-    {t:'Watch for',       d:"Holiday logic. <strong>Live somewhere a month</strong> before you commit a year to it."},
-  ],
-  HYBRID:[
-    {t:'Your edge',       d:"<strong>Range.</strong> You can earn, invest or relocate — whichever the moment actually calls for."},
-    {t:'Your blind spot', d:"Half-building three things. <strong>A blend still needs one thing going first.</strong>"},
-    {t:'Start here',      d:"Rank your two strongest levers and <strong>give the first one 90 days</strong> on its own."},
-    {t:'Watch for',       d:"Restarting every quarter. <strong>Sequencing beats switching.</strong>"},
-  ],
-};
-
-const ROUTE_DESC = {
-  'Independent consulting': 'Your current expertise, sold to several clients instead of one employer',
-  'Fractional senior role': 'Senior-level work, two or three days a week, at a senior rate',
-  'Productised service':    'Fixed scope, fixed price, repeatable — the escape from billing hours',
-  'Product or audience':    'Something that keeps earning while you are not working on it',
-  'Index-first portfolio':  'Low-cost global funds, automatic contributions, left alone to compound',
-  'Income assets':          'Dividends and rental income that land monthly, whatever else happens',
-  'Remote-first income':    'Make the income portable before you change anything else',
-  'Cost-base arbitrage':    'The same income builds a very different life somewhere cheaper',
-  'Two levers, sequenced':  'Pick the strongest, give it a year, then add the second',
-};
-
-const FASTEST = {
-  A:"your existing skills, sold directly — the shortest distance between here and a second income",
-  B:"one small paid offer, shipped early, before the full thing is built",
-  C:"an automatic monthly contribution, raised every time your income rises",
-  D:"making your income portable, then letting a lower cost base do the rest",
-  HYBRID:"whichever of your two strongest levers you can start this month",
-};
-
-const MOVES = {
-  A:[
-    "Write down <strong>the one thing people already pay you for</strong> — that's your offer",
-    "Set a <strong>day rate</strong>, not an hourly one, and say it out loud until it stops feeling strange",
-    "Tell <strong>ten people who know your work</strong> that you're taking on a little outside work",
-    "Deliver <strong>one small paid project</strong> — proof beats planning",
-    "Bank every penny of it until you have <strong>six months of expenses</strong>",
-  ],
-  B:[
-    "Pick <strong>one idea</strong> and give it 90 days before you judge it",
-    "<strong>Sell it before you build it</strong> — a pre-order tells you more than research",
-    "Ship something small and <strong>embarrassingly early</strong>",
-    "Build <strong>assets, not hours</strong> — templates, products, audience, IP",
-    "Keep the salary funding it until <strong>revenue is real and repeatable</strong>",
-  ],
-  C:[
-    "Work out your real number: <strong>25 × your annual spending</strong>",
-    "Automate a contribution <strong>on payday</strong>, before anything else moves",
-    "Use <strong>low-cost global index funds</strong> and stop tinkering",
-    "Raise the contribution <strong>every time your income rises</strong>",
-    "Bank <strong>six months of expenses</strong> first — it's what stops you selling at the worst moment",
-  ],
-  D:[
-    "Make your income <strong>portable first</strong> — remote role or remote clients",
-    "Shortlist <strong>three places</strong> and cost them properly: rent, tax, healthcare, visas",
-    "<strong>Live somewhere a month</strong> before committing a year",
-    "Model what your current income is <strong>actually worth</strong> in each place",
-    "Build <strong>6–12 months of runway</strong> before you move anything",
-  ],
-  HYBRID:[
-    "Rank your <strong>two strongest levers</strong> — one goes first, one waits",
-    "Give the first <strong>90 days of real effort</strong> before adding anything",
-    "Set <strong>one number</strong> — a blend still needs a finish line",
-    "Automate the investing so it runs <strong>while you focus elsewhere</strong>",
-    "<strong>Review every six months</strong> — adjust the mix, don't restart it",
-  ],
-};
-
-const AVOID = {
-  A:[
-    "Quitting to go freelance <strong>before you have a single client</strong>",
-    "Charging what feels comfortable instead of <strong>what the work is worth</strong>",
-    "Taking every project — <strong>a bad client is worse than an empty week</strong>",
-    "Spending the new income instead of <strong>banking it as runway</strong>",
-    "Building a second job that's <strong>as demanding as the first</strong>",
-  ],
-  B:[
-    "Building in secret for a year and <strong>launching to silence</strong>",
-    "Starting five things and <strong>finishing none</strong>",
-    "Cutting your salary <strong>before revenue is real and repeatable</strong>",
-    "Confusing activity with progress — <strong>only paying customers count</strong>",
-    "Spending on tools and branding instead of <strong>talking to buyers</strong>",
-  ],
-  C:[
-    "Waiting until the amount feels <strong>big enough to bother</strong>",
-    "Chasing yield — <strong>double-digit promises usually cost you the principal</strong>",
-    "Checking the portfolio daily and <strong>selling on a bad week</strong>",
-    "Investing before you have <strong>a cash buffer</strong> to protect it",
-    "Assuming compounding works <strong>if you keep dipping into it</strong>",
-  ],
-  D:[
-    "Moving to escape rather than to arrive — <strong>the problem often follows</strong>",
-    "Burning the bridge before <strong>the runway exists</strong>",
-    "Romanticising somewhere you've only seen <strong>on holiday</strong>",
-    "Ignoring <strong>visa, tax and healthcare rules</strong> until after you commit",
-    "Rebuilding alone — <strong>community is what makes a new place stick</strong>",
-  ],
-  HYBRID:[
-    "Starting all three levers at <strong>half strength</strong>",
-    "Switching strategy every few months — <strong>blend, but stay the course</strong>",
-    "Having <strong>no single number</strong> to aim at",
-    "Copying someone else's plan wholesale — <strong>your mix is yours</strong>",
-    "Waiting for the perfect route — <strong>Diversifiers win by starting</strong>",
-  ],
-};
-
-function bandFor(score) {
-  for (const b of BANDS) if (score <= b.max) return b;
-  return BANDS[BANDS.length - 1];
-}
-
 function resultHTML() {
-  const { profile, tied } = score(state.answers);
-  const p = PROFILES[profile];
-  const isHybrid = profile === 'HYBRID';
+  const { pct, overall, rec, allClear } = score(state.answers);
+  const band = bandFor(overall);
+  const A = AREAS[rec];
 
-  // ── Plan B readiness: the inverse of how exposed the current setup is ──
-  let expRaw = 0;
-  QS.forEach((qq, i) => {
-    if (!qq.exposure) return;
-    const a = state.answers[i];
-    const opt = qq.opts.find(o => o.id === a);
-    if (opt) expRaw += opt.exp;
-  });
-  const readyRaw = EXPOSURE_MAX - expRaw;
-  const readyPct = Math.round((readyRaw / EXPOSURE_MAX) * 100);
-  const band = bandFor(readyRaw);
-
-  // ── profile mix across the 8 preference questions ──
-  const counts = {A:0,B:0,C:0,D:0};
-  QS.forEach((qq, i) => {
-    if (qq.exposure) return;
-    const a = state.answers[i];
-    if (a) counts[a]++;
-  });
-  const prefTotal = QS.filter(x => !x.exposure).length;
-  const mixHTML = ['A','B','C','D'].map(k => {
-    const pct = Math.round((counts[k] / prefTotal) * 100);
-    const isTop = isHybrid ? tied.indexOf(k) !== -1 : k === profile;
-    return `<div class="mix__row${isTop ? ' mix__row--top' : ''}">
-      <span class="mix__name">${MIX_NAMES[k]}</span>
-      <span class="mix__track"><span class="mix__fill" style="--w:${pct}%"></span></span>
-      <span class="mix__pct">${pct}%</span>
+  const barsHTML = ORDER.map(k => {
+    const a = AREAS[k];
+    const isRec = k === rec;
+    return `<div class="ar${isRec ? ' ar--rec' : ''}">
+      <div class="ar__top">
+        <span class="ar__name"><span class="ar__n">0${a.n}</span>${a.name}</span>
+        <span class="ar__pct">${pct[k]}%</span>
+      </div>
+      <span class="ar__track"><span class="ar__fill" style="--w:${pct[k]}%"></span></span>
+      <div class="ar__note">${pct[k] < THRESHOLD ? a.gap : a.strong}</div>
     </div>`;
   }).join('');
 
-  const movesHTML = MOVES[profile].map((w, i) =>
-    `<li class="way"><span class="way__n">${i + 1}</span><span class="way__txt">${w}</span></li>`).join('');
-  const avoidHTML = AVOID[profile].map((w, i) =>
-    `<li class="way"><span class="way__n way__n--avoid">${i + 1}</span><span class="way__txt">${w}</span></li>`).join('');
+  const movesHTML = MOVES[rec].map((m, i) =>
+    `<li class="way"><span class="way__n">${i + 1}</span><span class="way__txt">${m}</span></li>`).join('');
+  const avoidHTML = AVOID[rec].map((m, i) =>
+    `<li class="way"><span class="way__n way__n--avoid">${i + 1}</span><span class="way__txt">${m}</span></li>`).join('');
 
-  let pathsHTML = p.paths.map(pp => pathCard(pp.name, pp.meta, false)).join('');
-  if (isHybrid && tied.length) {
-    tied.forEach(tk => {
-      const tp = PROFILES[tk];
-      if (!tp || !tp.paths) return;
-      pathsHTML += `<div class="paths-from">${tp.name} routes</div>`;
-      pathsHTML += tp.paths.map(pp => pathCard(pp.name, pp.meta, true)).join('');
-    });
-  }
+  const recLead = allClear
+    ? `All four areas are in reasonable shape — rare. Your weakest is still <strong>${A.name}</strong>, so that's where the next gain is.`
+    : `Your biggest gap is <strong>${A.name}</strong>. ${A.gap}`;
 
   return `<div class="res-screen">
 
     <div class="exp" data-band="${band.key}">
       <div class="exp__lbl">Your Plan B Readiness Score</div>
-      <div class="exp__num">${readyPct}<span>/100</span></div>
-      <div class="exp__meter"><span class="exp__fill" style="--w:${readyPct}%"></span></div>
+      <div class="exp__num">${overall}<span>/100</span></div>
+      <div class="exp__meter"><span class="exp__fill" style="--w:${overall}%"></span></div>
       <div class="exp__band">${band.label}</div>
       <p class="exp__line">${band.line}</p>
     </div>
 
-    <div class="res-hero">
-      <div class="profile-badge">${p.badge}</div>
-      <h1 class="profile-name">${p.name}</h1>
-      <div class="profile-id">${p.identity}</div>
-      <p class="profile-desc">${p.desc}</p>
+    <div class="res-card">
+      <div class="res-lbl">Your four areas</div>
+      <div class="areas">${barsHTML}</div>
     </div>
 
-    <div class="res-card">
-      <div class="res-lbl">Your Plan B mix</div>
-      <div class="mix">${mixHTML}</div>
-      <div class="mix-legend">${['A','B','C','D'].map(k =>
-        `<div class="mix-legend__row"><strong>${MIX_NAMES[k]}</strong> — ${MIX_DESC[k]}</div>`).join('')}
+    <div class="rec">
+      <div class="rec__eye">Start here</div>
+      <h2 class="rec__title">0${A.n} &middot; ${A.name}</h2>
+      <p class="rec__lead">${recLead}</p>
+      <div class="rec__foot">
+        <span class="rec__meta">2-hour session &middot; <strong>$99</strong></span>
+        <a href="${A.book}" class="rec__btn">Book this session &rarr;</a>
       </div>
     </div>
 
     <div class="res-card">
-      <div class="res-lbl">${p.name} — up close</div>
-      <div class="persona">${PERSONA[profile].map(tr =>
-        `<div class="persona__tile">
-          <div class="persona__t">${tr.t}</div>
-          <div class="persona__d">${tr.d}</div>
-        </div>`).join('')}
-      </div>
-    </div>
-
-    <div class="res-card">
-      <div class="res-lbl">Your Plan B routes</div>
-      <div class="paths">${pathsHTML}</div>
-      <p class="micro-paths">Timelines are indicative and assume you're building this alongside existing work. Not financial advice.</p>
-    </div>
-
-    <div class="mstone">
-      <div class="res-lbl res-lbl--light">Your three milestones</div>
-      <div class="mstone__row"><span class="mstone__n">01</span><span class="mstone__t"><strong>Six months of expenses</strong> banked — the buffer that stops any decision being forced</span></div>
-      <div class="mstone__row"><span class="mstone__n">02</span><span class="mstone__t"><strong>$1,000 a month</strong> from outside your job — proof the second engine works</span></div>
-      <div class="mstone__row"><span class="mstone__n">03</span><span class="mstone__t"><strong>25 × your annual spending</strong> — the point where work becomes genuinely optional</span></div>
-      <p class="mstone__note">Your fastest route to milestone two: ${FASTEST[profile]}.</p>
-    </div>
-
-    <div class="res-card">
-      <div class="res-lbl">5 moves to make</div>
+      <div class="res-lbl">5 moves for ${A.name}</div>
       <ol class="ways">${movesHTML}</ol>
     </div>
 
@@ -1030,12 +899,20 @@ function resultHTML() {
       <ol class="ways ways--avoid">${avoidHTML}</ol>
     </div>
 
+    <div class="prog">
+      <div class="prog__eye">Or fix all four</div>
+      <div class="prog__title">The full programme</div>
+      <p class="prog__desc">All four sessions, worked through in order &mdash; because each one builds on the last. Eight hours, one to one, and a written Plan B at the end.</p>
+      <div class="prog__price">$350 <span>&middot; 8 hours &middot; all four sessions</span></div>
+      <a href="BOOK_FULL" class="prog__btn">Book the full programme &rarr;</a>
+    </div>
+
     <div class="cta-primary">
-      <div class="cta-primary__title">Want this turned into a real plan — income, investments, location, sequenced?</div>
+      <div class="cta-primary__title">Not sure, or want to talk it through first?</div>
       <a href="${CALL_URL}" target="_blank" rel="noopener noreferrer" class="cta-primary__btn">
-        Book a Clarity Call →
+        Book a Clarity Call &rarr;
       </a>
-      <div class="cta-primary__sub">60 minutes. Your profile into a plan. Find clarity.</div>
+      <div class="cta-primary__sub">60 minutes. No pitch. Just clarity.</div>
     </div>
 
     <div class="res-links">
@@ -1043,7 +920,7 @@ function resultHTML() {
     </div>
 
     <div class="copy-row">
-      <button class="copy-btn" id="copyBtn" data-name="${p.name}" data-id="${p.identity}">
+      <button class="copy-btn" id="copyBtn" data-name="${overall}" data-id="${A.name}">
         Copy my result
       </button>
     </div>
@@ -1052,16 +929,6 @@ function resultHTML() {
   </div>`;
 }
 
-function pathCard(name, meta, sub) {
-  const desc = ROUTE_DESC[name] ? `<div class="qpath-card__desc">${ROUTE_DESC[name]}</div>` : '';
-  return `<div class="qpath-card${sub?' qpath-card--sub':''}">
-    <div class="qpath-card__name">${name}</div>
-    <div class="qpath-card__meta">${meta}</div>
-    ${desc}
-  </div>`;
-}
-
-// ── EVENTS ──
 function bindEvents() {
   const el = document.getElementById('quiz');
 
@@ -1126,7 +993,7 @@ function bindEvents() {
     if (e.target.id === 'copyBtn') {
       const name = e.target.dataset.name;
       const id   = e.target.dataset.id;
-      const text = `I'm ${name} — ${id} Find your Plan B Readiness Score: ${PAGE_URL}`;
+      const text = `My Plan B Readiness Score is ${name}/100. Weakest area: ${id}. Check yours: ${PAGE_URL}`;
       copyText(text, e.target);
       return;
     }
@@ -1151,17 +1018,23 @@ function bindEvents() {
     const btn = document.getElementById('leadBtn');
     if (btn.disabled) return;
     btn.disabled = true; btn.textContent = 'One moment…';
-    const { profile } = score(state.answers);
+    const sc = score(state.answers);
     const payload = new URLSearchParams({
       email,
-      profile: PROFILES[profile].name,
-      profile_key: profile,
+      readiness_score: String(sc.overall),
+      readiness_band: bandFor(sc.overall).label,
+      recommended_module: AREAS[sc.rec].name,
+      recommended_module_no: String(AREAS[sc.rec].n),
+      score_personal_finance: String(sc.pct.PF),
+      score_active_income: String(sc.pct.AI),
+      score_passive_income: String(sc.pct.PI),
+      score_location: String(sc.pct.LO),
       answers: state.answers.join(''),
       source: location.href,
       submitted_at: new Date().toISOString()
     });
     const reveal = () => {
-      if (window.dataLayer) window.dataLayer.push({ event: 'quiz_lead', quiz_profile: PROFILES[profile].name });
+      if (window.dataLayer) window.dataLayer.push({ event: 'quiz_lead', quiz_score: sc.overall, quiz_module: AREAS[sc.rec].name });
       state.screen = 'result';
       render();
       window.scrollTo(0, 0);
