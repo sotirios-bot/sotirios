@@ -1300,7 +1300,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.4px; line-height: 1.12; color: var(--ink); margin-bottom: 0.6rem;
 }
 .call__goal { font-size: 1.05rem; color: var(--muted); line-height: 1.6; }
-.call__body { display: grid; grid-template-columns: 380px 1fr; gap: 2.5rem; align-items: start; }
+.call__body { max-width: 720px; }
 .call__list { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.25rem; }
 .call__list li {
   font-size: 0.93rem; color: var(--ink); line-height: 1.55;
@@ -1319,11 +1319,5 @@ a { color: inherit; text-decoration: none; }
 .call__out strong { color: var(--ink); }
 .call__meta { font-size: 0.95rem; color: var(--muted); }
 .call__meta strong { color: var(--ink); font-size: 1.15rem; font-weight: 800; }
-.cal-wrap {
-  min-height: 640px; background: var(--bg);
-  border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
-}
-@media (max-width: 900px) {
-  .call__body { grid-template-columns: 1fr; gap: 1.75rem; }
-  .cal-wrap { min-height: 560px; }
-}
+.call__btn { display: inline-block; margin-top: 1.4rem; }
+.call__meta { margin-bottom: 0; }
