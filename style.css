@@ -1191,10 +1191,7 @@ a { color: inherit; text-decoration: none; }
   padding: 2rem;
   display: flex; flex-direction: column;
 }
-.mod__n {
-  font-size: 0.72rem; font-weight: 800; letter-spacing: 1.5px;
-  color: var(--accent); margin-bottom: 0.6rem;
-}
+
 .mod__name {
   font-size: 1.35rem; font-weight: 800; letter-spacing: -0.3px;
   color: var(--ink); margin-bottom: 0.5rem;
@@ -1342,3 +1339,15 @@ a { color: inherit; text-decoration: none; }
 .band__txt { font-size: 0.95rem; font-weight: 700; color: #fff; line-height: 1.4; }
 @media (max-width: 860px) { .band__grid { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .band__grid { grid-template-columns: 1fr; } }
+
+
+/* full programme: email line instead of a button */
+.full__email {
+  font-size: 1.05rem; font-weight: 700; color: #fff;
+  margin-top: 1.5rem; line-height: 1.5;
+}
+.full__email a {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(240,165,0,0.45);
+}
+.full__email a:hover { border-bottom-color: var(--gold); }
