@@ -125,14 +125,6 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   background: var(--bg);
   padding: 6rem 0 5.5rem;
-  isolation: isolate;
-}
-/* soft wash so the ground reads as lit, not as a flat slab */
-.hero__glow {
-  position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(58rem 32rem at 10% 4%, rgba(19,70,200,0.08), transparent 60%),
-    radial-gradient(40rem 26rem at 92% 98%, rgba(240,165,0,0.10), transparent 58%);
 }
 .hero__inner {
   display: flex;
@@ -1381,7 +1373,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ══ THREE AREAS BAND ══ */
-.band { background: var(--surface); padding: 4rem 0; }
+.band {
+  background: var(--bg);
+  padding: 4rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
 .band__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .band__box {
   display: flex; flex-direction: column; align-items: flex-start;
