@@ -1144,114 +1144,143 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ══ THE SESSION — one consolidated offer ══ */
-.mods { background: var(--bg); padding: 5rem 0; }
-.mods .section-sub { margin-bottom: 2rem; }
+.mods { background: var(--bg); padding: 5rem 0 0; }
+.mods .section-sub { margin-bottom: 3rem; }
 
-.sess__intro {
-  max-width: 760px;
-  font-size: 1.1rem; line-height: 1.7; color: var(--muted);
-  background: var(--surface);
-  border-left: 4px solid var(--accent);
-  border-radius: 10px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 3.25rem;
+.sess__split {
+  display: grid; grid-template-columns: 1fr 23rem;
+  gap: 3rem; align-items: start;
 }
-.sess__intro strong { color: var(--ink); font-weight: 700; }
 
+/* ── the four topics: a list, not a wall of boxes ── */
 .sess__lbl {
-  font-size: 0.7rem; font-weight: 800; letter-spacing: 1.6px;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;
+  font-size: 0.72rem; font-weight: 800; letter-spacing: 1.6px;
+  text-transform: uppercase; color: var(--muted);
+  padding-bottom: 1rem; margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ink);
 }
-
-.sess__steps {
-  display: grid; grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem; margin-bottom: 2.5rem;
-}
-.sess__step {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 2rem 1.9rem;
-  /* the nav is sticky — keep anchored cards clear of it */
+.sess__rows { display: flex; flex-direction: column; }
+.sess__row {
+  display: grid; grid-template-columns: 3.4rem 1fr;
+  gap: 1.25rem; align-items: start;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
   scroll-margin-top: 6rem;
 }
-.sess__emoji { display: block; font-size: 2rem; line-height: 1; margin-bottom: 0.9rem; }
-.sess__name {
-  font-size: 1.28rem; font-weight: 800; letter-spacing: -0.3px;
-  line-height: 1.25; color: var(--ink); margin-bottom: 0.6rem;
+.sess__row:last-child { border-bottom: 0; }
+.sess__tile {
+  display: flex; align-items: center; justify-content: center;
+  width: 3.4rem; height: 3.4rem; border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-size: 1.5rem; line-height: 1;
+  transition: transform .18s, background .18s;
 }
-.sess__goal {
-  font-size: 1rem; color: var(--muted); line-height: 1.6;
-  padding-bottom: 1.1rem; margin-bottom: 1.1rem;
+.sess__row:hover .sess__tile {
+  transform: translateY(-2px);
+  background: var(--surface-2);
+}
+.sess__name {
+  font-size: 1.22rem; font-weight: 800; letter-spacing: -0.3px;
+  line-height: 1.3; color: var(--ink); margin-bottom: 0.3rem;
+}
+.sess__desc { font-size: 1rem; color: var(--muted); line-height: 1.6; }
+.sess__desc strong { color: var(--ink); font-weight: 700; }
+
+/* ── the offer card ── */
+.sess__side {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.9rem;
+  position: sticky; top: 5.5rem;
+}
+.sess__head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding-bottom: 1.4rem; margin-bottom: 1.4rem;
   border-bottom: 1px solid var(--border);
 }
-.sess__goal strong { color: var(--ink); font-weight: 700; }
-.sess__list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-.sess__list li {
-  font-size: 0.96rem; color: var(--muted); line-height: 1.55;
-  padding-left: 1.6rem; position: relative;
+.sess__dur { display: flex; flex-direction: column; line-height: 1.25; }
+.sess__dur-main { font-size: 0.95rem; font-weight: 800; color: var(--ink); }
+.sess__dur-sub {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 1.1px;
+  text-transform: uppercase; color: var(--muted);
 }
-.sess__list li strong { color: var(--ink); font-weight: 700; }
-.sess__list li::before {
-  content: '→'; position: absolute; left: 0; top: 0;
-  color: var(--accent); font-weight: 800;
-}
-
-/* the one commercial card */
-.sess__card {
-  display: grid; grid-template-columns: 1.3fr 1fr;
-  gap: 2.5rem; align-items: start;
-  background: var(--dark); color: #fff;
-  border-radius: 16px; padding: 2.75rem;
-  box-shadow: 0 14px 44px rgba(10,22,40,0.18);
+.sess__price {
+  font-size: 2.9rem; font-weight: 800; color: var(--accent);
+  letter-spacing: -0.05em; line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 .sess__eye {
   font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 1rem;
 }
-.sess__get { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+.sess__get { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
 .sess__get li {
-  font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.55;
-  padding-left: 1.9rem; position: relative;
+  font-size: 0.93rem; color: var(--muted); line-height: 1.5;
+  padding-left: 1.7rem; position: relative;
 }
-.sess__get li strong { color: #fff; font-weight: 700; }
-.sess__get li::before { content: '✅'; position: absolute; left: 0; top: 0; font-size: 0.9rem; }
-
-.sess__card-buy {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px; padding: 1.9rem;
-}
-.sess__dur {
-  font-size: 0.76rem; font-weight: 700; letter-spacing: 1.2px;
-  text-transform: uppercase; color: rgba(255,255,255,0.55);
-}
-.sess__price {
-  font-size: 3.6rem; font-weight: 800; color: var(--gold);
-  letter-spacing: -0.05em; line-height: 1; margin: 0.4rem 0 1.5rem;
+.sess__get li strong { color: var(--ink); font-weight: 700; }
+.sess__get li::before {
+  content: '✓'; position: absolute; left: 0; top: 0;
+  color: var(--accent); font-weight: 800; font-size: 1rem;
 }
 .sess__cta {
-  display: block; text-align: center;
+  display: block; text-align: center; margin-top: 1.6rem;
   background: var(--accent); color: #fff;
-  font-weight: 800; font-size: 1rem; padding: 1rem 1.5rem;
+  font-weight: 800; font-size: 1rem; padding: 0.95rem 1.25rem;
   border-radius: 50px; line-height: 1.3;
-  transition: background 0.15s, transform 0.15s;
+  transition: background .15s, transform .15s;
 }
 .sess__cta:hover { background: var(--accent-dk); transform: translateY(-2px); }
-.sess__micro {
-  font-size: 0.88rem; color: rgba(255,255,255,0.55);
-  line-height: 1.55; margin-top: 1.25rem; text-align: center;
+.sess__quiz {
+  font-size: 0.86rem; color: var(--muted); line-height: 1.5;
+  text-align: center; margin-top: 0.9rem;
 }
-.sess__micro a { color: var(--gold); font-weight: 700; border-bottom: 1px solid rgba(240,165,0,0.4); }
-.sess__micro a:hover { border-bottom-color: var(--gold); }
+.sess__quiz a { color: var(--accent); font-weight: 700; border-bottom: 1px solid var(--border); }
+.sess__quiz a:hover { border-bottom-color: var(--accent); }
+
+/* ── the booking band ── */
+.sess__book {
+  background: var(--dark); color: #fff;
+  padding: 4rem 0; margin-top: 5rem;
+  scroll-margin-top: 0;
+}
+.sess__book-h {
+  font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800;
+  letter-spacing: -0.5px; line-height: 1.15; color: #fff;
+  text-wrap: balance; margin-bottom: 0.6rem;
+}
+.sess__book-sub {
+  font-size: 1.05rem; color: rgba(255,255,255,0.62);
+  line-height: 1.6; margin-bottom: 2.25rem;
+}
+.sess__cal {
+  width: 100%; min-height: 640px; overflow: auto;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 14px 44px rgba(0,0,0,0.26);
+}
+.sess__fallback {
+  font-size: 0.9rem; color: rgba(255,255,255,0.55);
+  margin-top: 1.25rem; text-align: center;
+}
+.sess__fallback a { color: var(--gold); font-weight: 700; border-bottom: 1px solid rgba(240,165,0,0.4); }
+.sess__fallback a:hover { border-bottom-color: var(--gold); }
 
 @media (max-width: 900px) {
-  .mods { padding: 4rem 0; }
-  .sess__intro { font-size: 1.02rem; margin-bottom: 2.5rem; }
-  .sess__steps { grid-template-columns: 1fr; }
-  .sess__step { padding: 1.75rem; }
-  .sess__card { grid-template-columns: 1fr; gap: 2rem; padding: 1.9rem; }
-  .sess__price { font-size: 3rem; }
+  .mods { padding: 4rem 0 0; }
+  .mods .section-sub { margin-bottom: 2.25rem; }
+  .sess__split { grid-template-columns: 1fr; gap: 2.5rem; }
+  .sess__side { position: static; padding: 1.6rem; }
+  .sess__price { font-size: 2.5rem; }
+  .sess__book { padding: 3.25rem 0; margin-top: 3.5rem; }
+  .sess__cal { min-height: 560px; border-radius: 12px; }
+}
+@media (max-width: 460px) {
+  .sess__row { grid-template-columns: 2.9rem 1fr; gap: 1rem; padding: 1.35rem 0; }
+  .sess__tile { width: 2.9rem; height: 2.9rem; font-size: 1.3rem; border-radius: 12px; }
+  .sess__name { font-size: 1.12rem; }
+  .sess__head { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
 }
 
 /* ══ THREE AREAS BAND ══ */
