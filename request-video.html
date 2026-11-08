@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-53PJ25VD');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Video Topic | Sotirios Seridis</title>
+  <meta name="description" content="Suggest a topic for me to cover on Greek in Low Latency. Tell me what you want to see and I'll add it to the list." />
+  <link rel="canonical" href="https://www.sotirios-seridis.com/request-video" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.sotirios-seridis.com/request-video" />
+  <meta property="og:title" content="Request a Video Topic | Sotirios Seridis" />
+  <meta property="og:description" content="Suggest a topic for me to cover on Greek in Low Latency." />
+  <meta property="og:image" content="https://www.sotirios-seridis.com/Sotirios%20Seridis.avif" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Request a Video Topic | Sotirios Seridis" />
+  <meta name="twitter:description" content="Suggest a topic for me to cover on Greek in Low Latency." />
+  <meta name="twitter:image" content="https://www.sotirios-seridis.com/Sotirios%20Seridis.avif" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="/style.css?v=202611080830" />
+  <style>
+    /* ── Request a Video Topic — page styles on top of style.css ── */
+    .rv-topbar {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      padding: 1.1rem 1.5rem;
+      text-align: center;
+    }
+    .rv-topbar__logo {
+      font-size: 1.05rem; font-weight: 800; letter-spacing: -0.3px;
+      color: var(--ink); white-space: nowrap;
+    }
+    .rv-topbar__logo:hover { color: var(--accent); }
+
+    .rv-wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── hero ── */
+    .rv-hero { padding: 4.5rem 0 4rem; text-align: center; }
+    .rv-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(19,70,200,0.07);
+      border: 1px solid rgba(19,70,200,0.22);
+      border-radius: 50px; padding: 0.4rem 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+    .rv-pill span { font-size: 0.95rem; letter-spacing: 0; }
+    .rv-h1 {
+      font-size: clamp(2rem, 5vw, 3rem); font-weight: 800;
+      line-height: 1.1; letter-spacing: -1.2px; color: var(--ink);
+      text-wrap: balance; margin-bottom: 1.1rem;
+    }
+    .rv-h1 span { color: var(--accent); }
+    .rv-sub {
+      font-size: 1.08rem; color: var(--muted); line-height: 1.7;
+      max-width: 34rem; margin: 0 auto 2.5rem;
+    }
+    .rv-sub strong { color: var(--ink); font-weight: 700; }
+
+    /* ── form ── */
+    .rv-form { text-align: left; }
+    .rv-field { margin-bottom: 1.1rem; }
+    .rv-label {
+      display: block; font-size: 0.78rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .rv-input, .rv-textarea {
+      width: 100%; font: inherit; font-size: 1rem; color: var(--ink);
+      background: var(--bg);
+      border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 0.9rem 1.05rem; line-height: 1.5;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .rv-textarea { min-height: 7.5rem; resize: vertical; }
+    .rv-input::placeholder, .rv-textarea::placeholder { color: #9AA8C4; }
+    .rv-input:focus, .rv-textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(19,70,200,0.14);
+    }
+    .rv-input[aria-invalid="true"], .rv-textarea[aria-invalid="true"] { border-color: #C0392B; }
+    .rv-input[aria-invalid="true"]:focus, .rv-textarea[aria-invalid="true"]:focus {
+      box-shadow: 0 0 0 4px rgba(192,57,43,0.16);
+    }
+    .rv-err {
+      display: none; font-size: 0.85rem; font-weight: 600;
+      color: #C0392B; margin-top: 0.45rem;
+    }
+    .rv-err.is-on { display: block; }
+    .rv-count { font-size: 0.78rem; color: var(--muted); margin-top: 0.45rem; text-align: right; }
+    .rv-submit {
+      display: block; width: 100%; cursor: pointer;
+      font: inherit; font-size: 1rem; font-weight: 800;
+      color: #fff; background: var(--accent);
+      border: 0; border-radius: 50px; padding: 1rem 1.5rem;
+      transition: background .15s, transform .15s;
+    }
+    .rv-submit:hover:not(:disabled) { background: var(--accent-dk); transform: translateY(-2px); }
+    .rv-submit:disabled { opacity: 0.65; cursor: progress; transform: none; }
+    .rv-note { font-size: 0.82rem; color: var(--muted); text-align: center; margin-top: 0.85rem; }
+    .rv-fail {
+      display: none; margin-top: 1rem; padding: 0.9rem 1.1rem;
+      font-size: 0.9rem; line-height: 1.6;
+      background: rgba(192,57,43,0.07); border: 1px solid rgba(192,57,43,0.3);
+      border-radius: 12px; color: #8E2B20;
+    }
+    .rv-fail.is-on { display: block; }
+    .rv-fail a { color: #8E2B20; font-weight: 700; text-decoration: underline; }
+
+    /* ── how it works ── */
+    .rv-how { background: var(--surface); padding: 4rem 0; }
+    .rv-h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800;
+      letter-spacing: -0.6px; line-height: 1.2; color: var(--ink);
+      text-wrap: balance; margin-bottom: 0.7rem; text-align: center;
+    }
+    .rv-h2--light { color: #fff; }
+    .rv-lede { font-size: 1rem; color: var(--muted); line-height: 1.65; text-align: center; margin-bottom: 2.5rem; }
+    .rv-lede--light { color: rgba(255,255,255,0.64); }
+    .rv-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .rv-step {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.6rem 1.4rem;
+    }
+    .rv-step__n {
+      display: flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-size: 0.85rem; font-weight: 800; font-variant-numeric: tabular-nums;
+      margin-bottom: 0.9rem;
+    }
+    .rv-step__t { font-size: 1.02rem; font-weight: 800; color: var(--ink); line-height: 1.3; margin-bottom: 0.35rem; }
+    .rv-step__d { font-size: 0.92rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── topic ideas ── */
+    .rv-ideas { padding: 4rem 0; }
+    .rv-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; }
+    .rv-tag {
+      font-size: 0.9rem; font-weight: 600; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 50px; padding: 0.5rem 1rem;
+    }
+
+    /* ── bottom CTA ── */
+    .rv-cta { background: var(--dark); padding: 4.5rem 0; }
+    .rv-cta .rv-label { color: rgba(255,255,255,0.6); }
+    .rv-cta .rv-input, .rv-cta .rv-textarea {
+      background: rgba(255,255,255,0.06); color: #fff;
+      border-color: rgba(255,255,255,0.18);
+    }
+    .rv-cta .rv-input::placeholder, .rv-cta .rv-textarea::placeholder { color: rgba(255,255,255,0.4); }
+    .rv-cta .rv-input:focus, .rv-cta .rv-textarea:focus {
+      border-color: var(--gold); box-shadow: 0 0 0 4px rgba(240,165,0,0.2);
+    }
+    .rv-cta .rv-count, .rv-cta .rv-note { color: rgba(255,255,255,0.5); }
+    .rv-cta .rv-err { color: #FFB3A7; }
+    .rv-cta .rv-input[aria-invalid="true"], .rv-cta .rv-textarea[aria-invalid="true"] { border-color: #FF8A75; }
+    .rv-cta .rv-fail { background: rgba(255,138,117,0.1); border-color: rgba(255,138,117,0.4); color: #FFC9BF; }
+    .rv-cta .rv-fail a { color: #FFC9BF; }
+
+    /* ── footer bar ── */
+    .rv-foot {
+      border-top: 1px solid var(--border); background: var(--bg);
+      padding: 1.5rem; font-size: 0.86rem; color: var(--muted);
+    }
+    .rv-foot__in {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .rv-foot__links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .rv-foot a:hover { color: var(--accent); }
+
+    /* ── thank you modal ── */
+    .rv-modal {
+      position: fixed; inset: 0; z-index: 400;
+      display: none; align-items: center; justify-content: center;
+      padding: 1.5rem; background: rgba(10,22,40,0.72);
+    }
+    .rv-modal.is-open { display: flex; }
+    .rv-modal__card {
+      background: var(--bg); border-radius: 20px;
+      padding: 2.5rem 2.25rem 2rem; max-width: 27rem; width: 100%;
+      text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,0.42);
+      animation: rvPop .22s ease-out;
+    }
+    @keyframes rvPop { from { opacity: 0; transform: translateY(12px) scale(.97); } }
+    .rv-modal__emoji { font-size: 3rem; line-height: 1; display: block; margin-bottom: 1.1rem; }
+    .rv-modal__h {
+      font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px;
+      line-height: 1.2; color: var(--ink); text-wrap: balance; margin-bottom: 0.75rem;
+    }
+    .rv-modal__p { font-size: 1rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.5rem; }
+    .rv-modal__p strong { color: var(--ink); font-weight: 700; }
+    .rv-modal__next {
+      text-align: left; background: var(--surface);
+      border-radius: 12px; padding: 1.1rem 1.25rem; margin-bottom: 1.6rem;
+      list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .rv-modal__next li {
+      font-size: 0.92rem; color: var(--muted); line-height: 1.5;
+      padding-left: 1.6rem; position: relative;
+    }
+    .rv-modal__next li::before {
+      content: '\2713'; position: absolute; left: 0; top: 0;
+      color: var(--accent); font-weight: 800;
+    }
+    .rv-modal__close {
+      display: block; width: 100%; cursor: pointer;
+      font: inherit; font-size: 1rem; font-weight: 800; color: #fff;
+      background: var(--accent); border: 0; border-radius: 50px; padding: 0.9rem 1.5rem;
+      transition: background .15s;
+    }
+    .rv-modal__close:hover { background: var(--accent-dk); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rv-modal__card { animation: none; }
+      .rv-submit:hover:not(:disabled) { transform: none; }
+    }
+    @media (max-width: 720px) {
+      .rv-hero { padding: 3rem 0 2.75rem; }
+      .rv-steps { grid-template-columns: 1fr; }
+      .rv-how, .rv-ideas, .rv-cta { padding: 3.25rem 0; }
+      .rv-foot__in { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+      .rv-modal__card { padding: 2rem 1.5rem 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53PJ25VD"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager -->
+
+  <!-- 1. TOPBAR — logo only, centered -->
+  <header class="rv-topbar">
+    <a href="/" class="rv-topbar__logo">Sotirios&nbsp;Seridis</a>
+  </header>
+
+  <!-- 2. HERO -->
+  <section class="rv-hero">
+    <div class="rv-wrap">
+      <p class="rv-pill"><span aria-hidden="true">&#127916;</span>Request a Video Topic</p>
+      <h1 class="rv-h1">What should I <span>make a video about</span>?</h1>
+      <p class="rv-sub">Suggest a topic for me to cover on <strong>Greek in Low Latency</strong>. Tell me what you want to see &mdash; if it&rsquo;s something I can do properly, it goes on the list.</p>
+
+      <form class="rv-form" id="rvFormTop" novalidate>
+        <div class="rv-field">
+          <label class="rv-label" for="rvEmailTop">Your email</label>
+          <input class="rv-input" type="email" id="rvEmailTop" name="email"
+                 placeholder="you@example.com" autocomplete="email" required />
+          <p class="rv-err" id="rvEmailErrTop">Please enter a valid email address.</p>
+        </div>
+        <div class="rv-field">
+          <label class="rv-label" for="rvTopicTop">Your topic</label>
+          <textarea class="rv-textarea" id="rvTopicTop" name="topic" maxlength="500"
+                    placeholder="e.g. How you actually budget while living abroad &mdash; the real numbers" required></textarea>
+          <p class="rv-count"><span data-count-for="rvTopicTop">0</span>/500</p>
+          <p class="rv-err" id="rvTopicErrTop">Tell me a bit more &mdash; at least a few words.</p>
+        </div>
+        <button class="rv-submit" type="submit">Send my topic &rarr;</button>
+        <p class="rv-note">No spam. I only use your email to reply about your topic.</p>
+        <div class="rv-fail" id="rvFailTop" role="alert"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 3. HOW IT WORKS -->
+  <section class="rv-how">
+    <div class="rv-wrap">
+      <h2 class="rv-h2">How it works</h2>
+      <p class="rv-lede">No forms disappearing into a void. Here&rsquo;s what actually happens.</p>
+      <div class="rv-steps">
+        <div class="rv-step">
+          <span class="rv-step__n">1</span>
+          <p class="rv-step__t">You send it</p>
+          <p class="rv-step__d">One email, one topic. The more specific, the better your odds.</p>
+        </div>
+        <div class="rv-step">
+          <span class="rv-step__n">2</span>
+          <p class="rv-step__t">I read every one</p>
+          <p class="rv-step__d">Every request lands in my list. Topics that keep coming up move up it.</p>
+        </div>
+        <div class="rv-step">
+          <span class="rv-step__n">3</span>
+          <p class="rv-step__t">You hear from me</p>
+          <p class="rv-step__d">If I make your video, I&rsquo;ll email you the link when it goes live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHAT I COVER -->
+  <section class="rv-ideas">
+    <div class="rv-wrap">
+      <h2 class="rv-h2">What I make videos about</h2>
+      <p class="rv-lede">Personal finance, lifestyle design and everything in between. If your idea lives near one of these, send it.</p>
+      <div class="rv-tags">
+        <span class="rv-tag">Personal finance</span>
+        <span class="rv-tag">Lifestyle design</span>
+        <span class="rv-tag">Almaty life</span>
+        <span class="rv-tag">Working remotely</span>
+        <span class="rv-tag">Walking thoughts</span>
+        <span class="rv-tag">Cost of living</span>
+        <span class="rv-tag">Leaving corporate</span>
+        <span class="rv-tag">Moving countries</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BOTTOM CTA -->
+  <section class="rv-cta">
+    <div class="rv-wrap">
+      <h2 class="rv-h2 rv-h2--light">Got an idea? Send it over.</h2>
+      <p class="rv-lede rv-lede--light">Takes thirty seconds, and it genuinely shapes what I film next.</p>
+
+      <form class="rv-form" id="rvFormBottom" novalidate>
+        <div class="rv-field">
+          <label class="rv-label" for="rvEmailBottom">Your email</label>
+          <input class="rv-input" type="email" id="rvEmailBottom" name="email"
+                 placeholder="you@example.com" autocomplete="email" required />
+          <p class="rv-err" id="rvEmailErrBottom">Please enter a valid email address.</p>
+        </div>
+        <div class="rv-field">
+          <label class="rv-label" for="rvTopicBottom">Your topic</label>
+          <textarea class="rv-textarea" id="rvTopicBottom" name="topic" maxlength="500"
+                    placeholder="e.g. What a month in Almaty really costs" required></textarea>
+          <p class="rv-count"><span data-count-for="rvTopicBottom">0</span>/500</p>
+          <p class="rv-err" id="rvTopicErrBottom">Tell me a bit more &mdash; at least a few words.</p>
+        </div>
+        <button class="rv-submit" type="submit">Send my topic &rarr;</button>
+        <p class="rv-note">No spam. I only use your email to reply about your topic.</p>
+        <div class="rv-fail" id="rvFailBottom" role="alert"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 6. FOOTER BAR -->
+  <footer class="rv-foot">
+    <div class="rv-foot__in">
+      <p>&copy; 2026 Sotirios Seridis</p>
+      <nav class="rv-foot__links">
+        <a href="/">Home</a>
+        <a href="https://www.youtube.com/@GreekInLowLatency" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.tiktok.com/@greek.in.low.latency" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="/privacy.html">Privacy Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- 7. THANK YOU MODAL -->
+  <div class="rv-modal" id="rvModal" role="dialog" aria-modal="true"
+       aria-labelledby="rvModalH" aria-describedby="rvModalP">
+    <div class="rv-modal__card">
+      <span class="rv-modal__emoji" aria-hidden="true">&#127916;</span>
+      <h2 class="rv-modal__h" id="rvModalH">Got it &mdash; thank you!</h2>
+      <p class="rv-modal__p" id="rvModalP">Your topic is in my list. I read <strong>every single one</strong>.</p>
+      <ul class="rv-modal__next">
+        <li>I go through new requests every week</li>
+        <li>Topics that keep coming up get made first</li>
+        <li>If yours becomes a video, I&rsquo;ll email you the link</li>
+      </ul>
+      <button class="rv-modal__close" type="button" id="rvModalClose">Close</button>
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ───────────────────────────────────────────────────────────────
+       WEBHOOK — point this at the Zap / Make scenario that should
+       receive video topic requests. It currently reuses the catch
+       hook that the (now deleted) quiz used, so submissions land
+       somewhere real rather than being dropped. Re-point that Zap,
+       or paste a new hook URL here.
+       Payload posted as form-encoded: email, topic, source, submitted_at
+       ─────────────────────────────────────────────────────────────── */
+    var WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/6107620/4t7hbkx/';
+
+    var CONTACT_EMAIL = 'sotirios@xyzlab.com';
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    var modal      = document.getElementById('rvModal');
+    var modalClose = document.getElementById('rvModalClose');
+    var lastFocus  = null;
+
+    function openModal(trigger) {
+      lastFocus = trigger || document.activeElement;
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+    function closeModal() {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      /* keep focus inside the dialog — it holds a single control */
+      if (e.key === 'Tab' && modal.classList.contains('is-open')) {
+        e.preventDefault(); modalClose.focus();
+      }
+    });
+
+    /* live character counters */
+    Array.prototype.forEach.call(document.querySelectorAll('[data-count-for]'), function (out) {
+      var ta = document.getElementById(out.getAttribute('data-count-for'));
+      if (!ta) return;
+      var tick = function () { out.textContent = String(ta.value.length); };
+      ta.addEventListener('input', tick); tick();
+    });
+
+    function setError(field, errEl, on) {
+      field.setAttribute('aria-invalid', on ? 'true' : 'false');
+      errEl.classList.toggle('is-on', on);
+    }
+
+    function wire(formId, emailId, topicId, emailErrId, topicErrId, failId, source) {
+      var form     = document.getElementById(formId);
+      var email    = document.getElementById(emailId);
+      var topic    = document.getElementById(topicId);
+      var emailErr = document.getElementById(emailErrId);
+      var topicErr = document.getElementById(topicErrId);
+      var fail     = document.getElementById(failId);
+      var submit   = form.querySelector('.rv-submit');
+      if (!form) return;
+
+      email.addEventListener('input', function () { if (email.getAttribute('aria-invalid') === 'true') setError(email, emailErr, false); });
+      topic.addEventListener('input', function () { if (topic.getAttribute('aria-invalid') === 'true') setError(topic, topicErr, false); });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();                      /* never navigate away */
+        fail.classList.remove('is-on');
+
+        var emailVal = email.value.trim();
+        var topicVal = topic.value.trim();
+        var bad = false;
+
+        if (!EMAIL_RE.test(emailVal)) { setError(email, emailErr, true); bad = true; }
+        else                          { setError(email, emailErr, false); }
+
+        if (topicVal.length < 10)     { setError(topic, topicErr, true); bad = true; }
+        else                          { setError(topic, topicErr, false); }
+
+        if (bad) {
+          (email.getAttribute('aria-invalid') === 'true' ? email : topic).focus();
+          return;
+        }
+
+        submit.disabled = true;
+        var original = submit.textContent;
+        submit.textContent = 'Sending…';
+
+        /* analytics */
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'video_request',
+          email: emailVal,
+          topic: topicVal,
+          form_location: source
+        });
+
+        var done = function () {
+          submit.disabled = false;
+          submit.textContent = original;
+        };
+
+        var payload = new URLSearchParams({
+          email: emailVal,
+          topic: topicVal,
+          source: source,
+          submitted_at: new Date().toISOString()
+        });
+
+        fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: payload.toString()
+        })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          done();
+          form.reset();
+          Array.prototype.forEach.call(form.querySelectorAll('[data-count-for]'), function (o) { o.textContent = '0'; });
+          openModal(submit);
+        })
+        .catch(function () {
+          /* Don't claim success we didn't get — give them a way through. */
+          done();
+          fail.innerHTML = 'Something went wrong sending that. Please try again, or email your topic '
+            + 'straight to <a href="mailto:' + CONTACT_EMAIL + '?subject=Video%20topic%20request">'
+            + CONTACT_EMAIL + '</a>.';
+          fail.classList.add('is-on');
+        });
+      });
+    }
+
+    wire('rvFormTop',    'rvEmailTop',    'rvTopicTop',    'rvEmailErrTop',    'rvTopicErrTop',    'rvFailTop',    'hero');
+    wire('rvFormBottom', 'rvEmailBottom', 'rvTopicBottom', 'rvEmailErrBottom', 'rvTopicErrBottom', 'rvFailBottom', 'bottom_cta');
+  })();
+  </script>
+</body>
+</html>
