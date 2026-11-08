@@ -27,20 +27,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/style.css?v=202611080830" />
+  <link rel="stylesheet" href="/style.css?v=202611080836" />
   <style>
     /* ── Request a Video Topic — page styles on top of style.css ── */
-    .rv-topbar {
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      padding: 1.1rem 1.5rem;
-      text-align: center;
-    }
-    .rv-topbar__logo {
-      font-size: 1.05rem; font-weight: 800; letter-spacing: -0.3px;
-      color: var(--ink); white-space: nowrap;
-    }
-    .rv-topbar__logo:hover { color: var(--accent); }
+    .nav__link--active { color: var(--accent); font-weight: 700; }
 
     .rv-wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -78,18 +68,18 @@
     }
     .rv-input, .rv-textarea {
       width: 100%; font: inherit; font-size: 1rem; color: var(--ink);
-      background: var(--bg);
-      border: 1.5px solid var(--border); border-radius: 12px;
+      background: rgba(240,165,0,0.06);
+      border: 2px solid var(--gold); border-radius: 12px;
       padding: 0.9rem 1.05rem; line-height: 1.5;
       transition: border-color .15s, box-shadow .15s;
     }
     .rv-textarea { min-height: 7.5rem; resize: vertical; }
     .rv-input::placeholder, .rv-textarea::placeholder { color: #9AA8C4; }
     .rv-input:focus, .rv-textarea:focus {
-      outline: none; border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(19,70,200,0.14);
+      outline: none; border-color: #C08000; background: var(--bg);
+      box-shadow: 0 0 0 4px rgba(240,165,0,0.3);
     }
-    .rv-input[aria-invalid="true"], .rv-textarea[aria-invalid="true"] { border-color: #C0392B; }
+    .rv-input[aria-invalid="true"], .rv-textarea[aria-invalid="true"] { border-color: #C0392B; background: rgba(192,57,43,0.05); }
     .rv-input[aria-invalid="true"]:focus, .rv-textarea[aria-invalid="true"]:focus {
       box-shadow: 0 0 0 4px rgba(192,57,43,0.16);
     }
@@ -156,31 +146,19 @@
     .rv-cta { background: var(--dark); padding: 4.5rem 0; }
     .rv-cta .rv-label { color: rgba(255,255,255,0.6); }
     .rv-cta .rv-input, .rv-cta .rv-textarea {
-      background: rgba(255,255,255,0.06); color: #fff;
-      border-color: rgba(255,255,255,0.18);
+      background: rgba(240,165,0,0.1); color: #fff;
+      border-color: var(--gold);
     }
     .rv-cta .rv-input::placeholder, .rv-cta .rv-textarea::placeholder { color: rgba(255,255,255,0.4); }
     .rv-cta .rv-input:focus, .rv-cta .rv-textarea:focus {
-      border-color: var(--gold); box-shadow: 0 0 0 4px rgba(240,165,0,0.2);
+      border-color: #FFC24D; background: rgba(240,165,0,0.16);
+      box-shadow: 0 0 0 4px rgba(240,165,0,0.34);
     }
     .rv-cta .rv-count, .rv-cta .rv-note { color: rgba(255,255,255,0.5); }
     .rv-cta .rv-err { color: #FFB3A7; }
-    .rv-cta .rv-input[aria-invalid="true"], .rv-cta .rv-textarea[aria-invalid="true"] { border-color: #FF8A75; }
+    .rv-cta .rv-input[aria-invalid="true"], .rv-cta .rv-textarea[aria-invalid="true"] { border-color: #FF8A75; background: rgba(255,138,117,0.12); }
     .rv-cta .rv-fail { background: rgba(255,138,117,0.1); border-color: rgba(255,138,117,0.4); color: #FFC9BF; }
     .rv-cta .rv-fail a { color: #FFC9BF; }
-
-    /* ── footer bar ── */
-    .rv-foot {
-      border-top: 1px solid var(--border); background: var(--bg);
-      padding: 1.5rem; font-size: 0.86rem; color: var(--muted);
-    }
-    .rv-foot__in {
-      max-width: var(--max-w); margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; flex-wrap: wrap;
-    }
-    .rv-foot__links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .rv-foot a:hover { color: var(--accent); }
 
     /* ── thank you modal ── */
     .rv-modal {
@@ -232,7 +210,6 @@
       .rv-hero { padding: 3rem 0 2.75rem; }
       .rv-steps { grid-template-columns: 1fr; }
       .rv-how, .rv-ideas, .rv-cta { padding: 3.25rem 0; }
-      .rv-foot__in { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
       .rv-modal__card { padding: 2rem 1.5rem 1.6rem; }
     }
   </style>
@@ -243,9 +220,28 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager -->
 
-  <!-- 1. TOPBAR — logo only, centered -->
-  <header class="rv-topbar">
-    <a href="/" class="rv-topbar__logo">Sotirios&nbsp;Seridis</a>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo">Sotirios&nbsp;Seridis&nbsp;&nbsp;<span class="nav__sep" aria-hidden="true">|</span>&nbsp;&nbsp;<span class="nav__role">Content&nbsp;Creator</span></a>
+      <nav class="nav__links">
+        <a href="/#channels" class="nav__link">Channels</a>
+        <a href="/#story" class="nav__link">My Story</a>
+        <a href="/#newsletter" class="nav__link">Newsletter</a>
+        <a href="/request-video" class="nav__link nav__link--active" aria-current="page">Request a Video</a>
+        <a href="https://www.youtube.com/@GreekInLowLatency" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">Follow on YouTube</a>
+      </nav>
+      <button class="nav__burger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="/#channels" onclick="toggleMenu()">Channels</a>
+      <a href="/#story" onclick="toggleMenu()">My Story</a>
+      <a href="/#newsletter" onclick="toggleMenu()">Newsletter</a>
+      <a href="/request-video" onclick="toggleMenu()">Request a Video</a>
+      <a href="https://www.tiktok.com/@greek.in.low.latency" target="_blank">TikTok</a>
+      <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a>
+      <a href="https://www.youtube.com/@GreekInLowLatency" target="_blank">YouTube</a>
+    </div>
   </header>
 
   <!-- 2. HERO -->
@@ -346,16 +342,47 @@
     </div>
   </section>
 
-  <!-- 6. FOOTER BAR -->
-  <footer class="rv-foot">
-    <div class="rv-foot__in">
-      <p>&copy; 2026 Sotirios Seridis</p>
-      <nav class="rv-foot__links">
-        <a href="/">Home</a>
-        <a href="https://www.youtube.com/@GreekInLowLatency" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a href="https://www.tiktok.com/@greek.in.low.latency" target="_blank" rel="noopener noreferrer">TikTok</a>
-        <a href="/privacy.html">Privacy Policy</a>
-      </nav>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__cols">
+        <div>
+          <h4 class="footer__subtitle">Contact</h4>
+          <ul class="footer__list">
+            <li>📧 <a href="mailto:sotirios@xyzlab.com">sotirios@xyzlab.com</a></li>
+            <li>🌎 GMT+5, Almaty</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__subtitle">Socials</h4>
+          <ul class="footer__list">
+            <li>💻 <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a></li>
+            <li>🎵 <a href="https://www.tiktok.com/@greek.in.low.latency" target="_blank">TikTok</a></li>
+            <li>🎥 <a href="https://www.youtube.com/@xyzl" target="_blank">Digital Marketing Tutorials</a></li>
+            <li>🎥 <a href="https://www.youtube.com/@GreekInLowLatency" target="_blank">Greek in Low Latency</a></li>
+            <li>📰 <a href="https://sotirios.beehiiv.com/subscribe" target="_blank">Newsletter</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__subtitle">Get Involved</h4>
+          <ul class="footer__list">
+            <li>🎬 <a href="/request-video">Request a Video</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__subtitle">My Companies</h4>
+          <ul class="footer__list">
+            <li><a href="https://www.xyzlab.com/" target="_blank">XYZ Lab</a></li>
+            <li><a href="https://www.mytheon.co/" target="_blank">Mytheon Technologies</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 Sotirios Seridis</p>
+        <a href="/privacy.html" class="footer__privacy">Privacy Policy</a>
+      </div>
     </div>
   </footer>
 
@@ -513,6 +540,14 @@
     wire('rvFormTop',    'rvEmailTop',    'rvTopicTop',    'rvEmailErrTop',    'rvTopicErrTop',    'rvFailTop',    'hero');
     wire('rvFormBottom', 'rvEmailBottom', 'rvTopicBottom', 'rvEmailErrBottom', 'rvTopicErrBottom', 'rvFailBottom', 'bottom_cta');
   })();
+  </script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('nav__mobile--open');
+    }
+    document.querySelectorAll('a[target="_blank"]').forEach(a => {
+      a.rel = 'noopener noreferrer';
+    });
   </script>
 </body>
 </html>
