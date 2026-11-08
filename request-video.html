@@ -27,7 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/style.css?v=202611080839" />
+  <link rel="stylesheet" href="/style.css?v=202611080845" />
   <style>
     /* ── Request a Video Topic — page styles on top of style.css ── */
     .nav__link--active { color: var(--accent); font-weight: 700; }
@@ -410,14 +410,11 @@
     'use strict';
 
     /* ───────────────────────────────────────────────────────────────
-       WEBHOOK — point this at the Zap / Make scenario that should
-       receive video topic requests. It currently reuses the catch
-       hook that the (now deleted) quiz used, so submissions land
-       somewhere real rather than being dropped. Re-point that Zap,
-       or paste a new hook URL here.
-       Payload posted as form-encoded: email, topic, source, submitted_at
+       WEBHOOK — the Zapier catch hook that receives video topic
+       requests. Posted form-encoded with four flat fields:
+       email, topic, source ("hero" | "bottom_cta"), submitted_at.
        ─────────────────────────────────────────────────────────────── */
-    var WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/6107620/4t7hbkx/';
+    var WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/6107620/49n5znc/';
 
     var CONTACT_EMAIL = 'sotirios@xyzlab.com';
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
