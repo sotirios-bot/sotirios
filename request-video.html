@@ -27,7 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="/style.css?v=202611080836" />
+  <link rel="stylesheet" href="/style.css?v=202611080839" />
   <style>
     /* ── Request a Video Topic — page styles on top of style.css ── */
     .nav__link--active { color: var(--accent); font-weight: 700; }
@@ -61,6 +61,12 @@
     /* ── form ── */
     .rv-form { text-align: left; }
     .rv-field { margin-bottom: 1.1rem; }
+    .rv-req { color: #C0392B; font-weight: 800; }
+    .rv-cta .rv-req { color: #FF8A75; }
+    .rv-sr {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
     .rv-label {
       display: block; font-size: 0.78rem; font-weight: 800;
       letter-spacing: 1px; text-transform: uppercase;
@@ -88,7 +94,6 @@
       color: #C0392B; margin-top: 0.45rem;
     }
     .rv-err.is-on { display: block; }
-    .rv-count { font-size: 0.78rem; color: var(--muted); margin-top: 0.45rem; text-align: right; }
     .rv-submit {
       display: block; width: 100%; cursor: pointer;
       font: inherit; font-size: 1rem; font-weight: 800;
@@ -154,7 +159,7 @@
       border-color: #FFC24D; background: rgba(240,165,0,0.16);
       box-shadow: 0 0 0 4px rgba(240,165,0,0.34);
     }
-    .rv-cta .rv-count, .rv-cta .rv-note { color: rgba(255,255,255,0.5); }
+    .rv-cta .rv-note { color: rgba(255,255,255,0.5); }
     .rv-cta .rv-err { color: #FFB3A7; }
     .rv-cta .rv-input[aria-invalid="true"], .rv-cta .rv-textarea[aria-invalid="true"] { border-color: #FF8A75; background: rgba(255,138,117,0.12); }
     .rv-cta .rv-fail { background: rgba(255,138,117,0.1); border-color: rgba(255,138,117,0.4); color: #FFC9BF; }
@@ -253,17 +258,16 @@
 
       <form class="rv-form" id="rvFormTop" novalidate>
         <div class="rv-field">
-          <label class="rv-label" for="rvEmailTop">Your email</label>
+          <label class="rv-label" for="rvEmailTop">Your email <span class="rv-req" aria-hidden="true">*</span><span class="rv-sr">(required)</span></label>
           <input class="rv-input" type="email" id="rvEmailTop" name="email"
                  placeholder="you@example.com" autocomplete="email" required />
           <p class="rv-err" id="rvEmailErrTop">Please enter a valid email address.</p>
         </div>
         <div class="rv-field">
           <label class="rv-label" for="rvTopicTop">Your topic</label>
-          <textarea class="rv-textarea" id="rvTopicTop" name="topic" maxlength="500"
+          <textarea class="rv-textarea" id="rvTopicTop" name="topic"
                     placeholder="e.g. How you actually budget while living abroad &mdash; the real numbers" required></textarea>
-          <p class="rv-count"><span data-count-for="rvTopicTop">0</span>/500</p>
-          <p class="rv-err" id="rvTopicErrTop">Tell me a bit more &mdash; at least a few words.</p>
+          <p class="rv-err" id="rvTopicErrTop">Please add a topic.</p>
         </div>
         <button class="rv-submit" type="submit">Send my topic &rarr;</button>
         <p class="rv-note">No spam. I only use your email to reply about your topic.</p>
@@ -323,17 +327,16 @@
 
       <form class="rv-form" id="rvFormBottom" novalidate>
         <div class="rv-field">
-          <label class="rv-label" for="rvEmailBottom">Your email</label>
+          <label class="rv-label" for="rvEmailBottom">Your email <span class="rv-req" aria-hidden="true">*</span><span class="rv-sr">(required)</span></label>
           <input class="rv-input" type="email" id="rvEmailBottom" name="email"
                  placeholder="you@example.com" autocomplete="email" required />
           <p class="rv-err" id="rvEmailErrBottom">Please enter a valid email address.</p>
         </div>
         <div class="rv-field">
           <label class="rv-label" for="rvTopicBottom">Your topic</label>
-          <textarea class="rv-textarea" id="rvTopicBottom" name="topic" maxlength="500"
+          <textarea class="rv-textarea" id="rvTopicBottom" name="topic"
                     placeholder="e.g. What a month in Almaty really costs" required></textarea>
-          <p class="rv-count"><span data-count-for="rvTopicBottom">0</span>/500</p>
-          <p class="rv-err" id="rvTopicErrBottom">Tell me a bit more &mdash; at least a few words.</p>
+          <p class="rv-err" id="rvTopicErrBottom">Please add a topic.</p>
         </div>
         <button class="rv-submit" type="submit">Send my topic &rarr;</button>
         <p class="rv-note">No spam. I only use your email to reply about your topic.</p>
@@ -444,14 +447,6 @@
       }
     });
 
-    /* live character counters */
-    Array.prototype.forEach.call(document.querySelectorAll('[data-count-for]'), function (out) {
-      var ta = document.getElementById(out.getAttribute('data-count-for'));
-      if (!ta) return;
-      var tick = function () { out.textContent = String(ta.value.length); };
-      ta.addEventListener('input', tick); tick();
-    });
-
     function setError(field, errEl, on) {
       field.setAttribute('aria-invalid', on ? 'true' : 'false');
       errEl.classList.toggle('is-on', on);
@@ -481,7 +476,7 @@
         if (!EMAIL_RE.test(emailVal)) { setError(email, emailErr, true); bad = true; }
         else                          { setError(email, emailErr, false); }
 
-        if (topicVal.length < 10)     { setError(topic, topicErr, true); bad = true; }
+        if (!topicVal)                { setError(topic, topicErr, true); bad = true; }
         else                          { setError(topic, topicErr, false); }
 
         if (bad) {
@@ -523,7 +518,6 @@
           if (!res.ok) throw new Error('HTTP ' + res.status);
           done();
           form.reset();
-          Array.prototype.forEach.call(form.querySelectorAll('[data-count-for]'), function (o) { o.textContent = '0'; });
           openModal(submit);
         })
         .catch(function () {
