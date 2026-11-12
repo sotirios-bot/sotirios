@@ -180,8 +180,9 @@ a { color: inherit; text-decoration: none; }
 .hero__social-icon { width: 20px; height: 20px; flex-shrink: 0; fill: currentColor; }
 .hero__social--yt { background: #FF0000; }
 .hero__social--yt:hover { background: #d90000; transform: translateY(-2px); }
-.hero__social--tt { background: #000; color: #fff; }
-.hero__social--tt:hover { background: #1c1c1c; transform: translateY(-2px); }
+.hero__social--chat { background: #fff; color: var(--ink); }
+.hero__social--chat:hover { background: rgba(255,255,255,0.88); transform: translateY(-2px); }
+.hero__social-emoji { font-size: 1.05rem; line-height: 1; }
 
 /* ── HERO "currently" CARD ── */
 .hero__card {
@@ -1232,9 +1233,8 @@ a { color: inherit; text-decoration: none; }
   .chat__cal { min-height: 560px; border-radius: 12px; }
 }
 
-/* "Chat with me" sits beside the name, not in the right-hand group */
+/* "Chat with me" sits in the right-hand group, left of the YouTube button */
 .nav__chat {
-  margin-right: auto; margin-left: 1rem;
   font-size: 0.82rem; font-weight: 700; white-space: nowrap;
   color: var(--accent);
   background: rgba(19,70,200,0.07);
@@ -1248,9 +1248,12 @@ a { color: inherit; text-decoration: none; }
    over at 960 instead of 768, and the pill hides at the same point —
    below that, "Chat with me" lives in the burger menu, so it is never
    missing at any width. */
+/* Six items in a 1060px bar stop fitting below ~910, so the burger takes
+   over at 960. Below that the pill hides and the burger menu carries
+   "Chat with me", so it is reachable at every width. */
 @media (max-width: 960px) {
-  .nav__chat  { display: none; }
-  .nav__links { display: none; }
+  .nav__chat   { display: none; }
+  .nav__links  { display: none; }
   .nav__burger { display: block; }
 }
 
@@ -1317,15 +1320,3 @@ a { color: inherit; text-decoration: none; }
    Spacing lives in the markup, not in a flex gap, so it still reads
    correctly if the stylesheet is cached or fails to load. */
 .nav__logo { white-space: nowrap; line-height: 1.2; }
-.nav__sep {
-  color: var(--border);
-  font-weight: 400;
-  margin: 0 0.15rem;
-}
-.nav__role {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--accent);
-}
-@media (max-width: 1180px) { .nav__sep, .nav__role { display: none; } }
