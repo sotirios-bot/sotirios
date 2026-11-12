@@ -106,8 +106,8 @@ a { color: inherit; text-decoration: none; }
   height: 60px;
 }
 .nav__logo { font-weight: 800; font-size: 1rem; color: var(--ink); letter-spacing: -0.2px; }
-.nav__links { display: flex; align-items: center; gap: 1.25rem; }
-.nav__link { color: var(--muted); font-size: 0.88rem; font-weight: 500; transition: color 0.15s; }
+.nav__links { display: flex; align-items: center; gap: 1rem; margin-left: 1.5rem; }
+.nav__link { color: var(--muted); font-size: 0.88rem; font-weight: 500; white-space: nowrap; transition: color 0.15s; }
 .nav__link:hover { color: var(--ink); }
 .nav__burger { display: none; background: none; border: none; color: var(--ink); font-size: 1.4rem; cursor: pointer; }
 .nav__mobile {
@@ -1214,6 +1214,46 @@ a { color: inherit; text-decoration: none; }
   .btn--lg { padding-left: 1.25rem; padding-right: 1.25rem; }
 }
 
+/* ══ CHAT WITH ME (Cal embed) ══ */
+.chat { background: var(--bg); padding: 5rem 0; scroll-margin-top: 4.5rem; }
+.chat .section-sub { margin-bottom: 2.5rem; }
+/* Cal's own snippet uses height:100%, which collapses to nothing here —
+   reserve the height instead so the section never renders empty. */
+.chat__cal {
+  width: 100%; min-height: 640px; overflow: auto;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 16px; box-shadow: 0 14px 44px rgba(10,22,40,0.10);
+}
+.chat__fallback { font-size: 0.9rem; color: var(--muted); margin-top: 1.25rem; text-align: center; }
+.chat__fallback a { color: var(--accent); font-weight: 700; border-bottom: 1px solid var(--border); }
+.chat__fallback a:hover { border-bottom-color: var(--accent); }
+@media (max-width: 900px) {
+  .chat { padding: 3.5rem 0; }
+  .chat__cal { min-height: 560px; border-radius: 12px; }
+}
+
+/* "Chat with me" sits beside the name, not in the right-hand group */
+.nav__chat {
+  margin-right: auto; margin-left: 1rem;
+  font-size: 0.82rem; font-weight: 700; white-space: nowrap;
+  color: var(--accent);
+  background: rgba(19,70,200,0.07);
+  border: 1px solid rgba(19,70,200,0.22);
+  border-radius: 50px; padding: 0.38rem 0.8rem;
+  transition: background .15s, border-color .15s;
+}
+.nav__chat:hover { background: rgba(19,70,200,0.14); border-color: var(--accent); }
+/* The nav already carried four links plus a button; the chat pill is a
+   sixth item and the row stops fitting below ~960. So the burger takes
+   over at 960 instead of 768, and the pill hides at the same point —
+   below that, "Chat with me" lives in the burger menu, so it is never
+   missing at any width. */
+@media (max-width: 960px) {
+  .nav__chat  { display: none; }
+  .nav__links { display: none; }
+  .nav__burger { display: block; }
+}
+
 /* ══ MY STORY ══ */
 .story { background: var(--surface); padding: 5.5rem 0; }
 /* gold on the pale ground is about 2:1 — use the accent instead */
@@ -1288,4 +1328,4 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.02em;
   color: var(--accent);
 }
-@media (max-width: 1040px) { .nav__sep, .nav__role { display: none; } }
+@media (max-width: 1180px) { .nav__sep, .nav__role { display: none; } }
