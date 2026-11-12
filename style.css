@@ -180,8 +180,8 @@ a { color: inherit; text-decoration: none; }
 .hero__social-icon { width: 20px; height: 20px; flex-shrink: 0; fill: currentColor; }
 .hero__social--yt { background: #FF0000; }
 .hero__social--yt:hover { background: #d90000; transform: translateY(-2px); }
-.hero__social--chat { background: #fff; color: var(--ink); }
-.hero__social--chat:hover { background: rgba(255,255,255,0.88); transform: translateY(-2px); }
+.hero__social--chat { background: var(--surface); color: var(--accent); }
+.hero__social--chat:hover { background: var(--surface-2); transform: translateY(-2px); }
 .hero__social-emoji { font-size: 1.05rem; line-height: 1; }
 
 /* ── HERO "currently" CARD ── */
@@ -1177,6 +1177,9 @@ a { color: inherit; text-decoration: none; }
 /* YouTube brand red */
 .floating-btn--youtube { background: #FF0000; }
 .floating-btn--tiktok { background: #000; }
+/* the only pale button in the stack, so its label and icon go dark */
+.floating-btn--chat { background: var(--surface); color: var(--accent); }
+.floating-btn--chat:hover { background: var(--surface-2); }
 
 
 /* ── THE SHIFT ── */
