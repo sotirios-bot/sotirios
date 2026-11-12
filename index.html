@@ -28,7 +28,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="style.css?v=202611121009" />
+  <link rel="stylesheet" href="style.css?v=202611121025" />
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -40,6 +40,7 @@
   <header class="nav">
     <div class="container nav__inner">
       <a href="#" class="nav__logo">Sotirios&nbsp;Seridis&nbsp;&nbsp;<span class="nav__sep" aria-hidden="true">|</span>&nbsp;&nbsp;<span class="nav__role">Content&nbsp;Creator</span></a>
+      <a href="#chat" class="nav__chat">&#9749;&nbsp;Chat&nbsp;with&nbsp;me</a>
       <nav class="nav__links">
         <a href="#channels" class="nav__link">Channels</a>
         <a href="#story" class="nav__link">My Story</a>
@@ -53,6 +54,7 @@
       <a href="#channels" onclick="toggleMenu()">Channels</a>
       <a href="#story" onclick="toggleMenu()">My Story</a>
       <a href="#newsletter" onclick="toggleMenu()">Newsletter</a>
+      <a href="#chat" onclick="toggleMenu()">Chat with me</a>
       <a href="/request-video" onclick="toggleMenu()">Request a Video</a>
       <a href="https://www.tiktok.com/@greek.in.low.latency" target="_blank">TikTok</a>
       <a href="https://www.linkedin.com/in/seridis/" target="_blank">LinkedIn</a>
@@ -163,6 +165,31 @@
       </div>
     </div>
   </section>
+
+  <!-- CHAT WITH ME -->
+  <section class="chat" id="chat">
+    <div class="container">
+      <h2 class="section-title">Chat with me</h2>
+      <p class="section-sub">Grab an online coffee &mdash; pick a slot that suits you and let&rsquo;s talk.</p>
+      <!-- Cal inline embed code begins -->
+      <div class="chat__cal" id="my-cal-inline-online-coffee"></div>
+      <!-- Cal inline embed code ends -->
+      <p class="chat__fallback">Calendar not loading? <a href="https://cal.com/sotirios-seridis/online-coffee" target="_blank" rel="noopener noreferrer">Book on Cal.com &rarr;</a></p>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "online-coffee", {origin:"https://app.cal.com"});
+  Cal.config = Cal.config || {};
+  Cal.config.forwardQueryParams = true;
+  Cal.ns["online-coffee"]("inline", {
+    elementOrSelector:"#my-cal-inline-online-coffee",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+    calLink: "sotirios-seridis/online-coffee",
+  });
+  Cal.ns["online-coffee"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  </script>
 
   <!-- FOOTER -->
   <footer class="footer">
